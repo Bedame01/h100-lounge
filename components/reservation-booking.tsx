@@ -155,7 +155,7 @@ export function ReservationBooking() {
           <div className="space-y-12">
             {/* Header */}
             <div>
-              <h1 className="font-serif text-4xl sm:text-5xl font-bold mb-3">Book a Table</h1>
+              <h1 className="font-serif text-4xl sm:text-5xl font-semibold mb-3">Book a Table</h1>
               <p className="text-muted-foreground text-lg leading-relaxed max-w-xl text-pretty">
                 Experience an evening of refined cocktails and ambient sounds.
                 Select your preferences below to secure your spot.
@@ -292,13 +292,13 @@ export function ReservationBooking() {
                         className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-all duration-200
                           ${
                             isSelected
-                              ? "border-primary bg-primary/5 ring-1 ring-primary/50"
+                              ? "border-accent bg-accent/5 ring-1 ring-accent/50"
                               : "border-border bg-card hover:border-foreground/30"
                           }`}
                       >
                         <div
                           className={`w-10 h-10 rounded-lg flex items-center justify-center
-                          ${isSelected ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"}`}
+                          ${isSelected ? "bg-accent/20 text-primary" : "bg-muted text-muted-foreground"}`}
                         >
                           <Icon className="w-5 h-5" />
                         </div>
@@ -308,7 +308,7 @@ export function ReservationBooking() {
                         </div>
                         <div
                           className={`w-5 h-5 rounded-full border-2 transition-all
-                          ${isSelected ? "border-primary bg-primary" : "border-muted-foreground/40"}`}
+                          ${isSelected ? "border-accent bg-accent" : "border-muted-foreground/40"}`}
                         >
                           {isSelected && (
                             <div className="w-full h-full rounded-full flex items-center justify-center">

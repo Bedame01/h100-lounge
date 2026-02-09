@@ -105,7 +105,7 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-serif font-bold">Categories</h2>
+          <h2 className="text-2xl font-serif font-medium">Categories</h2>
           <p className="text-sm text-muted-foreground">Manage your menu categories</p>
         </div>
         <CategoryDialog mode="create" />
@@ -119,10 +119,10 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
             <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="font-serif text-2xl mb-1">{category.name}</CardTitle>
+                  <CardTitle className="font-serif font-medium text-2xl mb-1">{category.name}</CardTitle>
                   {category.description && <p className="text-sm text-muted-foreground">{category.description}</p>}
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                   <CategoryDialog mode="edit" category={category} />
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
@@ -176,7 +176,7 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
                             )}
                             <p className="text-primary font-semibold mt-2">₦{item.price.toLocaleString()}</p>
                           </div>
-                          <Badge variant={item.is_available ? "default" : "secondary"}>
+                          <Badge variant={item.is_available ? "default" : "secondary"} className="text-xs">
                             {item.is_available ? "Available" : "Unavailable"}
                           </Badge>
                         </div>

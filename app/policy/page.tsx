@@ -3,8 +3,8 @@ import { Footer } from "@/components/footer"
 import { Separator } from "@/components/ui/separator"
 
 export const metadata = {
-  title: "Site Policy - Noir Lounge",
-  description: "Terms of service, privacy policy, and other legal information for Noir Lounge.",
+  title: "Site Policy - H100 Lounge",
+  description: "Terms of service, privacy policy, and other legal information for H100 Lounge.",
 }
 
 export default function PolicyPage() {
@@ -24,7 +24,7 @@ export default function PolicyPage() {
               <section className="mb-12">
                 <h2 className="text-3xl font-bold mb-4">Terms of Service</h2>
                 <p className="text-muted-foreground mb-4">
-                  By accessing and using the Noir Lounge website and services, you agree to be bound by these Terms of
+                  By accessing and using the H100 Lounge website and services, you agree to be bound by these Terms of
                   Service. Please read them carefully.
                 </p>
 
@@ -44,7 +44,7 @@ export default function PolicyPage() {
 
                 <h3 className="text-xl font-semibold mb-3 mt-6">3. Age Requirement</h3>
                 <p className="text-muted-foreground mb-4">
-                  Noir Lounge is an establishment serving alcoholic beverages. All guests must be 21 years of age or
+                  H100 Lounge is an establishment serving alcoholic beverages. All guests must be 21 years of age or
                   older. Valid government-issued identification is required for entry and will be verified upon arrival.
                 </p>
 
@@ -62,7 +62,7 @@ export default function PolicyPage() {
               <section className="mb-12">
                 <h2 className="text-3xl font-bold mb-4">Privacy Policy</h2>
                 <p className="text-muted-foreground mb-4">
-                  At Noir Lounge, we respect your privacy and are committed to protecting your personal information.
+                  At H100 Lounge, we respect your privacy and are committed to protecting your personal information.
                   This policy explains how we collect, use, and safeguard your data.
                 </p>
 
@@ -152,13 +152,13 @@ export default function PolicyPage() {
                 </p>
                 <div className="bg-muted/30 p-6 rounded-lg">
                   <p className="text-muted-foreground mb-2">
-                    <strong>Email:</strong> privacy@noirlounge.com
+                    <strong>Email:</strong> privacy@H100lounge.com
                   </p>
                   <p className="text-muted-foreground mb-2">
                     <strong>Phone:</strong> +234 XXX XXX XXXX
                   </p>
                   <p className="text-muted-foreground">
-                    <strong>Address:</strong> Noir Lounge, Lagos, Nigeria
+                    <strong>Address:</strong> H100 Lounge, Lagos, Nigeria
                   </p>
                 </div>
               </section>

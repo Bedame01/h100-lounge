@@ -28,7 +28,7 @@ export default function HeroSwiper() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 600000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -67,7 +67,7 @@ export default function HeroSwiper() {
                         <CustomButton 
                             text="Reserve Now" 
                             // hoverText="Explore Our Offerings" 
-                            href="/menu" 
+                            href="/reservations" 
                             variant="ghost" 
                             className="min-w-43 hover:bg-foreground hover:text-background!"
                         />
@@ -79,7 +79,7 @@ export default function HeroSwiper() {
         <SwiperSlide>
             <div
                 className="hero-slider size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center"
-                style={{ backgroundImage: "url('/images/hero2.jpg')" }}
+                style={{ backgroundImage: "url('/images/Elegant Crystal Glass Celebration.png')" }}
                 >
                 <div className="text-center">
                     <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
@@ -104,7 +104,7 @@ export default function HeroSwiper() {
                     <CustomButton 
                         text="Reserve Now" 
                         // hoverText="Explore Our Offerings" 
-                        href="/menu" 
+                        href="/reservations" 
                         variant="ghost" 
                         className="min-w-43 hover:bg-foreground hover:text-background!"
                     />
@@ -116,7 +116,7 @@ export default function HeroSwiper() {
         <SwiperSlide>
             <div
                 className="size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center"
-                style={{ backgroundImage: "url('/images/hero3.png')" }}
+                style={{ backgroundImage: "url('/images/image1.png')" }}
                 >
                 <div className="text-center">
                     <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
@@ -141,7 +141,7 @@ export default function HeroSwiper() {
                     <CustomButton 
                         text="Reserve Now" 
                         // hoverText="Explore Our Offerings" 
-                        href="/menu" 
+                        href="/reservations" 
                         variant="ghost" 
                         className="min-w-43 hover:bg-foreground hover:text-background!"
                     />

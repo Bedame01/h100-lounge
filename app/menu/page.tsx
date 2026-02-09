@@ -101,7 +101,7 @@ export default function MenuPage() {
       <Navigation />
 
       <div className="pt-16">
-        <section className="pt-16 md:pt-26 pb-12 md:pb-16! mb-5 bg-muted">
+        <section className="pt-16 md:pt-26 pb-12 md:pb-16! mb-5 border-b border-border">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="font-serif text-5xl sm:text-6xl font-bold mb-4 ">Our <span className="italic text-accent">Menu.</span></h1>
             <p className="text-base/snug max-w-2xl mx-auto text-pretty">

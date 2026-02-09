@@ -67,10 +67,10 @@ export function CategoryDialog({ category, mode }: CategoryDialogProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size={mode === "create" ? "default" : "sm"} variant={mode === "create" ? "default" : "ghost"}>
+        <Button size={mode === "create" ? "default" : "sm"} variant={mode === "create" ? "default" : "ghost"} className="text-xs font-semibold px-1">
           {mode === "create" ? (
             <>
-              <Plus className="mr-2 h-4 w-4" />
+              <Plus className="h-3 w-3" />
               Add Category
             </>
           ) : (

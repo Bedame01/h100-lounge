@@ -106,10 +106,10 @@ export function MenuItemDialog({ categories, menuItem, mode }: MenuItemDialogPro
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size={mode === "create" ? "default" : "sm"} variant={mode === "create" ? "default" : "outline"}>
+        <Button size={mode === "create" ? "default" : "sm"} variant={mode === "create" ? "default" : "outline"} className="text-xs font-semibold px-1">
           {mode === "create" ? (
             <>
-              <Plus className="mr-2 h-4 w-4" />
+              <Plus className="h-4 w-4" />
               Add Menu Item
             </>
           ) : (

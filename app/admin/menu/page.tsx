@@ -31,7 +31,7 @@ export default async function AdminMenuPage() {
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="font-serif text-3xl font-bold mb-2 ">
+          <h1 className="font-serif text-3xl font-medium mb-2 ">
             Menu Management
           </h1>
           <p className="text-muted-foreground">Manage your menu items and categories with full CRUD operations</p>
