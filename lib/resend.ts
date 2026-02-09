@@ -5,7 +5,7 @@ const isResendConfigured = Boolean(RESEND_API_KEY)
 
 export const resend = isResendConfigured ? new Resend(RESEND_API_KEY) : null
 
-export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@noirlounge.com"
-export const FROM_EMAIL = process.env.FROM_EMAIL || "Noir Lounge <noreply@noirlounge.com>"
+export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@nh100lounge.com"
+export const FROM_EMAIL = process.env.FROM_EMAIL || "H100 Lounge <noreply@noirlounge.com>"
 
 export { isResendConfigured }
