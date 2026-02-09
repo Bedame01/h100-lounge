@@ -1,4 +1,4 @@
-# Noir Lounge - Restaurant & Bar Management System
+<!-- # Noir Lounge - Restaurant & Bar Management System
 
 A modern, full-stack web application for managing a luxury lounge and bar. Built with Next.js 16, React 19, TypeScript, Tailwind CSS, and Supabase.
 
@@ -287,4 +287,4 @@ Private project - All rights reserved.
 
 ---
 
-Built with ❤️ using Next.js, React, TypeScript, Tailwind CSS, and Supabase.
+Built with ❤️ using Next.js, React, TypeScript, Tailwind CSS, and Supabase. -->
