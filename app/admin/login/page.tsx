@@ -10,8 +10,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
+import { useTheme } from "next-themes"
+import logoLight from '@/public/icons/logo-white.png'
+import logoDark from '@/public/icons/logo-black.png'
 
 export default function AdminLoginPage() {
+  const { theme, setTheme } = useTheme()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
@@ -50,17 +54,24 @@ export default function AdminLoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center p-6">
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-[410px]">
         <div className="mb-6 text-center">
-          <Link href="/" className="font-serif text-3xl font-bold text-primary">
-            Noir
+          <Link href="/" className="mt-2 inline-flex items-center gap-2">
+            {theme === "dark" ? (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            ) : 
+            theme === "light" ? (
+              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            ) : (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            )}
           </Link>
           <p className="text-sm text-muted-foreground mt-2">Admin Portal</p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Admin Login</CardTitle>
+            <CardTitle className="text-xl text-accent">Admin Login</CardTitle>
             <CardDescription>Enter your credentials to access the admin dashboard</CardDescription>
           </CardHeader>
           <CardContent>
@@ -75,6 +86,7 @@ export default function AdminLoginPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="py-5.5 text-sm"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -93,10 +105,11 @@ export default function AdminLoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className="py-5.5 text-sm"
                   />
                 </div>
                 {error && <p className="text-sm text-destructive">{error}</p>}
-                <Button type="submit" className="w-full" disabled={isLoading}>
+                <Button type="submit" className="w-full py-5.5" disabled={isLoading}>
                   {isLoading ? "Logging in..." : "Login"}
                 </Button>
               </div>

@@ -1,126 +1,137 @@
-"use server"
-
-import { createClient } from "@/lib/supabase/server"
-import { revalidatePath } from "next/cache"
-import { resend, ADMIN_EMAIL, FROM_EMAIL, isResendConfigured } from "@/lib/resend"
-
-export async function createReservation(formData: FormData) {
-  const supabase = await createClient()
-
-  const guestName = formData.get("guest_name") as string
-  const guestEmail = formData.get("guest_email") as string
-  const guestPhone = formData.get("guest_phone") as string
-  const reservationDate = formData.get("reservation_date") as string
-  const reservationTime = formData.get("reservation_time") as string
-  const partySize = Number.parseInt(formData.get("party_size") as string)
-  const seatingArea = (formData.get("seating_area") as string) || "main_lounge"
-  const specialRequests = formData.get("special_requests") as string
-
-  // Validate inputs
-  if (!guestName || !guestEmail || !guestPhone || !reservationDate || !reservationTime || !partySize) {
-    return { error: "Please fill in all required fields." }
-  }
-
-  if (partySize < 1 || partySize > 12) {
-    return { error: "Party size must be between 1 and 12 guests." }
-  }
-
-  // Check if the date is in the future
-  const selectedDate = new Date(reservationDate)
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-
-  if (selectedDate < today) {
-    return { error: "Please select a future date for your reservation." }
-  }
-
-  const { data: reservation, error } = await supabase
-    .from("reservations")
-    .insert({
-      guest_name: guestName,
-      guest_email: guestEmail,
-      guest_phone: guestPhone,
-      reservation_date: reservationDate,
-      reservation_time: reservationTime,
-      party_size: partySize,
-      seating_area: seatingArea,
-      special_requests: specialRequests || null,
-      status: "pending",
-    })
-    .select()
-    .single()
-
-  if (error) {
-    console.error("[v0] Reservation creation error:", error)
-    return { error: "Failed to create reservation. Please try again." }
-  }
-
-  console.log("[v0] Reservation created successfully:", reservation.id)
-
-  if (isResendConfigured && resend) {
-    const formattedDate = new Date(reservationDate).toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-
-    // Send customer confirmation email
-    try {
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: guestEmail,
-        subject: "Reservation Request Received - H100 Lounge & Bar",
-        html: getCustomerConfirmationEmail({
-          customerName: guestName,
-          date: formattedDate,
-          time: reservationTime,
-          partySize,
-          seatingArea,
-          specialRequests,
-        }),
-      })
-      console.log("[v0] Customer confirmation email sent")
-    } catch (emailError) {
-      console.error("[v0] Failed to send customer confirmation email:", emailError)
-    }
-
-    // Send admin notification email
-    try {
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        to: ADMIN_EMAIL,
-        subject: `New Reservation Request - ${guestName}`,
-        html: getAdminNotificationEmail({
-          customerName: guestName,
-          customerEmail: guestEmail,
-          customerPhone: guestPhone,
-          date: formattedDate,
-          time: reservationTime,
-          partySize,
-          seatingArea,
-          specialRequests,
-          reservationId: reservation.id,
-        }),
-      })
-      console.log("[v0] Admin notification email sent")
-    } catch (emailError) {
-      console.error("[v0] Failed to send admin notification email:", emailError)
-    }
-  } else {
-    console.log("[v0] Resend not configured, skipping email notifications")
-  }
-
-  revalidatePath("/admin/reservations")
-
-  return { success: true }
-}
-
-function formatSeatingArea(area: string) {
+export function formatSeatingArea(area: string) {
   return area === "bar_counter" ? "Bar Counter" : "Main Lounge"
 }
 
-function getCustomerConfirmationEmail({
+export function getApprovalEmail({
+  customerName,
+  date,
+  time,
+  partySize,
+  seatingArea,
+  specialRequests,
+}: {
+  customerName: string
+  date: string
+  time: string
+  partySize?: number
+  seatingArea?: string
+  specialRequests?: string
+}) {
+  // Handle cancellation emails (which don't have partySize)
+  if (!partySize) {
+    return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+          .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+          .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
+          .label { font-weight: bold; color: #ef4444; }
+          .highlight { background: #fee2e2; padding: 15px; border-left: 4px solid #ef4444; margin: 20px 0; border-radius: 4px; }
+          .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="margin: 0;">Reservation Cancelled</h1>
+            <p style="margin: 10px 0 0 0;">Your H100 Lounge & Bar reservation</p>
+          </div>
+          <div class="content">
+            <p>Dear ${customerName},</p>
+            
+            <div class="highlight">
+              <strong>Your reservation has been cancelled.</strong> If you didn't cancel this reservation or have questions, please contact us immediately.
+            </div>
+            
+            <div class="detail">
+              <div><span class="label">Original Date:</span> ${date}</div>
+              <div><span class="label">Original Time:</span> ${time}</div>
+            </div>
+            
+            <p>We'd love to welcome you another time! Feel free to make a new reservation whenever you're ready.</p>
+            
+            <p style="margin-top: 30px;">
+              If you have any questions, please don't hesitate to reach out.<br />
+              <strong>The H100 Lounge & Bar Team</strong>
+            </p>
+          </div>
+          <div class="footer">
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat</p>
+            <p>This is an automated message. Please do not reply to this email.</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `
+  }
+
+  // Confirmation/Approval email
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+          .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+          .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
+          .label { font-weight: bold; color: #10b981; }
+          .highlight { background: #d1fae5; padding: 15px; border-left: 4px solid #10b981; margin: 20px 0; border-radius: 4px; }
+          .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="margin: 0;">🎉 Reservation Confirmed!</h1>
+            <p style="margin: 10px 0 0 0;">Your table is waiting for you</p>
+          </div>
+          <div class="content">
+            <p>Dear ${customerName},</p>
+            
+            <div class="highlight">
+              <strong>Great news!</strong> Your reservation at H100 Lounge & Bar has been confirmed. We're excited to welcome you!
+            </div>
+            
+            <div class="detail">
+              <div><span class="label">Date:</span> ${date}</div>
+              <div><span class="label">Time:</span> ${time}</div>
+              <div><span class="label">Party Size:</span> ${partySize} guests</div>
+              ${seatingArea ? `<div><span class="label">Seating:</span> ${formatSeatingArea(seatingArea)}</div>` : ""}
+              ${specialRequests ? `<div><span class="label">Special Requests:</span> ${specialRequests}</div>` : ""}
+            </div>
+            
+            <p><strong>What to expect:</strong></p>
+            <ul>
+              <li>Please arrive 10 minutes before your reservation time</li>
+              <li>We'll have your table ready upon arrival</li>
+              <li>Browse our premium cocktail and small chops menu</li>
+              <li>Enjoy our sophisticated ambiance and excellent service</li>
+            </ul>
+            
+            <p>If you need to cancel or modify your reservation, please contact us at least 24 hours in advance.</p>
+            
+            <p style="margin-top: 30px;">
+              We can't wait to serve you!<br />
+              <strong>The H100 Lounge & Bar Team</strong>
+            </p>
+          </div>
+          <div class="footer">
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat</p>
+            <p>This is an automated message. Please do not reply to this email.</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `
+}
+
+export function getCustomerConfirmationEmail({
   customerName,
   date,
   time,
@@ -177,7 +188,7 @@ function getCustomerConfirmationEmail({
             </p>
           </div>
           <div class="footer">
-            <p>H100 Lounge & Bar | Premium Cocktails & Small Chops</p>
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat</p>
             <p>This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>
@@ -186,7 +197,7 @@ function getCustomerConfirmationEmail({
   `
 }
 
-function getAdminNotificationEmail({
+export function getAdminNotificationEmail({
   customerName,
   customerEmail,
   customerPhone,

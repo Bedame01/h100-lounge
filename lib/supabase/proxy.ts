@@ -29,9 +29,13 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const isAuthPage = request.nextUrl.pathname === "/admin/login" || request.nextUrl.pathname === "/admin/signup"
+  const isAuthPage =
+    request.nextUrl.pathname === "/admin/login" ||
+    request.nextUrl.pathname === "/admin/signup" ||
+    request.nextUrl.pathname === "/admin/forgot-password" ||
+    request.nextUrl.pathname === "/admin/reset-password"
 
-  // Protect admin routes (except login and signup pages)
+  // Protect admin routes (except login, signup, and password recovery pages)
   if (request.nextUrl.pathname.startsWith("/admin") && !user && !isAuthPage) {
     const url = request.nextUrl.clone()
     url.pathname = "/admin/login"
@@ -39,7 +43,7 @@ export async function updateSession(request: NextRequest) {
   }
 
   // If logged in and trying to access login/signup, redirect to dashboard
-  if (user && isAuthPage) {
+  if (user && (request.nextUrl.pathname === "/admin/login" || request.nextUrl.pathname === "/admin/signup")) {
     const isAdmin = user.user_metadata?.is_admin === true
     if (isAdmin) {
       const url = request.nextUrl.clone()

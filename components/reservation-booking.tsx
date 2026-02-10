@@ -470,7 +470,7 @@ export function ReservationBooking() {
               {/* Help */}
               <p className="text-center text-sm text-muted-foreground">
                 Need help?{" "}
-                <a href="tel:+234800NOIR" className="text-primary hover:underline inline-flex items-center gap-1">
+                <a href="tel:+234800H100" className="text-primary hover:underline inline-flex items-center gap-1">
                   <Phone className="w-3 h-3" />
                   Call the concierge
                 </a>

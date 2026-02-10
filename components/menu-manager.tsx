@@ -115,11 +115,11 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
         const categoryItems = menuItems.filter((item) => item.category_id === category.id)
 
         return (
-          <Card key={category.id} className="group hover:shadow-lg transition-all duration-300">
-            <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5">
+          <Card key={category.id} className="group hover:shadow-lg transition-all duration-300 pt-0">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5 py-4">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="font-serif font-medium text-2xl mb-1">{category.name}</CardTitle>
+                  <CardTitle className="font-serif font-medium text-xl mb-1">{category.name}</CardTitle>
                   {category.description && <p className="text-sm text-muted-foreground">{category.description}</p>}
                 </div>
                 <div className="flex items-center gap-1">

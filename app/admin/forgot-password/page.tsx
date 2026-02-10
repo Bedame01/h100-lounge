@@ -9,8 +9,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { CheckCircle2 } from "lucide-react"
+import { useTheme } from "next-themes"
+import logoLight from '@/public/icons/logo-white.png'
+import logoDark from '@/public/icons/logo-black.png'
 
 export default function ForgotPasswordPage() {
+  const { theme, setTheme } = useTheme()
   const [email, setEmail] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
@@ -23,7 +27,9 @@ export default function ForgotPasswordPage() {
     setError(null)
 
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email)
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      })
       if (error) throw error
       setSuccess(true)
     } catch (error: unknown) {
@@ -37,15 +43,22 @@ export default function ForgotPasswordPage() {
     <div className="flex min-h-screen items-center justify-center p-6">
       <div className="w-full max-w-sm">
         <div className="mb-6 text-center">
-          <Link href="/" className="font-serif text-3xl font-bold text-primary">
-            Noir
+          <Link href="/" className="mt-2 inline-flex items-center gap-2">
+            {theme === "dark" ? (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16 mx-auto" />
+            ) : 
+            theme === "light" ? (
+              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-16 mx-auto" />
+            ) : (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16 mx-auto" />
+            )}
           </Link>
           <p className="text-sm text-muted-foreground mt-2">Admin Portal</p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Forgot Password</CardTitle>
+            <CardTitle className="text-xl text-accent">Forgot Password</CardTitle>
             <CardDescription>
               {success
                 ? "Check your email for reset instructions"
@@ -87,10 +100,11 @@ export default function ForgotPasswordPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      className="py-5.5 text-sm"
                     />
                   </div>
                   {error && <p className="text-sm text-destructive">{error}</p>}
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button type="submit" className="w-full py-5.5" disabled={isLoading}>
                     {isLoading ? "Sending..." : "Send Reset Link"}
                   </Button>
                 </div>

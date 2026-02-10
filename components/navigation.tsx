@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { usePathname } from "next/navigation"
+import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 // import SwitchButton from "./kokonutui/switch-button"
@@ -11,6 +12,9 @@ import { useEffect, useState } from "react"
 import CustomButton from '@/components/kokonutui/CustomButton/CustomButton'
 import { ThemeToggle } from '@/components/theme-toggle'
 // import MorphicNavbar from "./kokonutui/morphic-navbar"
+
+import logoLight from '@/public/icons/logo-white.png'
+import logoDark from '@/public/icons/logo-black.png'
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -21,6 +25,7 @@ const navLinks = [
 
 export function Navigation() {
   const pathname = usePathname()
+  const { theme, setTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false);
   const SCROLL_THRESHOLD = 70; // Adjust the scroll height at which header toggles to black
@@ -56,8 +61,12 @@ export function Navigation() {
             {/* <MorphicNavbar /> */}
           </div>
 
-          <Link href="/" className="font-semibold text-xl text-foreground textDisplay">
-            H100 Lounge
+          <Link href="/" className="">
+            {theme === "dark" ? (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16" />
+            ) : (
+              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-16" />
+            )}
           </Link>
           
           <div className="hidden md:flex items-center gap-4">
@@ -85,10 +94,16 @@ export function Navigation() {
               <SheetContent side="left" className="w-[300px]">
                 <SheetHeader>
                   <SheetTitle className="text-left">
-                    <span className="text-xl font-bold tracking-tight textDisplay">H100 Lounge</span>
+                    <Link href="/" className="mt-2 inline-flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                      {theme === "dark" ? (
+                        <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15" />
+                      ) : (
+                        <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15" />
+                      )}
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col gap-4 mt-8 px-3">
+                <nav className="flex flex-col gap-4 mt-6 px-3">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -102,7 +117,7 @@ export function Navigation() {
                       {link.label}
                     </Link>
                   ))}
-                  <div className="border-t pt-4 mt-4">
+                  <div className="border-t pt-8 mt-5">
                     <CustomButton 
                       text="Make a Reservation" 
                       // hoverText="Book a Table" 

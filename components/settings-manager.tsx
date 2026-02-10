@@ -78,7 +78,7 @@ export function SettingsManager({ settings: initialSettings }: SettingsManagerPr
             <p className="text-sm text-muted-foreground">Current rate: $1 = ₦{exchangeRate}</p>
           </div>
 
-          <Button onClick={handleSave} disabled={loading} className="w-full">
+          <Button onClick={handleSave} disabled={loading} className="w-full py-5.5">
             {loading && <RefreshCw className="mr-2 h-4 w-4 animate-spin" />}
             Save Changes
           </Button>

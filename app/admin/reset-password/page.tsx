@@ -60,7 +60,7 @@ export default function ResetPasswordPage() {
       <div className="w-full max-w-sm">
         <div className="mb-6 text-center">
           <Link href="/" className="font-serif text-3xl font-bold text-primary">
-            Noir
+            H100
           </Link>
           <p className="text-sm text-muted-foreground mt-2">Admin Portal</p>
         </div>

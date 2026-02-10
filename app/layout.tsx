@@ -1,10 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono, Inter, Playfair_Display, Raleway, Nunito_Sans, Fraunces } from "next/font/google"
+import { Geist, Geist_Mono, Inter, Playfair_Display, Raleway} from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import '@splidejs/react-splide/css';
 import "./globals.css"
+import favicon from "@/public/icons/favicon.png"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -23,21 +24,11 @@ const _raleway = Raleway({
   weight: ["400", "500", "600", "700"],
   variable: "--font-alt-sans",
 })
-const _nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-nunito-sans",
-})
-const _fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-fraunces",
-})
 
 export const metadata: Metadata = {
-  title: "H100 Lounge and Bar - Luxury Cocktails & Small Chops",
+  title: "H100 Lounge and Bar - Relax, Refresh and Repeat",
   description:
-    "Experience sophistication at H100 Lounge and Bar. Premium cocktails, exquisite small chops, and an atmosphere of refined elegance.",
+    "Experience sophistication at H100 Lounge and Bar. Premium cocktails and an atmosphere of refined elegance.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -65,6 +56,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Favicon */}
+        <link rel="icon" href={favicon.src} type="image/png" />
+      </head>
       <body className={`${_inter.variable} ${_playfair.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}

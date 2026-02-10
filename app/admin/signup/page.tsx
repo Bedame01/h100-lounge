@@ -12,8 +12,12 @@ import Link from "next/link"
 import { AlertCircle } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { signupAdmin } from "@/app/actions/auth"
+import { useTheme } from "next-themes"
+import logoLight from '@/public/icons/logo-white.png'
+import logoDark from '@/public/icons/logo-black.png'
 
 export default function AdminSignupPage() {
+  const { theme, setTheme } = useTheme()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -69,17 +73,24 @@ export default function AdminSignupPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center p-6">
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-[450px]">
         <div className="mb-6 text-center">
-          <Link href="/" className="font-semibold text-2xl text-foreground">
-            Noir Lounge
+          <Link href="/" className="mt-2 inline-flex items-center gap-2">
+            {theme === "dark" ? (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            ) : 
+            theme === "light" ? (
+              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            ) : (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            )}
           </Link>
           <p className="text-sm text-muted-foreground mt-2">Admin Portal</p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Admin Signup</CardTitle>
+            <CardTitle className="text-xl">Admin Signup</CardTitle>
             <CardDescription>Create a new admin account with the special access key</CardDescription>
           </CardHeader>
           <CardContent>
@@ -94,6 +105,7 @@ export default function AdminSignupPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="text-sm py-5"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -105,6 +117,7 @@ export default function AdminSignupPage() {
                     placeholder="Min. 8 characters"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className="text-sm py-5"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -115,6 +128,7 @@ export default function AdminSignupPage() {
                     required
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="text-sm py-5"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -126,6 +140,7 @@ export default function AdminSignupPage() {
                     placeholder="Enter special admin key"
                     value={adminKey}
                     onChange={(e) => setAdminKey(e.target.value)}
+                    className="text-sm py-5"
                   />
                   <p className="text-xs text-muted-foreground">Contact your system administrator for the access key</p>
                 </div>
@@ -143,7 +158,7 @@ export default function AdminSignupPage() {
                   </Alert>
                 )}
 
-                <Button type="submit" className="w-full" disabled={isLoading}>
+                <Button type="submit" className="w-full py-5.5" disabled={isLoading}>
                   {isLoading ? "Creating account..." : "Create Admin Account"}
                 </Button>
               </div>

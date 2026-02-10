@@ -153,7 +153,7 @@ export function ReservationsTable({ reservations: initialReservations }: Reserva
                 variant="destructive"
                 onClick={() => handleDelete(reservation.id)}
                 disabled={loadingId === reservation.id}
-                className="ml-auto"
+                className="ml-auto bg-foreground"
               >
                 <Trash2 className="w-4 h-4" />
               </Button>

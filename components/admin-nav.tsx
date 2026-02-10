@@ -9,7 +9,10 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
-import CustomButton from "./kokonutui/CustomButton/CustomButton"
+import { useTheme } from "next-themes"
+import logoLight from '@/public/icons/logo-white.png'
+import logoDark from '@/public/icons/logo-black.png'
+// import CustomButton from "./kokonutui/CustomButton/CustomButton"
 
 interface AdminNavProps {
   user: {
@@ -18,6 +21,7 @@ interface AdminNavProps {
 }
 
 export function AdminNav({ user }: AdminNavProps) {
+  const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const router = useRouter()
   const supabase = createClient()
@@ -39,8 +43,15 @@ export function AdminNav({ user }: AdminNavProps) {
     <nav className="border-b border-border bg-background">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/admin/dashboard" className="font-serif text-xl font-bold">
-            H100 Admin
+          <Link href="/" className="mt-2 inline-flex items-center gap-2">
+            {theme === "dark" ? (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            ) : 
+            theme === "light" ? (
+              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            ) : (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
+            )}
           </Link>
           <div className="flex items-center gap-8">
 
@@ -49,9 +60,9 @@ export function AdminNav({ user }: AdminNavProps) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center lg:gap-2 text-sm font-medium px-1 py-2 rounded-none transition-colors ${
+                  className={`flex items-center lg:gap-2 text-sm font-medium px-2 py-2 rounded-none transition-colors ${
                     pathname === item.href
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-accent text-[#fff]"
                       : "text-foreground hover:bg-accent hover:text-accent-foreground"
                   }`}
                 >
@@ -86,10 +97,19 @@ export function AdminNav({ user }: AdminNavProps) {
               <SheetContent side="left" className="w-[300px]">
                 <SheetHeader>
                   <SheetTitle className="text-left">
-                    <span className="text-xl font-bold tracking-tight textDisplay">H100 Admin</span>
+                    <Link href="/" className="mt-2 inline-flex items-center gap-2">
+                      {theme === "dark" ? (
+                        <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-14 mx-auto" />
+                      ) : 
+                      theme === "light" ? (
+                        <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-14 mx-auto" />
+                      ) : (
+                        <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-14 mx-auto" />
+                      )}
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col gap-4 mt-8 px-3">
+                <nav className="flex flex-col gap-4 mt-5 px-3">
                   {navItems.map((link) => (
                     <Link
                       key={link.href}
@@ -103,8 +123,8 @@ export function AdminNav({ user }: AdminNavProps) {
                       {link.label}
                     </Link>
                   ))}
-                  <div className="border-t pt-4 mt-4">
-                    <Button variant="default" size="sm" onClick={handleLogout} className="w-full bg-accent py-6 rounded-none">
+                  <div className="border-t pt-8 mt-4">
+                    <Button variant="default" size="sm" onClick={handleLogout} className="w-full bg-accent text-[#fff] py-6 rounded-none">
                       <LogOut className="w-4 h-4 mr-2" />
                       Logout
                     </Button>

@@ -78,7 +78,7 @@ export const ReservationApprovedEmail: React.FC<ReservationApprovedEmailProps> =
           </p>
         </div>
         <div className="footer">
-          <p>H100 Lounge & Bar | Premium Cocktails & Small Chops</p>
+          <p>H100 Lounge & Bar | Relax, Refresh and Repeat</p>
           <p>This is an automated message. Please do not reply to this email.</p>
         </div>
       </div>
