@@ -58,7 +58,7 @@ async function MenuContent() {
           <section key={category.id} className="py-6 px-2.5 md:px-10! lg:px-18! last:border-b-0">
             <div className="container rounded-2xl border border-border mx-auto p-4 sm:p-8 lg:p-10">
               <div className="text-center mb-12">
-                <h2 className="font-serif text-3xl font-normal mb-3">{category.name}</h2>
+                <h2 className="font-serif text-2xl font-normal mb-3">{category.name}</h2>
                 {category.description && (
                   <p className="text-muted-foreground text-base max-w-2xl mx-auto text-pretty">{category.description}</p>
                 )}
@@ -103,7 +103,7 @@ export default function MenuPage() {
       <div className="pt-16">
         <section className="pt-16 md:pt-26 pb-12 md:pb-16! mb-5 border-b border-border">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-serif text-5xl sm:text-6xl font-bold mb-4 ">Our <span className="italic text-accent">Menu.</span></h1>
+            <h1 className="font-serif text-5xl sm:text-6xl tracking-tight font-medium mb-4 ">Our <span className="italic text-accent">Menu.</span></h1>
             <p className="text-base/snug max-w-2xl mx-auto text-pretty">
               Explore our complete menu featuring fresh ingredients, innovative techniques, and exceptional flavors crafted by our talented culinary team.
             </p>

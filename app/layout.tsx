@@ -29,23 +29,23 @@ export const metadata: Metadata = {
   title: "H100 Lounge and Bar - Relax, Refresh and Repeat",
   description:
     "Experience sophistication at H100 Lounge and Bar. Premium cocktails and an atmosphere of refined elegance.",
-  generator: "v0.app",
+  // generator: "v0.app",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "/public/icons/favicon.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "/public/icons/favicon.png",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
+        url: "/public/icons/favicon.png",
         type: "image/svg+xml",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/public/icons/favicon.png",
   },
 }
 

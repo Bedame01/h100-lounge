@@ -9,7 +9,7 @@ export function CTASection() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold mb-6 text-balance">Reserve Your Evening</h2>
+          <h2 className="font-serif text-4xl sm:text-5xl font-medium tracking-tight mb-6 text-balance">Reserve Your Evening</h2>
           <p className="text-lg text-muted-foreground mb-8 text-pretty">
             Join us for an unforgettable experience. Limited seating available nightly.
           </p>

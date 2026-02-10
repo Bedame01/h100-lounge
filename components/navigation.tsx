@@ -39,7 +39,7 @@ export function Navigation() {
   }, []);
 
   return (
-    <nav className={`fixed py-1 top-0 left-0 right-0 z-50 ${scrolled ? 'bg-background dark:bg-background dark:backdrop-blur-md' : 'bg-transparent'} transition-colors duration-300`}>
+    <nav className={`fixed py-1 top-0 left-0 right-0 z-50 ${scrolled ? 'backdrop-blur supports-[backdrop-filter]:bg-background/65' : 'bg-transparent'} transition-colors duration-300`}>
       <div className="mx-auto px-4 sm:px-6 lg:px-15!">
         <div className="flex items-center justify-between h-16">
 
@@ -62,10 +62,10 @@ export function Navigation() {
           </div>
 
           <Link href="/" className="">
-            {theme === "dark" ? (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16" />
-            ) : (
+            {theme === "light" ? (
               <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-16" />
+            ) : (
+              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16" />
             )}
           </Link>
           

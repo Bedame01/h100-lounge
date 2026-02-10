@@ -14,10 +14,10 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="mb-4 inline-block">
-              {theme === "dark" ? (
-                <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15" />
-              ) : (
+              {theme === "light" ? (
                 <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15" />
+              ) : (
+                <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15" />
               )}
             </Link>
             <p className="text-muted-foreground text-sm text-pretty">

@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Mail, Phone, MapPin, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import bg from '@/public/images/drink pouring from glass.avif'
@@ -115,6 +115,70 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* Contact Info */}
+        <div className="px-4 space-y-8">
+          <div className="bg- container mx-auto rounded-lg border p-6 max-w-7xl">
+            <h2 className="text-xl font-serif font-semibold mb-6">Contact Information</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="flex items-start flex-wrap gap-4 p-6 border border-border/50 bg-background hover:border-primary/50 transition-colors">
+                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-[#fff]" />
+                </div>
+                <div>
+                  <p className="font-medium">Email</p>
+                  <a
+                    href="mailto:Fizayomi21@gmail.com"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    h100-lounge@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start flex-wrap gap-4 p-6 border border-border/50 bg-background hover:border-primary/50 transition-colors">
+                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-[#fff]" />
+                </div>
+                <div>
+                  <p className="font-medium">Phone</p>
+                  <a
+                    href="tel:07049358338"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    +234 123 456 0000
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start flex-wrap gap-4 p-6 border border-border/50 bg-background hover:border-primary/50 transition-colors">
+                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-[#fff]" />
+                </div>
+                <div>
+                  <p className="font-medium">Abeokuta, Nigeria</p>
+                  {/* <p className="text-muted-foreground">
+                    123 Design Street
+                    <br />
+                    New York, NY 10012
+                  </p> */}
+                </div>
+              </div>
+
+              <div className="flex items-start flex-wrap gap-4 p-6 border border-border/50 bg-background hover:border-primary/50 transition-colors">
+                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 text-[#fff]" />
+                </div>
+                <div>
+                  <p className="font-medium">Opening Hours</p>
+                  <p className="text-muted-foreground">
+                    Open 24/7 at all time
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* CTA Section - Minimal */}
         <section className="py-20 md:py-32 px-4 bg-gradient-to-b from-card/30 to-background">

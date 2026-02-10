@@ -130,7 +130,7 @@ export function EnhancedDashboard({ stats, recentReservations, customers }: Enha
       </div>
 
       {/* Charts Grid */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2 overflow-auto">
         {/* Reservations Trend */}
         <Card>
           <CardHeader>

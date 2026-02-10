@@ -153,7 +153,7 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent className="pt-2 max-sm:px-2.5">
               {categoryItems.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
                   <UtensilsCrossed className="mx-auto h-12 w-12 mb-2 opacity-20" />
@@ -168,7 +168,7 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
                       className="flex items-start justify-between p-4 border rounded-lg hover:bg-accent/5 transition-colors"
                     >
                       <div className="flex-1">
-                        <div className="flex items-start gap-3">
+                        <div className="flex items-start gap-3 flex-wrap">
                           <div className="flex-1">
                             <h4 className="font-semibold text-lg">{item.name}</h4>
                             {item.description && (
@@ -181,7 +181,7 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
                           </Badge>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 ml-4">
+                      <div className="flex items-center gap-2 ml-2">
                         <div className="flex items-center gap-2">
                           <Label htmlFor={`toggle-${item.id}`} className="text-sm">
                             Available
@@ -195,7 +195,7 @@ export function MenuManager({ categories: initialCategories, menuItems: initialM
                         <MenuItemDialog mode="edit" categories={categories} menuItem={item} />
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
-                            <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+                            <Button variant="ghost" size="sm" className="text-destructive ml-0 pl-0 hover:text-destructive">
                               <Trash2 className="h-4 w-4" />
                             </Button>
                           </AlertDialogTrigger>

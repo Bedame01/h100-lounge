@@ -36,7 +36,7 @@ export async function MenuHighlights() {
     <section className="py-20 bg-card/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-serif text-5xl sm:text-6xl font-bold mb-4">Highlights</h2>
+          <h2 className="font-serif text-5xl sm:text-6xl font-medium mb-4">Highlights</h2>
           <p className="text-accent uppercase tracking-wider text-sm font-semibold mb-4">DELICIOUS SELECTIONS</p>
           <p className="text-muted-foreground max-w-3xl mx-auto text-base text-pretty">
             Our Menu features scrumptious starters, delicious mains, tasty sides and dreamy desserts. Take a look at our
@@ -55,7 +55,7 @@ export async function MenuHighlights() {
             <Link href="/menu">VIEW FULL MENU</Link>
           </Button> */}
           <CustomButton 
-            text="View Full Menu" 
+            text="View Full Price Lists" 
             // hoverText="Explore Our Offerings" 
             href="/menu" 
             variant="ghost" 
