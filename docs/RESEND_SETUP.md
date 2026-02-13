@@ -1,6 +1,6 @@
 # Resend Email Setup Guide
 
-This guide will help you configure email notifications for Noir Lounge using Resend.
+This guide will help you configure email notifications for H100 Lounge using Resend.
 
 ## Step 1: Create a Resend Account
 
@@ -12,7 +12,7 @@ This guide will help you configure email notifications for Noir Lounge using Res
 
 1. Go to [API Keys](https://resend.com/api-keys) in your Resend dashboard
 2. Click "Create API Key"
-3. Give it a name like "Noir Lounge Production"
+3. Give it a name like "H100 Lounge Production"
 4. Copy the API key (you won't be able to see it again)
 5. Add it to your `.env.local` file:
    ```
@@ -25,7 +25,7 @@ For production use, you need to verify your domain:
 
 1. Go to [Domains](https://resend.com/domains) in your Resend dashboard
 2. Click "Add Domain"
-3. Enter your domain (e.g., `noirlounge.com`)
+3. Enter your domain (e.g., `H100lounge.com`)
 4. Add the provided DNS records to your domain provider
 5. Wait for verification (usually takes a few minutes)
 
@@ -41,7 +41,7 @@ ADMIN_EMAIL=your-admin@email.com
 
 # From email - must use your verified domain in production
 # For development, you can use: "onboarding@resend.dev"
-FROM_EMAIL=Noir Lounge <noreply@yourdomain.com>
+FROM_EMAIL=H100 Lounge <noreply@yourdomain.com>
 ```
 
 ## Step 5: Test Email Notifications
@@ -98,7 +98,7 @@ The application includes three email templates:
 For local development, you can use `onboarding@resend.dev` as your FROM_EMAIL:
 
 ```env
-FROM_EMAIL=Noir Lounge <onboarding@resend.dev>
+FROM_EMAIL=H100 Lounge <onboarding@resend.dev>
 ```
 
 This allows testing without domain verification.

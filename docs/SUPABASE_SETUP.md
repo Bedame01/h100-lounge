@@ -34,7 +34,7 @@ Make sure these environment variables are set in your project:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-ADMIN_SIGNUP_KEY=NOIR_ADMIN_2024
+ADMIN_SIGNUP_KEY=H100_ADMIN_2024
 ```
 
 ### Step 3: Enable Email Provider
@@ -66,7 +66,7 @@ ADMIN_SIGNUP_KEY=NOIR_ADMIN_2024
 ### Security Notes
 
 - The `ADMIN_SIGNUP_KEY` should be kept secret and only shared with authorized administrators
-- For production, change the default admin key from `NOIR_ADMIN_2024` to something unique
+- For production, change the default admin key from `H100_ADMIN_2024` to something unique
 - Enable Row Level Security (RLS) on all database tables (already configured in `001_create_tables.sql`)
 - Use email confirmation for production environments
 - Consider adding rate limiting for authentication endpoints

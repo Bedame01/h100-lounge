@@ -28,7 +28,7 @@ export default function HeroSwiper() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 5000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -41,7 +41,7 @@ export default function HeroSwiper() {
       >
         <SwiperSlide>
             <div
-                className="size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center"
+                className="size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center max-sm:px-2"
                 style={{ backgroundImage: "url('/images/hero1.webp')" }}
                 >
                 <div className="text-center">
@@ -78,7 +78,7 @@ export default function HeroSwiper() {
 
         <SwiperSlide>
             <div
-                className="hero-slider size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center"
+                className="hero-slider size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center max-sm:px-2"
                 style={{ backgroundImage: "url('/images/Elegant Crystal Glass Celebration.png')" }}
                 >
                 <div className="text-center">
@@ -115,7 +115,7 @@ export default function HeroSwiper() {
 
         <SwiperSlide>
             <div
-                className="size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center"
+                className="size-full bg-cover bg-blend-soft-light bg-background bg-center flex items-center justify-center max-sm:px-2"
                 style={{ backgroundImage: "url('/images/image1.png')" }}
                 >
                 <div className="text-center">

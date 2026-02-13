@@ -55,7 +55,7 @@ Open your browser's Developer Tools (F12) and check the Console tab for detailed
 ### Common Issues
 
 **Issue**: "Invalid admin key"
-- **Solution**: Make sure you're using the correct admin key (default: `NOIR_ADMIN_2024`)
+- **Solution**: Make sure you're using the correct admin key (default: `H100_ADMIN_2024`)
 - Set the `ADMIN_SIGNUP_KEY` environment variable if you want a custom key
 
 **Issue**: "An account with this email already exists"

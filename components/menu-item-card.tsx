@@ -48,9 +48,9 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
                 key={i}
                 className={`inline-block px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
                   badge === "CHEF RECOMMENDED"
-                    ? "bg-amber-600 text-white"
+                    ? "bg-yellow-400 text-black"
                     : badge === "NEW"
-                      ? "bg-green-500 text-white"
+                      ? "bg-lime-600 text-white"
                       : badge === "ORDER"
                         ? "bg-neutral-800 text-white"
                         : "bg-primary/10 text-primary"

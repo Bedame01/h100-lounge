@@ -12,7 +12,7 @@ export async function updateReservationStatus(reservationId: string, status: "pe
   const { error } = await supabase.from("reservations").update({ status }).eq("id", reservationId)
 
   if (error) {
-    console.error("[v0] Update reservation status error:", error)
+    console.error("Update reservation status error:", error)
     return { error: "Failed to update reservation status" }
   }
 
@@ -28,7 +28,7 @@ export async function updateReservationStatus(reservationId: string, status: "pe
       await resend.emails.send({
         from: FROM_EMAIL,
         to: reservation.guest_email,
-        subject: "Reservation Confirmed - Noir Lounge",
+        subject: "Reservation Confirmed - H100 Lounge & Bar",
         html: getApprovalEmail({
           customerName: reservation.guest_name,
           date: formattedDate,
@@ -38,9 +38,9 @@ export async function updateReservationStatus(reservationId: string, status: "pe
           specialRequests: reservation.special_requests || undefined,
         }),
       })
-      console.log("[v0] Approval email sent to customer")
+      console.log("Approval email sent to customer")
     } catch (emailError) {
-      console.error("[v0] Failed to send approval email:", emailError)
+      console.error("Failed to send approval email:", emailError)
     }
   }
 
@@ -94,7 +94,7 @@ function getApprovalEmail({
             <p>Dear ${customerName},</p>
             
             <div class="highlight">
-              <strong>Great news!</strong> Your reservation at Noir Lounge has been confirmed. We're excited to welcome you!
+              <strong>Great news!</strong> Your reservation at H100 Lounge & Bar has been confirmed. We're excited to welcome you!
             </div>
             
             <div class="detail">
@@ -109,7 +109,7 @@ function getApprovalEmail({
             <ul>
               <li>Please arrive 10 minutes before your reservation time</li>
               <li>We'll have your table ready upon arrival</li>
-              <li>Browse our premium cocktail and small chops menu</li>
+              <li>Browse our premium cocktail and side menu</li>
               <li>Enjoy our sophisticated ambiance and excellent service</li>
             </ul>
             
@@ -117,11 +117,11 @@ function getApprovalEmail({
             
             <p style="margin-top: 30px;">
               We can't wait to serve you!<br />
-              <strong>The Noir Lounge Team</strong>
+              <strong>The H100 Lounge & Bar Team</strong>
             </p>
           </div>
           <div class="footer">
-            <p>Noir Lounge | Premium Cocktails & Small Chops</p>
+            <p>H100 Lounge & Bar | Relax, Refresh, Repeat</p>
             <p>This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>
@@ -136,7 +136,7 @@ export async function deleteReservation(reservationId: string) {
   const { error } = await supabase.from("reservations").delete().eq("id", reservationId)
 
   if (error) {
-    console.error("[v0] Delete reservation error:", error)
+    console.error("Delete reservation error:", error)
     return { error: "Failed to delete reservation" }
   }
 
@@ -152,7 +152,7 @@ export async function toggleMenuItemAvailability(menuItemId: string, isAvailable
   const { error } = await supabase.from("menu_items").update({ is_available: isAvailable }).eq("id", menuItemId)
 
   if (error) {
-    console.error("[v0] Toggle menu item availability error:", error)
+    console.error("Toggle menu item availability error:", error)
     return { error: "Failed to update menu item" }
   }
 
@@ -179,7 +179,7 @@ export async function createMenuItem(data: {
   })
 
   if (error) {
-    console.error("[v0] Create menu item error:", error)
+    console.error("Create menu item error:", error)
     return { error: "Failed to create menu item" }
   }
 
@@ -205,7 +205,7 @@ export async function updateMenuItem(
   const { error } = await supabase.from("menu_items").update(data).eq("id", id)
 
   if (error) {
-    console.error("[v0] Update menu item error:", error)
+    console.error("Update menu item error:", error)
     return { error: "Failed to update menu item" }
   }
 
@@ -221,7 +221,7 @@ export async function deleteMenuItem(id: string) {
   const { error } = await supabase.from("menu_items").delete().eq("id", id)
 
   if (error) {
-    console.error("[v0] Delete menu item error:", error)
+    console.error("Delete menu item error:", error)
     return { error: "Failed to delete menu item" }
   }
 
@@ -245,7 +245,7 @@ export async function createCategory(data: {
   })
 
   if (error) {
-    console.error("[v0] Create category error:", error)
+    console.error("Create category error:", error)
     return { error: "Failed to create category" }
   }
 
@@ -269,7 +269,7 @@ export async function updateCategory(
   const { error } = await supabase.from("categories").update(data).eq("id", id)
 
   if (error) {
-    console.error("[v0] Update category error:", error)
+    console.error("Update category error:", error)
     return { error: "Failed to update category" }
   }
 
@@ -285,7 +285,7 @@ export async function deleteCategory(id: string) {
   const { error } = await supabase.from("categories").delete().eq("id", id)
 
   if (error) {
-    console.error("[v0] Delete category error:", error)
+    console.error("Delete category error:", error)
     return { error: "Failed to delete category" }
   }
 
@@ -304,7 +304,7 @@ export async function updateSetting(key: string, value: string) {
     .eq("key", key)
 
   if (error) {
-    console.error("[v0] Update setting error:", error)
+    console.error("Update setting error:", error)
     return { error: "Failed to update setting" }
   }
 

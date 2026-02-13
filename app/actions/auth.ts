@@ -5,7 +5,7 @@ import { createAdminClient } from "@/lib/supabase/admin"
 import { redirect } from "next/navigation"
 
 export async function validateAdminKey(adminKey: string) {
-  const validAdminKey = process.env.ADMIN_SIGNUP_KEY || "NOIR_ADMIN_2024"
+  const validAdminKey = process.env.ADMIN_SIGNUP_KEY || "NH100_ADMIN_2024"
 
   if (adminKey !== validAdminKey) {
     return { valid: false, error: "Invalid admin key. Please contact the system administrator." }
