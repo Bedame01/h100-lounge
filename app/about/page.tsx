@@ -30,7 +30,7 @@ export default function AboutPage() {
           /> */}
           {/* <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" /> */}
           <div className="relative z-20 pb-12 px-4 container mx-auto w-full">
-            <h1 className="font-serif text-6xl md:text-7xl text-center font-medium">Our Story</h1>
+            <h1 className="font-serif text-6xl md:text-7xl text-center font-semibold">Our Story</h1>
           </div>
         </section>
 
@@ -128,10 +128,10 @@ export default function AboutPage() {
                 <div>
                   <p className="font-medium">Email</p>
                   <a
-                    href="mailto:Fizayomi21@gmail.com"
+                    href="mailto:H100lounge@gmail.com"
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    h100-lounge@gmail.com
+                    H100lounge@gmail.com
                   </a>
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
                 <div>
                   <p className="font-medium">Phone</p>
                   <a
-                    href="tel:07049358338"
+                    href="tel:123456789."
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
                     +234 123 456 0000
@@ -193,14 +193,14 @@ export default function AboutPage() {
                 // hoverText="Book a Table" 
                 href="/reservations" 
                 variant="primary" 
-                className="min-w-full py-5.5 px-1 text-sm text-center textDisplay text-[#fff]"
+                className="min-w-full py-6.5 px-1 text-sm text-center textDisplay text-[#fff]"
               />
               <CustomButton 
                 text="Check Price List" 
                 // hoverText="Book a Table" 
                 href="/menu" 
                 variant="ghost" 
-                className="min-w-full py-5.5 px-1 text-sm text-center textDisplay"
+                className="min-w-full py-6.5 px-1 text-sm text-center textDisplay"
               />
             </div>
           </div>

@@ -28,7 +28,7 @@ const _raleway = Raleway({
 export const metadata: Metadata = {
   title: "H100 Lounge and Bar - Relax, Refresh and Repeat",
   description:
-    "Experience sophistication at H100 Lounge and Bar. Premium cocktails and an atmosphere of refined elegance.",
+    "Experience sophistication at H100 Lounge and Bar. Premium Drinks and an atmosphere of refined elegance.",
   // generator: "v0.app",
   icons: {
     icon: [

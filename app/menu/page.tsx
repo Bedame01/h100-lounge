@@ -103,7 +103,7 @@ export default function MenuPage() {
       <div className="pt-16">
         <section className="pt-16 md:pt-26 pb-12 md:pb-16! mb-5 border-b border-border">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-serif text-5xl sm:text-6xl tracking-tight font-medium mb-4 ">Our <span className="italic text-accent tracking-tighter">Menu.</span></h1>
+            <h1 className="font-serif text-5xl sm:text-6xl tracking-tight font-semibold mb-4 ">Our <span className="italic text-accent tracking-tighter">Menu.</span></h1>
             <p className="text-base/snug max-w-2xl mx-auto text-pretty">
               Explore our complete menu featuring fresh ingredients, innovative techniques, and exceptional flavors crafted by our talented culinary team.
             </p>

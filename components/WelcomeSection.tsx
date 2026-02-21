@@ -55,9 +55,9 @@ export function WelcomeSection() {
                 enableBlur
                 baseRotation={6}
                 blurStrength={9}
-                textClassName="text-3xl/11! md:text-4xl/13! italic font-serif font-thin! text-pretty!"
+                textClassName="text-3xl/12! md:text-4xl/14! italic font-serif font-thin! text-pretty!"
             >
-              "H100 Lounge is more than a destination—it's an experience. Nestled in the heart of Lagos, 
+              "H100 Lounge is more than a destination—it's an experience. Nestled in the heart of Abeokuta, 
               we've crafted a sanctuary where sophistication meets warmth, and every evening becomes 
               a celebration of life's finer moments."
             </ScrollReveal>
