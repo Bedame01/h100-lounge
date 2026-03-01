@@ -177,7 +177,7 @@ function getCustomerConfirmationEmail({
             </p>
           </div>
           <div class="footer">
-            <p>H100 Lounge & Bar | Premium Cocktails & Small Chops</p>
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat.</p>
             <p>This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>

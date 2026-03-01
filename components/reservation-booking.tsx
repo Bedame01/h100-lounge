@@ -155,7 +155,7 @@ export function ReservationBooking() {
           <div className="space-y-12">
             {/* Header */}
             <div>
-              <h1 className="font-serif text-4xl sm:text-5xl font-semibold mb-3">Book a Table</h1>
+              <h1 className="font-serif text-4xl sm:text-5xl font-semibold mb-3 tracking-tight">Book a Table</h1>
               <p className="text-muted-foreground text-lg leading-relaxed max-w-xl text-pretty">
                 Experience an evening of refined cocktails and ambient sounds.
                 Select your preferences below to secure your spot.

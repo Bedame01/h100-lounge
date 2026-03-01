@@ -60,7 +60,7 @@ export function getApprovalEmail({
             </p>
           </div>
           <div class="footer">
-            <p>H100 Lounge & Bar | Relax, Refresh and Repeat</p>
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat.</p>
             <p>This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>
@@ -122,7 +122,7 @@ export function getApprovalEmail({
             </p>
           </div>
           <div class="footer">
-            <p>H100 Lounge & Bar | Relax, Refresh and Repeat</p>
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat.</p>
             <p>This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>
@@ -188,7 +188,66 @@ export function getCustomerConfirmationEmail({
             </p>
           </div>
           <div class="footer">
-            <p>H100 Lounge & Bar | Relax, Refresh and Repeat</p>
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat.</p>
+            <p>This is an automated message. Please do not reply to this email.</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `
+}
+
+export function getCancellationEmail({
+  customerName,
+  date,
+  time,
+}: {
+  customerName: string
+  date: string
+  time: string
+}) {
+  return `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+          .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+          .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
+          .label { font-weight: bold; color: #ef4444; }
+          .highlight { background: #fee2e2; padding: 15px; border-left: 4px solid #ef4444; margin: 20px 0; border-radius: 4px; }
+          .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 style="margin: 0;">Reservation Cancelled</h1>
+            <p style="margin: 10px 0 0 0;">Your H100 Lounge & Bar reservation</p>
+          </div>
+          <div class="content">
+            <p>Dear ${customerName},</p>
+            
+            <div class="highlight">
+              <strong>Your reservation has been cancelled.</strong> If you didn't request this cancellation or have questions, please contact us immediately.
+            </div>
+            
+            <div class="detail">
+              <div><span class="label">Original Date:</span> ${date}</div>
+              <div><span class="label">Original Time:</span> ${time}</div>
+            </div>
+            
+            <p>We'd love to welcome you another time! Feel free to make a new reservation whenever you're ready.</p>
+            
+            <p style="margin-top: 30px;">
+              If you have any questions, please reach out to us directly.<br />
+              <strong>The H100 Lounge & Bar Team</strong>
+            </p>
+          </div>
+          <div class="footer">
+            <p>H100 Lounge & Bar | Relax, Refresh and Repeat.</p>
             <p>This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>

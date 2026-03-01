@@ -28,7 +28,7 @@ export default function HeroSwiper() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 6000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -58,7 +58,7 @@ export default function HeroSwiper() {
             
                     <div className="flex flex-col sm:flex-row items-center justify-center mt-12 pb-10 gap-5">
                         <CustomButton 
-                            text="View Menu" 
+                            text="View Price List" 
                             // hoverText="Explore Our Offerings" 
                             href="/menu" 
                             variant="primary" 
@@ -95,7 +95,7 @@ export default function HeroSwiper() {
             
                     <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-12 gap-5">
                     <CustomButton 
-                        text="View Menu" 
+                        text="View Price List" 
                         // hoverText="Explore Our Offerings" 
                         href="/menu" 
                         variant="primary" 
@@ -132,7 +132,7 @@ export default function HeroSwiper() {
             
                     <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-12 gap-5">
                     <CustomButton 
-                        text="View Menu" 
+                        text="View Price List" 
                         // hoverText="Explore Our Offerings" 
                         href="/menu" 
                         variant="primary" 

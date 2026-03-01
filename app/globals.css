@@ -68,7 +68,7 @@
 
 .dark {
   /* Dark mode - Deep sophistication with warm amber accents */
-  --background: #181616;
+  --background: #141212;
   --foreground: oklch(0.97 0.005 75);
   --card: oklch(0.16 0.02 30);
   --card-foreground: oklch(0.97 0.005 75);

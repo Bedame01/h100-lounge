@@ -1,11 +1,11 @@
 # H100 Lounge & Bar - Premium Reservation & Menu Management System
 
-A modern, full-stack web application for **H100 Lounge & Bar**, a sophisticated lounge offering refined cocktails, curated small chops, and an unparalleled ambiance. Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, Supabase, and Vercel Blob.
+A modern, full-stack web application for **H100 Lounge & Bar**, a sophisticated lounge offering refined cocktails, curated Sides, and an unparalleled ambiance. Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, Supabase, and Vercel Blob.
 
 ## ✨ Key Features
 
 ### For Guests
-- **Dynamic Menu Browsing** - Explore cocktails and small chops with beautiful imagery
+- **Dynamic Menu Browsing** - Explore cocktails and Sides with beautiful imagery
 - **Easy Reservations** - Seamless booking with date/time selection, party size (1-12), and seating preferences
 - **Featured Highlights** - Showcase of best menu items on homepage
 - **Automated Confirmations** - Email notifications for reservations and status updates
@@ -98,7 +98,7 @@ A modern, full-stack web application for **H100 Lounge & Bar**, a sophisticated 
 ### Core Tables
 
 **categories**
-- Menu item groupings (Cocktails, Small Chops, etc.)
+- Menu item groupings (Cocktails, Sides, etc.)
 
 **menu_items**
 - Name, description, price
