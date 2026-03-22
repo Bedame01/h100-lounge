@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
@@ -12,9 +11,9 @@ import { useEffect, useState } from "react"
 import CustomButton from '@/components/kokonutui/CustomButton/CustomButton'
 import { ThemeToggle } from '@/components/theme-toggle'
 // import MorphicNavbar from "./kokonutui/morphic-navbar"
-
 import logoLight from '@/public/icons/logo-white.png'
 import logoDark from '@/public/icons/logo-black.png'
+import { Button } from "./ui/button"
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -86,7 +85,7 @@ export function Navigation() {
             <ThemeToggle />
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="icon">
+                <Button  variant="ghost" size="icon">
                   <Menu className="size-6 text-foreground" />
                   <span className="sr-only">Menu</span>
                 </Button>

@@ -152,13 +152,13 @@ export default function PolicyPage() {
                 </p>
                 <div className="bg-muted/30 p-6 rounded-lg">
                   <p className="text-muted-foreground mb-2">
-                    <strong>Email:</strong> privacy@H100lounge.com
+                    <strong>Email:</strong> H100lounge@gmail.com
                   </p>
                   <p className="text-muted-foreground mb-2">
                     <strong>Phone:</strong> +234 XXX XXX XXXX
                   </p>
                   <p className="text-muted-foreground">
-                    <strong>Address:</strong> H100 Lounge, Lagos, Nigeria
+                    <strong>Address:</strong> Lagos Abeokuta Express way, Iyana Adigbe Bus stop, Obada Oko, Abeokuta Ogun State
                   </p>
                 </div>
               </section>

@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CustomButton from '@/components/kokonutui/CustomButton/CustomButton'
+import InlineInfiniteScroll from '@/components/InlineScroll/InlineInfiniteScroll'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -28,7 +29,7 @@ export default function HeroSwiper() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 5000,
+          delay: 500000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -72,6 +73,12 @@ export default function HeroSwiper() {
                             className="min-w-43 hover:bg-foreground hover:text-background!"
                         />
                     </div>
+
+                    {/* Inline scroll */}
+                    {/* <div className="overflow-hidden">
+                        <p className='text-[15px] sm:text-base text-left text-[#fafafa]'>Experience the art of hospitality.</p>
+                        <InlineInfiniteScroll />
+                    </div> */}
                 </div>
             </div>
         </SwiperSlide>
@@ -131,20 +138,20 @@ export default function HeroSwiper() {
                     </p>
             
                     <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-12 gap-5">
-                    <CustomButton 
-                        text="View Price List" 
-                        // hoverText="Explore Our Offerings" 
-                        href="/menu" 
-                        variant="primary" 
-                        className="min-w-45 text-[#fff]!"
-                    />
-                    <CustomButton 
-                        text="Reserve Now" 
-                        // hoverText="Explore Our Offerings" 
-                        href="/reservations" 
-                        variant="ghost" 
-                        className="min-w-43 hover:bg-foreground hover:text-background!"
-                    />
+                        <CustomButton 
+                            text="View Price List" 
+                            // hoverText="Explore Our Offerings" 
+                            href="/menu" 
+                            variant="primary" 
+                            className="min-w-45 text-[#fff]!"
+                        />
+                        <CustomButton 
+                            text="Reserve Now" 
+                            // hoverText="Explore Our Offerings" 
+                            href="/reservations" 
+                            variant="ghost" 
+                            className="min-w-43 hover:bg-foreground hover:text-background!"
+                        />
                     </div>
                 </div>
             </div>

@@ -98,7 +98,7 @@ export default function FAQPage() {
               <CustomButton 
                 text="Get in Touch" 
                 // hoverText="Book a Table" 
-                href="/reservations" 
+                href="/about" 
                 variant="primary" 
                 className="min-w-full py-5.5 px-1 text-sm text-center textDisplay text-[#fff]"
               />

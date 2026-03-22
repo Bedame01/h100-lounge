@@ -1,6 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-// import { FeaturesSection } from "@/components/features-section"
+import { FeaturesSection } from "@/components/features-section"
 import { MenuHighlights } from "@/components/menu-highlights"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
@@ -33,7 +33,7 @@ export default function HomePage() {
       <Navigation />
       <HeroSection />
       <WelcomeSection />
-      {/* <FeaturesSection /> */}
+      <FeaturesSection />
       <Suspense fallback={<HighlightsLoading />}>
         <MenuHighlights />
       </Suspense>

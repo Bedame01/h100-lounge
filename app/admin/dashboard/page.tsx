@@ -63,7 +63,7 @@ export default async function AdminDashboardPage() {
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="font-serif text-4xl font-bold mb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+          <h1 className="font-serif text-4xl tracking-tight font-bold mb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
             Dashboard
           </h1>
           <p className="text-muted-foreground">Welcome back, {user.email}</p>
