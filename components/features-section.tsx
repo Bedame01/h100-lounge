@@ -8,10 +8,10 @@ import CustomButton from "./kokonutui/CustomButton/CustomButton"
 
 export function FeaturesSection() {
   return (
-    <section className="py-18 md:py-22 bg-[#fff] dark:bg-[#0e0101]">
+    <section className="py-18 md:py-22 bg-[#fff] dark:bg-[#080101]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">Experience <span className="font-serif font-medium">Excellence</span></h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground mb-4">Experience <span className="">Excellence</span></h2>
             <p className="text-md text-muted-foreground max-w-2xl mx-auto">
               Discover our carefully curated menu featuring the finest ingredients and innovative culinary techniques.
             </p>

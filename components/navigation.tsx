@@ -17,7 +17,7 @@ import { Button } from "./ui/button"
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/menu", label: "Drinks&Menu" },
+  { href: "/menu", label: "Price List" },
   { href: "/about", label: "About Us" },
   { href: "/faq", label: "FAQ" },
 ]

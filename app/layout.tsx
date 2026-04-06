@@ -1,9 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono, Inter, Playfair_Display, Raleway} from "next/font/google"
+import { Geist, Geist_Mono, Inter, Playfair_Display, Raleway } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
-import '@splidejs/react-splide/css';
+// import '@splidejs/react-splide/css';
 import "./globals.css"
 import favicon from "@/public/icons/favicon.png"
 

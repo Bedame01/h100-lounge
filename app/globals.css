@@ -31,7 +31,7 @@
 /* Stunning modern design system with rich colors and depth */
 :root {
   /* Light mode - Sophisticated neutrals with terracotta warmth */
-  --background: oklch(0.99 0.005 75);
+  --background: oklch(97.212% 0.00674 67.378);
   --foreground: oklch(0.15 0.01 30);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.01 30);
@@ -43,7 +43,7 @@
   --secondary-foreground: oklch(0.2 0.02 30);
   --muted: #f3eadd;
   --muted-foreground: oklch(0.52 0.02 30);
-  --accent: oklch(62.383% 0.23378 31.636);
+  --accent: #f31404;
   --accent-foreground: oklch(0.99 0.005 75);
   --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.99 0.005 75);
@@ -80,11 +80,11 @@
   --secondary-foreground: oklch(0.97 0.005 75);
   --muted: oklch(0.22 0.02 30);
   --muted-foreground: oklch(0.68 0.015 75);
-  --accent: oklch(61.473% 0.21946 32.127);
+  --accent: oklch(60.98% 0.24423 29.762 / 0.99);
   --accent-foreground: #181616;
   --destructive: oklch(0.6 0.23 25);
   --destructive-foreground: oklch(0.97 0.005 75);
-  --border: oklch(0.28 0.025 30);
+  --border: oklch(25.064% 0.02056 23.596);
   --input: oklch(0.28 0.025 30);
   --ring: #fffddb;
   --chart-1: oklch(0.72 0.14 40);
@@ -107,7 +107,7 @@
   --font-sans: "Raleway", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif;
   /* --font-sans: "Nunito Sans", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif; */
   --font-serif: "HedvigLettersSerif", serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", monospace;
+  --font-mono: "Raleway", "Geist Mono", "Geist Mono Fallback", SF Mono, SF Mono Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -190,4 +190,13 @@
 
 .textDisplay{
   font-family: "HedvigLettersSerif" !important;
+}
+
+h2.priceCategory:after{
+  content: "";
+    display: block;
+    width: 70px !important;
+    height: 3px;
+    background: var(--accent);
+    margin: 0.8rem auto 1.2rem;
 }
