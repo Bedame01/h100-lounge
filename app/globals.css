@@ -33,7 +33,7 @@
   /* Light mode - Sophisticated neutrals with terracotta warmth */
   --background: oklch(97.212% 0.00674 67.378);
   --foreground: oklch(0.15 0.01 30);
-  --card: oklch(1 0 0);
+  --card: oklch(97.906% 0.004 91.461);
   --card-foreground: oklch(0.15 0.01 30);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.01 30);
@@ -199,4 +199,8 @@ h2.priceCategory:after{
     height: 3px;
     background: var(--accent);
     margin: 0.8rem auto 1.2rem;
+}
+
+.boxShadow{
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1) !important;
 }

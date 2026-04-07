@@ -20,7 +20,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
   const hasSizeOptions = item.size_options && item.size_options.length > 0
 
   return (
-    <div className="flex gap-6 items-start">
+    <div className="flex gap-4 sm:gap-6 items-start">
       {/* Image */}
       <div className="flex-shrink-0 size-25 rounded-sm overflow-hidden bg-muted/50 border border-border/50">
         {item.image_url ? (
@@ -46,7 +46,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
             {item.badges.map((badge, i) => (
               <span
                 key={i}
-                className={`inline-block px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
+                className={`inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${
                   badge === "CHEF RECOMMENDED"
                     ? "bg-yellow-400 text-black"
                     : badge === "NEW"
@@ -76,7 +76,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
                 ))}
               </div>
             ) : (
-              <span className="font-semibold text-accent text-base">₦{item.price.toFixed(2)}</span>
+              <span className="font-semibold text-accent text-lg sm:text-xl">₦{item.price.toFixed(2)}</span>
             )}
           </div>
         </div>

@@ -38,7 +38,7 @@ export function Navigation() {
   }, []);
 
   return (
-    <nav className={`fixed py-1 top-0 left-0 right-0 z-50 ${scrolled ? 'backdrop-blur supports-[backdrop-filter]:bg-background/65 border-b border-border/50' : 'bg-transparent'} transition-colors duration-300`}>
+    <nav className={`fixed py-1 top-0 left-0 right-0 z-50 ${scrolled ? 'backdrop-blur supports-[backdrop-filter]:bg-background/65 border-b border-border/60' : 'bg-transparent'} transition-colors duration-300`}>
       <div className="mx-auto px-4 sm:px-6 lg:px-15!">
         <div className="flex items-center justify-between h-16">
 
@@ -109,7 +109,7 @@ export function Navigation() {
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
                       className={cn(
-                        "text-lg font-medium transition-colors hover:text-foreground py-2 textDisplay",
+                        "text-xl font-medium uppercase transition-colors hover:text-foreground py-2 textDisplay",
                         pathname === link.href ? "text-accent" : "text-muted-foreground",
                       )}
                     >
