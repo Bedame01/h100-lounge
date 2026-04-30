@@ -66,9 +66,9 @@ export default function HeroSwiper() {
                             className="min-w-45 text-[#fff]!"
                         />
                         <CustomButton 
-                            text="Reserve Now" 
+                            text="About Us" 
                             // hoverText="Explore Our Offerings" 
-                            href="/reservations" 
+                            href="/about" 
                             variant="ghost" 
                             className="min-w-43 hover:bg-foreground hover:text-background!"
                         />
@@ -109,9 +109,9 @@ export default function HeroSwiper() {
                         className="min-w-45 text-[#fff]!"
                     />
                     <CustomButton 
-                        text="Reserve Now" 
+                        text="About Us" 
                         // hoverText="Explore Our Offerings" 
-                        href="/reservations" 
+                        href="/about" 
                         variant="ghost" 
                         className="min-w-43 hover:bg-foreground hover:text-background!"
                     />
@@ -146,9 +146,9 @@ export default function HeroSwiper() {
                             className="min-w-45 text-[#fff]!"
                         />
                         <CustomButton 
-                            text="Reserve Now" 
+                            text="About Us" 
                             // hoverText="Explore Our Offerings" 
-                            href="/reservations" 
+                            href="/about" 
                             variant="ghost" 
                             className="min-w-43 hover:bg-foreground hover:text-background!"
                         />

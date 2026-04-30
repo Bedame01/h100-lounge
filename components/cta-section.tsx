@@ -11,12 +11,12 @@ export function CTASection() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-4xl sm:text-5xl font-medium tracking-tight mb-6 text-balance">Experience the Art of Hospitality.</h2>
           <p className="text-lg text-muted-foreground mb-8 text-pretty">
-            Join us for an unforgettable experience. Limited seating available nightly.
+            Join us for an unforgettable experience. Explore our Menu Price List.
           </p>
           <CustomButton 
-            text="Book Your Table" 
+            text="Check Out Menu List" 
             // hoverText="Explore Our Offerings" 
-            href="/reservations" 
+            href="/menu" 
             variant="primary" 
             className="min-w-45 textDisplay text-[#fff]!"
           />

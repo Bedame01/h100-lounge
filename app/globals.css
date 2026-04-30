@@ -10,17 +10,56 @@
   src: url("../public/fonts/HedvigLettersSerif.ttf") format("woff2");
 }
 /* @font-face {
-  font-family: "HedvigLettersSerif";
-  src: url("../public/fonts/happy-times-NG_regular_master_web.ttf") format("true-type");
-  src: url("../public/fonts/happy-times-NG_regular_master_web.ttf") format("woff");
-  src: url("../public/fonts/happy-times-NG_regular_master_web.ttf") format("woff2");
-} */
+  font-family: "Twklausanne 350";
+  src: url(../public/fonts/67f8d804c21dd81402c67d2f_TWKLausanne-350.woff2) format("woff");
+  src: url(../public/fonts/67f8d804c21dd81402c67d2f_TWKLausanne-350.woff2) format("truetype");
+  src: url(../public/fonts/67f8d804c21dd81402c67d2f_TWKLausanne-350.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Twklausanne 700";
+  src: url(../public/fonts/67f8d8030fc2e4ecb1ee987a_TWKLausanne-700.woff) format("woff");
+  src: url(../public/fonts/67f8d8030fc2e4ecb1ee987a_TWKLausanne-700.woff) format("truetype");
+  src: url(../public/fonts/67f8d8030fc2e4ecb1ee987a_TWKLausanne-700.woff) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Twklausanne 500";
+  src: url(../public/fonts/68307cdc375ef1f7780a28f7_TWKLausanne-500.woff2) format("woff");
+  src: url(../public/fonts/68307cdc375ef1f7780a28f7_TWKLausanne-500.woff2) format("truetype");
+  src: url(../public/fonts/68307cdc375ef1f7780a28f7_TWKLausanne-500.woff2) format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Twklausanne 400";
+  src: url(../public/fonts/683ffc9a2aa1aa6187af000c_TWKLausanne-400.woff) format("woff");
+  src: url(../public/fonts/683ffc9a2aa1aa6187af000c_TWKLausanne-400.woff) format("truetype");
+  src: url(../public/fonts/683ffc9a2aa1aa6187af000c_TWKLausanne-400.woff) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Twklausanne 600";
+  src: url(../public/fonts/683ffdc79f974545ccaa6367_TWKLausanne-600.woff) format("woff2");
+  src: url(../public/fonts/683ffdc79f974545ccaa6367_TWKLausanne-600.woff) format("woff");
+  src: url(../public/fonts/683ffdc79f974545ccaa6367_TWKLausanne-600.woff) format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap; */
+/* } */
 /* @font-face {
-  font-family: "Cakra";
-  src: url("../public/fonts/TANMEMORIES-Regular.DJ3BjhRc.woff2") format("true-type");
-  src: url("../public/fonts/TANMEMORIES-Regular.DJ3BjhRc.woff2") format("woff");
-  src: url("../public/fonts/TANMEMORIES-Regular.DJ3BjhRc.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: Twklausanne;
+  src: url(https://cdn.prod.website-files.com/66ffe2174aa8e8d5661c2708/683ffdc73e7d5bb6159fa594_TWKLausanne-600Italic.woff)
+    format("woff");
+  font-weight: 600;
+  font-style: italic;
   font-display: swap;
 } */
 
@@ -33,7 +72,7 @@
   /* Light mode - Sophisticated neutrals with terracotta warmth */
   --background: oklch(97.212% 0.00674 67.378);
   --foreground: oklch(0.15 0.01 30);
-  --card: oklch(97.906% 0.004 91.461);
+  --card: oklch(98.857% 0.0016 66.216);
   --card-foreground: oklch(0.15 0.01 30);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.01 30);
@@ -70,7 +109,7 @@
   /* Dark mode - Deep sophistication with warm amber accents */
   --background: #141212;
   --foreground: oklch(0.97 0.005 75);
-  --card: oklch(0.16 0.02 30);
+  --card: oklch(21.77% 0.00664 34.126);
   --card-foreground: oklch(0.97 0.005 75);
   --popover: oklch(0.16 0.02 30);
   --popover-foreground: oklch(0.97 0.005 75);
@@ -103,7 +142,6 @@
 }
 
 @theme inline {
-  /* --font-sans: "Inter", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif; */
   --font-sans: "Raleway", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif;
   /* --font-sans: "Nunito Sans", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif; */
   --font-serif: "HedvigLettersSerif", serif;
@@ -204,3 +242,7 @@ h2.priceCategory:after{
 .boxShadow{
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1) !important;
 }
+
+/* .font-medium{
+  font-family: "Twklausanne 500" !important;
+} */

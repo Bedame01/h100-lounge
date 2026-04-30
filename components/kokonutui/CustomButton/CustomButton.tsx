@@ -47,7 +47,7 @@ export default function SlideTextButton({
     >
       <Link
         className={cn(
-          "group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-2xol px-8 py-5.5 font-medium text-base tracking-tighter transition-all duration-300 md:min-w-48",
+          "group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-xs px-8 py-5.5 font-medium text-base tracking-tighter transition-all duration-300 md:min-w-48",
           variantStyles,
           className
         )}

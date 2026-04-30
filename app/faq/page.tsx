@@ -7,8 +7,8 @@ import { MessageCircle } from "lucide-react"
 import CustomButton from "@/components/kokonutui/CustomButton/CustomButton"
 
 export const metadata = {
-  title: "FAQ - H100 Lounge",
-  description: "Everything you need to know about visiting H100 Lounge.",
+  title: "FAQ - H100 Lounge & Bar",
+  description: "Everything you need to know about visiting H100 Lounge & Bar.",
 }
 
 const faqs = [
@@ -63,9 +63,9 @@ export default function FAQPage() {
         <section className="py-13 md:py-18 px-4 text-center border-b border-border">
           <div className="container mx-auto max-w-3xl">
             <p className="text-accent font-semibold tracking-widest text-sm uppercase mb-4">Questions</p>
-            <h1 className="font-serif text-5xl md:text-6xl font-semibold mb-6">Frequently Asked</h1>
+            <h1 className="font-serif text-5xl md:text-6xl font-semibold tracking-tighter mb-6">Frequently<span className="italic font-medium">Asked.</span></h1>
             <p className="text-lg text-muted-foreground text-pretty">
-              Everything you need to know about H100 Lounge, right here.
+              Everything you need to know about H100 Lounge & Bar, right here.
             </p>
           </div>
         </section>

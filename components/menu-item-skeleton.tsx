@@ -4,7 +4,7 @@ export function MenuItemSkeleton() {
   return (
     <div className="flex gap-6 items-start">
       {/* Image skeleton */}
-      <Skeleton className="flex-shrink-0 w-32 h-32 rounded-2xl" />
+      <Skeleton className="flex-shrink-0 w-30 h-30 rounded-sm" />
 
       {/* Content skeleton */}
       <div className="flex-grow space-y-3">

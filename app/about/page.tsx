@@ -2,16 +2,16 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import { ArrowRight, Mail, Phone, MapPin, Clock } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import bg from '@/public/images/drink pouring from glass.avif'
+// import { Button } from "@/components/ui/button"
+// import Link from "next/link"
+// import bg from '@/public/images/drink pouring from glass.avif'
 import image1 from '@/public/images/Elegant Crystal Glass Celebration.png'
 import image2 from '@/public/images/Elegant Wine Glass.png'
 import CustomButton from '@/components/kokonutui/CustomButton/CustomButton'
 
 export const metadata = {
-  title: "About Us - H100 Lounge",
-  description: "Discover H100 Lounge's journey and what makes our luxury lounge experience truly special.",
+  title: "About Us - H100 Lounge and Bar",
+  description: "Discover H100 Lounge and Bar's journey and what makes our luxury lounge experience truly special.",
 }
 
 export default function AboutPage() {
@@ -23,14 +23,14 @@ export default function AboutPage() {
         <section className="relative h-[30vh] md:h-[40vh] flex items-end overflow-hidden pt-16 border-b border-border">
           {/* <Image
             src={bg}
-            alt="H100 Lounge"
+            alt="H100 Lounge and Bar"
             fill
             className="object-cover"
             priority
           /> */}
           {/* <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" /> */}
           <div className="relative z-20 pb-12 px-4 container mx-auto w-full">
-            <h1 className="font-serif text-6xl md:text-7xl text-center font-medium tracking-tighter">Our Story</h1>
+            <h1 className="font-serif text-6xl md:text-7xl text-center font-semibold tracking-tighter">Our<span className="italic font-medium">Story.</span></h1>
           </div>
         </section>
 
@@ -44,7 +44,7 @@ export default function AboutPage() {
                   Where refinement meets experience
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-pretty">
-                  H100 Lounge is a sanctuary for those who appreciate the finer things. 
+                  H100 Lounge and Bar is a sanctuary for those who appreciate the finer things. 
                   We craft moments, not just drinks.
                 </p>
               </div>
@@ -118,7 +118,7 @@ export default function AboutPage() {
 
         {/* Contact Info */}
         <div className="px-4 space-y-8">
-          <div className="bg- container mx-auto rounded-lg border p-6 max-w-7xl">
+          <div className="bg- container mx-auto rounded-lg border px-6 py-15 max-w-7xl">
             <h2 className="text-xl font-serif font-semibold mb-6">Contact Information</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="flex items-start flex-wrap gap-4 p-6 border border-border/50 bg-background hover:border-primary/50 transition-colors">
@@ -146,7 +146,7 @@ export default function AboutPage() {
                     href="tel:123456789."
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    +234 123 456 0000
+                    +234 808 0090 090
                   </a>
                 </div>
               </div>
@@ -157,11 +157,9 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <p className="font-medium">Abeokuta, Nigeria</p>
-                  {/* <p className="text-muted-foreground">
-                    123 Design Street
-                    <br />
-                    New York, NY 10012
-                  </p> */}
+                  <p className="text-muted-foreground">
+                    Ogun State.
+                  </p>
                 </div>
               </div>
 
@@ -189,18 +187,18 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <CustomButton 
-                text="Book Now" 
+                text="Our Policies" 
                 // hoverText="Book a Table" 
-                href="/reservations" 
+                href="/policy" 
                 variant="primary" 
-                className="min-w-full py-6.5 px-1 text-sm text-center textDisplay text-[#fff]"
+                className="min-w-full py-6.5 px-1 text-sm text-center text-[#fff]"
               />
               <CustomButton 
                 text="Check Price List" 
                 // hoverText="Book a Table" 
                 href="/menu" 
                 variant="ghost" 
-                className="min-w-full py-6.5 px-1 text-sm text-center textDisplay"
+                className="min-w-full py-6.5 px-1 text-sm text-center"
               />
             </div>
           </div>

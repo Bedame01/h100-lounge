@@ -20,9 +20,9 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
   const hasSizeOptions = item.size_options && item.size_options.length > 0
 
   return (
-    <div className="flex gap-4 sm:gap-6 items-start">
+    <div className="flex gap-3 sm:gap-6 items-start">
       {/* Image */}
-      <div className="flex-shrink-0 size-25 rounded-sm overflow-hidden bg-muted/50 border border-border/50">
+      <div className="flex-shrink-0 size-25 overflow-hidden rounded-xs bg-foreground/5 border border-border/50">
         {item.image_url ? (
           <Image
             src={item.image_url || "/placeholder.svg"}
@@ -33,7 +33,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <ImageIcon className="w-12 h-12 text-muted-foreground/30" />
+            <ImageIcon className="size-15 text-muted-foreground/30" />
           </div>
         )}
       </div>
@@ -76,7 +76,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
                 ))}
               </div>
             ) : (
-              <span className="font-semibold text-accent text-lg sm:text-xl">₦{item.price.toFixed(2)}</span>
+              <span className="font-semibold text-accent text-lg sm:text-xl mr-2">₦{item.price.toFixed(2)}</span>
             )}
           </div>
         </div>

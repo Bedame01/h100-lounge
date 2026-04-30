@@ -34,12 +34,12 @@ export function Footer() {
               <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 About
               </Link>
-              <Link
+              {/* <Link
                 href="/reservations"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Reservations
-              </Link>
+              </Link> */}
               <Link href="/faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 FAQ
               </Link>
@@ -72,7 +72,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} H100 Lounge. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} H100 Lounge & Bar. All rights reserved.</p>
         </div>
       </div>
     </footer>
