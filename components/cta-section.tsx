@@ -14,9 +14,9 @@ export function CTASection() {
             Join us for an unforgettable experience. Explore our Menu Price List.
           </p>
           <CustomButton 
-            text="Check Out Menu List" 
+            text="Make Reservation" 
             // hoverText="Explore Our Offerings" 
-            href="/menu" 
+            href="tel:08080090090" 
             variant="primary" 
             className="min-w-45 textDisplay text-[#fff]!"
           />

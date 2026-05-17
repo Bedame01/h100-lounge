@@ -59,7 +59,7 @@ export function WelcomeSection() {
             >
               "H100 Lounge is more than a destination—it's an experience. Nestled in the heart of Abeokuta, 
               we've crafted a sanctuary where sophistication meets warmth, and every evening becomes 
-              a celebration of life's finer moments."
+              a celebration of life's finer moments, 100% Relax, Refresh and Repeat."
             </ScrollReveal>
 
             <p>- H100 Management</p>

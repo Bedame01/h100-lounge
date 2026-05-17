@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono, Inter, Raleway } from "next/font/google"
+import { Geist, Geist_Mono, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 // import '@splidejs/react-splide/css';
@@ -14,11 +14,11 @@ const _inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
 })
-const _raleway = Raleway({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-alt-sans",
-})
+// const _raleway = Raleway({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "600", "700"],
+//   variable: "--font-alt-sans",
+// })
 
 export const metadata: Metadata = {
   title: "H100 Lounge and Bar - Relax, Refresh and Repeat",

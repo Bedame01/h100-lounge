@@ -64,19 +64,19 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
 
         {/* Title and Price */}
         <div className="flex items-start justify-between gap-4 mb-2 border-b border-border pb-2">
-          <h3 className="font-sans text-base font-bold uppercase text-balance">{item.name}</h3>
+          <h3 className="font-sans text-base font-semibold uppercase text-balance">{item.name}</h3>
           <div className="text-right flex-shrink-0">
             {hasSizeOptions ? (
               <div className="flex gap-3 items-center text-sm">
                 {item.size_options!.map((option, i) => (
                   <span key={i} className="whitespace-nowrap">
                     <span className="font-medium text-muted-foreground uppercase text-xs">{option.size}</span>{" "}
-                    <span className="font-semibold">₦{option.price.toFixed(2)}</span>
+                    <span className="font-bold! text-accent text-base md:text-lg mr-2 bg-accent/5 p-1 px-2 rounded-xs">₦{option.price.toLocaleString(undefined, { minimumFractionDigits: 2})}</span>
                   </span>
                 ))}
               </div>
             ) : (
-              <span className="font-semibold text-accent text-lg sm:text-xl mr-2">₦{item.price.toFixed(2)}</span>
+              <span className="font-bold! text-accent text-base md:text-lg mr-2 bg-accent/5 p-1 px-2 rounded-xs">₦{item.price.toLocaleString(undefined, { minimumFractionDigits: 2})}</span>
             )}
           </div>
         </div>

@@ -14,7 +14,7 @@ export const metadata = {
 const faqs = [
   {
     q: "What are your hours?",
-    a: "Tue-Sun, 6 PM–2 AM. Kitchen closes at midnight. Mondays: Closed.",
+    a: "Mon-Sun, 6 PM–2 AM. Kitchen closes at midnight.",
   },
   {
     q: "Do I need a reservation?",
@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "What's the dress code?",
-    a: "Smart casual. Dress stylishly. No shorts, athletic wear, or flip-flops.",
+    a: "Smart casual. Dress stylishly. Dress Smart.",
   },
   {
     q: "Dietary restrictions?",
@@ -38,11 +38,11 @@ const faqs = [
   },
   {
     q: "Is parking available?",
-    a: "Complimentary valet parking. Street parking and garage available nearby.",
+    a: "Complimentary valet parking. Street parking available nearby.",
   },
   {
     q: "Happy Hour?",
-    a: "Tue–Fri, 6–8 PM. Special pricing on select cocktails, wine, and small chops.",
+    a: "Tue–Fri, 6–8 PM. Special pricing on select cocktails, wine, and small Drinks.",
   },
   {
     q: "Cancellation policy?",
@@ -103,9 +103,9 @@ export default function FAQPage() {
                 className="min-w-full py-5.5 px-1 text-sm text-center textDisplay text-[#fff]"
               />
               <CustomButton 
-                text="Go to Homepage" 
+                text="Call Us" 
                 // hoverText="Book a Table" 
-                href="/" 
+                href="tel:+1234567890" 
                 variant="ghost" 
                 className="min-w-full py-5.5 px-1 text-sm text-center textDisplay"
               />

@@ -19,7 +19,7 @@ import { Button } from "./ui/button"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/policy", label: "Legal" },
+  { href: "/menu", label: "Price List" },
   { href: "/faq", label: "FAQ" },
 ]
 
@@ -33,7 +33,7 @@ export function Navigation() {
   // { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
   // { icon: Tiktok, href: "https://tiktok.com/Fizcaps", label: "Tiktok" },
   { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Mail, href: "mailto:H100lounge@gmail.com", label: "Email;" },
+  { icon: Mail, href: "mailto:h100lounge.bar@gmail.com", label: "Email;" },
   ]
 
   useEffect(() => {
@@ -79,9 +79,9 @@ export function Navigation() {
             {/* <SwitchButton /> */}
             <ThemeToggle />
             <CustomButton 
-              text="Check out Menu List" 
+              text="Make Reservation" 
               // hoverText="Book a Table" 
-              href="/menu" 
+              href="tel:08080090090" 
               variant="ghost" 
               className="min-w-40! py-4 px-1 text-sm text-center textDisplay"
             />
@@ -125,9 +125,9 @@ export function Navigation() {
                   ))}
                   <div className="border-t pt-8 mt-5">
                     <CustomButton 
-                      text="check out menu list" 
+                      text="Make Reservation" 
                       // hoverText="Book a Table" 
-                      href="/menu" 
+                      href="tel:08080090090" 
                       variant="primary" 
                       className="min-w-full! py-6 px-1 text-sm text-center uppercase text-[#fff]!"
                       onClick={() => setIsMenuOpen(false)}

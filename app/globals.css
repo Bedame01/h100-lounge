@@ -9,63 +9,17 @@
   src: url("../public/fonts/HedvigLettersSerif.ttf") format("woff");
   src: url("../public/fonts/HedvigLettersSerif.ttf") format("woff2");
 }
-/* @font-face {
-  font-family: "Twklausanne 350";
-  src: url(../public/fonts/67f8d804c21dd81402c67d2f_TWKLausanne-350.woff2) format("woff");
-  src: url(../public/fonts/67f8d804c21dd81402c67d2f_TWKLausanne-350.woff2) format("truetype");
-  src: url(../public/fonts/67f8d804c21dd81402c67d2f_TWKLausanne-350.woff2) format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Twklausanne 700";
-  src: url(../public/fonts/67f8d8030fc2e4ecb1ee987a_TWKLausanne-700.woff) format("woff");
-  src: url(../public/fonts/67f8d8030fc2e4ecb1ee987a_TWKLausanne-700.woff) format("truetype");
-  src: url(../public/fonts/67f8d8030fc2e4ecb1ee987a_TWKLausanne-700.woff) format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Twklausanne 500";
-  src: url(../public/fonts/68307cdc375ef1f7780a28f7_TWKLausanne-500.woff2) format("woff");
-  src: url(../public/fonts/68307cdc375ef1f7780a28f7_TWKLausanne-500.woff2) format("truetype");
-  src: url(../public/fonts/68307cdc375ef1f7780a28f7_TWKLausanne-500.woff2) format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Twklausanne 400";
-  src: url(../public/fonts/683ffc9a2aa1aa6187af000c_TWKLausanne-400.woff) format("woff");
-  src: url(../public/fonts/683ffc9a2aa1aa6187af000c_TWKLausanne-400.woff) format("truetype");
-  src: url(../public/fonts/683ffc9a2aa1aa6187af000c_TWKLausanne-400.woff) format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Twklausanne 600";
-  src: url(../public/fonts/683ffdc79f974545ccaa6367_TWKLausanne-600.woff) format("woff2");
-  src: url(../public/fonts/683ffdc79f974545ccaa6367_TWKLausanne-600.woff) format("woff");
-  src: url(../public/fonts/683ffdc79f974545ccaa6367_TWKLausanne-600.woff) format("truetype");
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap; */
-/* } */
-/* @font-face {
-  font-family: Twklausanne;
-  src: url(https://cdn.prod.website-files.com/66ffe2174aa8e8d5661c2708/683ffdc73e7d5bb6159fa594_TWKLausanne-600Italic.woff)
-    format("woff");
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-} */
 
-/* h1, h2{
-  font-family: "Cakra", sans-serif !important;
-} */
+@font-face{
+  font-family: "Satoshi";
+  src: url("../public/fonts/Satoshi-Variable.ttf") format("truetype");
+  src: url("../public/fonts/Satoshi-Variable.ttf") format("woff");
+  src: url("../public/fonts/Satoshi-Variable.ttf") format("woff2");
+}
+
+*{
+  scroll-behavior: smooth !important;
+}
 
 /* Stunning modern design system with rich colors and depth */
 :root {
@@ -125,7 +79,7 @@
   --destructive-foreground: oklch(0.97 0.005 75);
   --border: oklch(25.064% 0.02056 23.596);
   --input: oklch(0.28 0.025 30);
-  --ring: #fffddb;
+  --ring: #322722;
   --chart-1: oklch(0.72 0.14 40);
   --chart-2: oklch(0.65 0.12 120);
   --chart-3: oklch(0.68 0.1 200);
@@ -142,10 +96,10 @@
 }
 
 @theme inline {
-  --font-sans: "Raleway", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif;
+  --font-sans: "Satoshi", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif;
   /* --font-sans: "Nunito Sans", "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif; */
+  --font-mono: "Satoshi Mono", "Geist Mono", "Geist Mono Fallback", SF Mono, SF Mono Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
   --font-serif: "HedvigLettersSerif", serif;
-  --font-mono: "Raleway", "Geist Mono", "Geist Mono Fallback", SF Mono, SF Mono Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

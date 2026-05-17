@@ -131,7 +131,7 @@ export default function AboutPage() {
                     href="mailto:H100lounge@gmail.com"
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    H100lounge@gmail.com
+                    h100lounge.bar@gmail.com
                   </a>
                 </div>
               </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
                 <div>
                   <p className="font-medium">Phone</p>
                   <a
-                    href="tel:123456789."
+                    href="tel:08080090090"
                     className="text-muted-foreground hover:text-foreground transition-colors"
                   >
                     +234 808 0090 090
@@ -156,9 +156,9 @@ export default function AboutPage() {
                   <MapPin className="w-5 h-5 text-[#fff]" />
                 </div>
                 <div>
-                  <p className="font-medium">Abeokuta, Nigeria</p>
+                  <p className="font-medium">lyana Adigbe Bus stop, Obada</p>
                   <p className="text-muted-foreground">
-                    Ogun State.
+                    Abeokuta Ogun State.
                   </p>
                 </div>
               </div>
@@ -183,13 +183,13 @@ export default function AboutPage() {
           <div className="container mx-auto max-w-2xl text-center">
             <h2 className="font-serif text-4xl md:text-5xl font-medium mb-4">Ready?</h2>
             <p className="text-lg text-muted-foreground mb-8 text-pretty">
-              Join us for an evening you won't forget
+              Join us for an experience you won't forget
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <CustomButton 
-                text="Our Policies" 
+                text="Make Reservation" 
                 // hoverText="Book a Table" 
-                href="/policy" 
+                href="tel:08080090090" 
                 variant="primary" 
                 className="min-w-full py-6.5 px-1 text-sm text-center text-[#fff]"
               />
