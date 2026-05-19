@@ -20,10 +20,10 @@ export const ReservationConfirmationEmail: React.FC<ReservationConfirmationEmail
       <style>{`
         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+        .header { background: linear-gradient(135deg, #F31404 0%, #D10E00 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
         .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
         .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
-        .label { font-weight: bold; color: #d4a574; }
+        .label { font-weight: bold; color: #F31404; }
         .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
       `}</style>
     </head>

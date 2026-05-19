@@ -51,11 +51,11 @@ export async function createReservation(formData: FormData) {
     .single()
 
   if (error) {
-    console.error("[v0] Reservation creation error:", error)
+    console.error(" Reservation creation error:", error)
     return { error: "Failed to create reservation. Please try again." }
   }
 
-  console.log("[v0] Reservation created successfully:", reservation.id)
+  console.log(" Reservation created successfully:", reservation.id)
 
   if (isResendConfigured && resend) {
     const formattedDate = new Date(reservationDate).toLocaleDateString("en-US", {
@@ -80,9 +80,9 @@ export async function createReservation(formData: FormData) {
           specialRequests,
         }),
       })
-      console.log("[v0] Customer confirmation email sent")
+      console.log(" Customer confirmation email sent")
     } catch (emailError) {
-      console.error("[v0] Failed to send customer confirmation email:", emailError)
+      console.error(" Failed to send customer confirmation email:", emailError)
     }
 
     // Send admin notification email
@@ -103,12 +103,12 @@ export async function createReservation(formData: FormData) {
           reservationId: reservation.id,
         }),
       })
-      console.log("[v0] Admin notification email sent")
+      console.log(" Admin notification email sent")
     } catch (emailError) {
-      console.error("[v0] Failed to send admin notification email:", emailError)
+      console.error(" Failed to send admin notification email:", emailError)
     }
   } else {
-    console.log("[v0] Resend not configured, skipping email notifications")
+    console.log(" Resend not configured, skipping email notifications")
   }
 
   revalidatePath("/admin/reservations")
@@ -142,10 +142,10 @@ function getCustomerConfirmationEmail({
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+          .header { background: linear-gradient(135deg, #F31404 0%, #D10E00 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
           .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
-          .label { font-weight: bold; color: #d4a574; }
+          .label { font-weight: bold; color: #F31404; }
           .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
         </style>
       </head>
@@ -215,13 +215,13 @@ function getAdminNotificationEmail({
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+          .header { background: linear-gradient(135deg, #F31404 0%, #D10E00 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
           .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
-          .label { font-weight: bold; color: #3b82f6; }
+          .label { font-weight: bold; color: #F31404; }
           .alert { background: #fef3c7; padding: 15px; border-left: 4px solid #f59e0b; margin: 20px 0; border-radius: 4px; }
           .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
-          .button { display: inline-block; padding: 12px 30px; background: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; }
+          .button { display: inline-block; padding: 12px 30px; background: #F31404; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; }
         </style>
       </head>
       <body>

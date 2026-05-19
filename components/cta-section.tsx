@@ -11,7 +11,7 @@ export function CTASection() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-4xl sm:text-5xl font-medium tracking-tight mb-6 text-balance">Experience the Art of Hospitality.</h2>
           <p className="text-lg text-muted-foreground mb-8 text-pretty">
-            Join us for an unforgettable experience. Explore our Menu Price List.
+            Join us for an unforgettable experience. Make a reservation today! 😊🥂.
           </p>
           <CustomButton 
             text="Make Reservation" 

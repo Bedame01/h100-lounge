@@ -105,7 +105,7 @@ export default function FAQPage() {
               <CustomButton 
                 text="Call Us" 
                 // hoverText="Book a Table" 
-                href="tel:+1234567890" 
+                href="tel:08080090090" 
                 variant="ghost" 
                 className="min-w-full py-5.5 px-1 text-sm text-center textDisplay"
               />

@@ -61,8 +61,7 @@ export default function MenuPage() {
               Price<span className="italic text-accent font-medium tracking-tighter">List.</span>
             </h1>
             <p className="text-base/snug max-w-2xl mx-auto text-pretty">
-              Explore our complete menu featuring fresh ingredients, innovative techniques, and exceptional flavors
-              crafted by our talented culinary team.
+              Our List is packed with refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful beverages. Explore our handpicked selections and discover your perfect sip of the day.
             </p>
             <div className="allergiesInform flex items-center justify-center gap-2 w-full max-w-lg mx-auto mt-7 bg-accent/10 py-3 px-4 border-accent/10 border rounded-full">
               <svg

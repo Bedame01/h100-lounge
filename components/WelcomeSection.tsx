@@ -58,7 +58,7 @@ export function WelcomeSection() {
                 textClassName="text-4xl/14! md:text-5xl/16! lg:text-6xl/19! font-serif font-thin! text-pretty!"
             >
               "H100 Lounge is more than a destination—it's an experience. Nestled in the heart of Abeokuta, 
-              we've crafted a sanctuary where sophistication meets warmth, and every evening becomes 
+              we've crafted a sanctuary where sophistication meets warmth, and every day becomes 
               a celebration of life's finer moments, 100% Relax, Refresh and Repeat."
             </ScrollReveal>
 

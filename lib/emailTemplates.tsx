@@ -88,7 +88,7 @@ export function getApprovalEmail({
       <body>
         <div class="container">
           <div class="header">
-            <h1 style="margin: 0;">🎉 Reservation Confirmed!</h1>
+            <h1 style="margin: 0;">🎉🥂 Reservation Confirmed!</h1>
             <p style="margin: 10px 0 0 0;">Your table is waiting for you</p>
           </div>
           <div class="content">
@@ -110,7 +110,7 @@ export function getApprovalEmail({
             <ul>
               <li>Please arrive 10 minutes before your reservation time</li>
               <li>We'll have your table ready upon arrival</li>
-              <li>Browse our premium cocktail and small chops menu</li>
+              <li>Browse our premium cocktail and drinks price list</li>
               <li>Enjoy our sophisticated ambiance and excellent service</li>
             </ul>
             
@@ -153,10 +153,10 @@ export function getCustomerConfirmationEmail({
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #d4a574 0%, #b8956a 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+          .header { background: linear-gradient(135deg, #F31404 0%, #D10E00 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
           .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
-          .label { font-weight: bold; color: #d4a574; }
+          .label { font-weight: bold; color: #F31404; }
           .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
         </style>
       </head>
@@ -285,13 +285,13 @@ export function getAdminNotificationEmail({
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+          .header { background: linear-gradient(135deg, #F31404 0%, #D10E00 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
           .detail { margin: 15px 0; padding: 10px; background: white; border-radius: 4px; }
-          .label { font-weight: bold; color: #3b82f6; }
+          .label { font-weight: bold; color: #F31404; }
           .alert { background: #fef3c7; padding: 15px; border-left: 4px solid #f59e0b; margin: 20px 0; border-radius: 4px; }
           .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
-          .button { display: inline-block; padding: 12px 30px; background: #3b82f6; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; }
+          .button { display: inline-block; padding: 12px 30px; background: #F31404; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; }
         </style>
       </head>
       <body>

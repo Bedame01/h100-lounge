@@ -21,7 +21,7 @@ export function Footer() {
               )}
             </Link>
             <p className="text-muted-foreground text-sm text-pretty">
-              A sanctuary of sophistication where every evening becomes an occasion. Relax, Refresh and Repeat.
+              A sanctuary of sophistication where every day becomes an occasion. Relax, Refresh and Repeat.
             </p>
           </div>
 
@@ -64,7 +64,7 @@ export function Footer() {
           <div>
             <h4 className="font-medium mb-4 textDisplay">Hours</h4>
             <p className="text-sm text-muted-foreground">
-              Monday - Sunday
+              Monday to Sunday
               <span className="text-xs mt-2 block text-muted-foreground">Open at all times but we recommend coming in the evening for the best experience</span>
               <span className="text-xs mt-2 block">Open all Week</span>
             </p>

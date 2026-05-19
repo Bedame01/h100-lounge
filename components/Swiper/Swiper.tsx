@@ -134,7 +134,7 @@ export default function HeroSwiper() {
                     </h1>
             
                     <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-                    Whether it’s a casual hangout or a night to remember, enjoy an atmosphere designed to keep the vibes flowing all night long.
+                    Whether it’s a casual hangout or a night to remember, enjoy an atmosphere designed to keep the vibes flowing all day long.
                     </p>
             
                     <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-12 gap-5">

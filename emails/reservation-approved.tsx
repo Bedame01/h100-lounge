@@ -31,7 +31,7 @@ export const ReservationApprovedEmail: React.FC<ReservationApprovedEmailProps> =
     <body>
       <div className="container">
         <div className="header">
-          <h1>🎉 Reservation Confirmed!</h1>
+          <h1>🎉🥂 Reservation Confirmed!</h1>
           <p>Your table is waiting for you</p>
         </div>
         <div className="content">
@@ -65,7 +65,7 @@ export const ReservationApprovedEmail: React.FC<ReservationApprovedEmailProps> =
           <ul>
             <li>Please arrive 10 minutes before your reservation time</li>
             <li>We'll have your table ready upon arrival</li>
-            <li>Browse our premium cocktail and small chops menu</li>
+            <li>Browse our premium cocktail and drinks price list</li>
             <li>Enjoy our sophisticated ambiance and excellent service</li>
           </ul>
 

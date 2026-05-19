@@ -47,7 +47,7 @@ export function FeaturesSection() {
                   // hoverText="Book a Table" 
                   href="/menu" 
                   variant="ghost" 
-                  className="min-w-50! py-4 px-1 mt-4 text-sm text-center textDisplay"
+                  className="min-w-50! py-4 px-1 mt-4 text-sm text-center"
                 />
               </CardContent>
             </Card>
@@ -60,7 +60,7 @@ export function FeaturesSection() {
                 </svg>
                 <h3 className="text-xl font-semibold text-card-foreground mb-2">Fine Dining</h3>
                 <p className="text-muted-foreground">
-                  Sophisticated atmosphere perfect for special occasions and memorable evenings.
+                  Sophisticated atmosphere perfect for special occasions and memorable days.
                 </p>
               </CardContent>
             </Card>
