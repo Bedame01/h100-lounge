@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "seed:menu": "node scripts/seed-price-lists.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

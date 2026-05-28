@@ -71,12 +71,12 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
                 {item.size_options!.map((option, i) => (
                   <span key={i} className="whitespace-nowrap">
                     <span className="font-medium text-muted-foreground uppercase text-xs">{option.size}</span>{" "}
-                    <span className="font-bold! text-accent text-base md:text-lg mr-2 bg-accent/10 p-1 px-2 rounded-sm">₦{option.price.toLocaleString(undefined, { minimumFractionDigits: 2})}</span>
+                    <span className="font-bold! text-accent text-base md:text-lg mr-2 bg-accent/5 p-1 px-2 rounded-sm">₦{option.price.toLocaleString(undefined, { minimumFractionDigits: 2})}</span>
                   </span>
                 ))}
               </div>
             ) : (
-              <span className="font-bold! text-accent text-base md:text-lg mr-2 bg-accent/10 p-1 px-2 rounded-sm">₦{item.price.toLocaleString(undefined, { minimumFractionDigits: 2})}</span>
+              <span className="font-bold! text-accent text-base md:text-lg mr-2 bg-accent/5 p-1 px-2 rounded-sm">₦{item.price.toLocaleString(undefined, { minimumFractionDigits: 2})}</span>
             )}
           </div>
         </div>

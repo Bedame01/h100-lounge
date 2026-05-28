@@ -37,6 +37,18 @@ export interface MenuCategory extends MenuCategoryMeta {
   items: MenuItem[];
 }
 
+export interface FoodCategoryMeta {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  display_order: number;
+}
+
+export interface FoodCategory extends FoodCategoryMeta {
+  items: MenuItem[];
+}
+
 /**
  * Fetch regular menu items grouped by category
  * @returns MenuCategory[] - Categories with their associated menu items
@@ -114,9 +126,41 @@ export async function getVipMenu(): Promise<MenuCategory[]> {
  * Useful for UI that needs to display price comparison
  * @returns { regular: MenuCategory[], vip: MenuCategory[] }
  */
+/**
+ * Fetch food menu items grouped by category
+ */
+export async function getFoodMenu(): Promise<FoodCategory[]> {
+  try {
+    const supabase = await createClient();
+
+    const { data: categories, error: categoriesError } = await supabase
+      .from('food_categories')
+      .select('id, name, slug, description, display_order')
+      .order('display_order', { ascending: true });
+
+    if (categoriesError) throw categoriesError;
+
+    const { data: items, error: itemsError } = await supabase
+      .from('menu_items_food')
+      .select('*')
+      .eq('is_available', true)
+      .order('display_order', { ascending: true });
+
+    if (itemsError) throw itemsError;
+
+    return (categories || []).map((category) => ({
+      ...category,
+      items: (items || []).filter((item) => item.category_id === category.id),
+    }));
+  } catch (error) {
+    console.error('[Menu Service] Error fetching food menu:', error);
+    return [];
+  }
+}
+
 export async function getAllMenus() {
-  const [regular, vip] = await Promise.all([getRegularMenu(), getVipMenu()]);
-  return { regular, vip };
+  const [regular, vip, food] = await Promise.all([getRegularMenu(), getVipMenu(), getFoodMenu()]);
+  return { regular, vip, food };
 }
 
 /**

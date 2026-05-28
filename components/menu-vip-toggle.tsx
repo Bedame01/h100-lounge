@@ -27,23 +27,23 @@ export function MenuVipToggle({ onToggle, initialIsVip = false }: MenuVipToggleP
   };
 
   return (
-    <div className="flex items-center justify-center gap-6 mt-6 mb-2">
+    <div className="flex items-center justify-center gap-1">
       <CustomButton 
-        text="Regular Menu" 
-        hoverText="View Prices" 
+        text="Regular List" 
+        // hoverText="View Prices" 
         href="" 
         onClick={() => selectMenu(false)}
-        variant={!isVip ? 'primary' : 'ghost'}
-        className={`min-w-28! py-0 px-1 text-xs text-center rounded-sm font-bold! ${!isVip ? 'text-[#fff]' : ''}`}
+        variant={!isVip ? 'default' : 'ghost'}
+        className={`min-w-20! py-0 px-0 text-xs text-center rounded-sm text-nowrap font-bold! ${!isVip ? 'text-[#fff]' : ''}`}
       />
 
       <CustomButton 
-        text="VIP Menu" 
-        hoverText="View Prices" 
+        text="VIP List" 
+        // hoverText="View Prices" 
         href="" 
         onClick={() => selectMenu(true)}
-        variant={!isVip ? 'ghost' : 'primary'}
-        className={`min-w-28! py-0 px-1 text-xs text-center text-nowrap rounded-sm font-bold! ${isVip ? 'text-[#fff]' : 'text-foreground'}`}
+        variant={!isVip ? 'ghost' : 'default'}
+        className={`min-w-20! py-0 px-1 text-xs text-center text-nowrap rounded-sm font-bold! ${isVip ? 'text-[#fff]' : 'text-foreground'}`}
       />
     </div>
   );

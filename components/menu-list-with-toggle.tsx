@@ -2,24 +2,41 @@
 
 import { useState } from "react"
 import { MenuVipToggle } from "@/components/menu-vip-toggle"
+import { MenuTypeToggle, type MenuListType } from "@/components/menu-type-toggle"
 import { MenuItemCard } from "@/components/menu-item-card"
-import type { MenuCategoryMeta, MenuItem } from "@/lib/menu-service"
+import type { FoodCategoryMeta, MenuCategoryMeta, MenuItem } from "@/lib/menu-service"
 
 interface MenuListWithToggleProps {
   categories: MenuCategoryMeta[]
   regularItems: MenuItem[]
   vipItems: MenuItem[]
+  foodCategories: FoodCategoryMeta[]
+  foodItems: MenuItem[]
 }
 
-export function MenuListWithToggle({ categories, regularItems, vipItems }: MenuListWithToggleProps) {
+export function MenuListWithToggle({
+  categories,
+  regularItems,
+  vipItems,
+  foodCategories,
+  foodItems,
+}: MenuListWithToggleProps) {
+  const [menuType, setMenuType] = useState<MenuListType>("drinks")
   const [isVip, setIsVip] = useState(false)
-  const menuItems = isVip ? vipItems : regularItems
+
+  const isDrinks = menuType === "drinks"
+  const drinkItems = isVip ? vipItems : regularItems
+  const activeCategories = isDrinks ? categories : foodCategories
+  const menuItems = isDrinks ? drinkItems : foodItems
 
   return (
     <>
-      <MenuVipToggle onToggle={setIsVip} />
+      <div className="w-full px-2 flex flex-nowrap items-center justify-center gap-1">
+      <MenuTypeToggle onToggle={setMenuType} />
+      {isDrinks && <MenuVipToggle onToggle={setIsVip} />}
+      </div>
 
-      {categories.map((category) => {
+      {activeCategories.map((category) => {
         const categoryItems = menuItems.filter((item) => item.category_id === category.id)
 
         if (categoryItems.length === 0) return null

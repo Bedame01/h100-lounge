@@ -8,13 +8,15 @@ import ScrollUp from "@/components/menu-scroll-to-top"
 import { getAllMenus } from "@/lib/menu-service"
 
 async function MenuContent() {
-  const { regular, vip } = await getAllMenus()
+  const { regular, vip, food } = await getAllMenus()
 
   const categories = regular.map(({ items: _items, ...category }) => category)
   const regularItems = regular.flatMap((category) => category.items)
   const vipItems = vip.flatMap((category) => category.items)
+  const foodCategories = food.map(({ items: _items, ...category }) => category)
+  const foodItems = food.flatMap((category) => category.items)
 
-  if (categories.length === 0) {
+  if (categories.length === 0 && foodCategories.length === 0) {
     return (
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -24,7 +26,15 @@ async function MenuContent() {
     )
   }
 
-  return <MenuListWithToggle categories={categories} regularItems={regularItems} vipItems={vipItems} />
+  return (
+    <MenuListWithToggle
+      categories={categories}
+      regularItems={regularItems}
+      vipItems={vipItems}
+      foodCategories={foodCategories}
+      foodItems={foodItems}
+    />
+  )
 }
 
 function MenuLoadingSkeleton() {
@@ -60,10 +70,10 @@ export default function MenuPage() {
             <h1 className="font-serif text-5xl sm:text-6xl tracking-tight font-semibold mb-4 ">
               Price<span className="italic text-accent font-medium tracking-tighter">List.</span>
             </h1>
-            <p className="text-base/snug max-w-2xl mx-auto text-pretty">
+            <p className="text-sm/snug max-w-2xl mx-auto text-pretty">
               Our List is packed with refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful beverages. Explore our handpicked selections and discover your perfect sip of the day.
             </p>
-            <div className="allergiesInform flex items-center justify-center gap-2 w-full max-w-lg mx-auto mt-7 bg-accent/10 py-3 px-4 border-accent/10 border rounded-full">
+            <div className="allergiesInform flex items-center justify-center gap-2 max-w-lg mx-auto mt-5 bg-accent/5 py-2 px-4 border-accent/10 border rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -81,7 +91,7 @@ export default function MenuPage() {
                   ></path>
                 </g>
               </svg>
-              <p className="text-sm text-foreground/90 font-semibold">Please inform staff of any allergies</p>
+              <p className="text-xs text-foreground/80 font-bold">Please inform staff of any allergies</p>
             </div>
           </div>
         </section>
