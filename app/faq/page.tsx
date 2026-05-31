@@ -63,7 +63,7 @@ export default function FAQPage() {
         <section className="py-13 md:py-18 px-4 text-center border-b border-border">
           <div className="container mx-auto max-w-3xl">
             <p className="text-accent font-semibold tracking-widest text-sm uppercase mb-4">Questions</p>
-            <h1 className="font-serif text-5xl md:text-6xl font-semibold tracking-tighter mb-6">Frequently<span className="italic font-medium">Asked.</span></h1>
+            <h1 className="text-5xl md:text-6xl font-semibold tracking-tighter mb-6">Frequently<span className="font-serif italic font-medium">Asked.</span></h1>
             <p className="text-lg text-muted-foreground text-pretty">
               Everything you need to know about H100 Lounge & Bar, right here.
             </p>

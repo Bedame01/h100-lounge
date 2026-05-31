@@ -116,7 +116,7 @@ export function Navigation() {
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
                       className={cn(
-                        "text-xl font-medium uppercase transition-colors hover:text-foreground py-2 textDisplay tracking-tight",
+                        "text-2xl font-medium uppercase transition-colors hover:text-foreground py-2 textDisplay tracking-tight",
                         pathname === link.href ? "text-accent" : "text-muted-foreground",
                       )}
                     >

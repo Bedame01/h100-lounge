@@ -67,11 +67,11 @@ export default function MenuPage() {
       <div className="pt-16">
         <section className="backdrop-blur supports-[backdrop-filter]:bg-background/65 pt-16 md:pt-26 pb-10 md:pb-14! mb-5 border-b border-border">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-serif text-5xl sm:text-6xl tracking-tight font-semibold mb-4 ">
-              Price<span className="italic text-accent font-medium tracking-tighter">List.</span>
+            <h1 className="text-5xl sm:text-6xl tracking-tighter font-semibold mb-4 ">
+              Price<span className="font-serif italic text-accent font-medium tracking-tighter">List.</span>
             </h1>
             <p className="text-sm/snug max-w-2xl mx-auto text-pretty">
-              Our List is packed with refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful beverages. Explore our handpicked selections and discover your perfect sip of the day.
+              Our List is packed with refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful Dishes. Explore our handpicked selections.
             </p>
             <div className="allergiesInform flex items-center justify-center gap-2 max-w-lg mx-auto mt-5 bg-accent/5 py-2 px-4 border-accent/10 border rounded-full">
               <svg

@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { Suspense } from "react"
 import { MenuItemSkeleton } from "@/components/menu-item-skeleton"
 import { WelcomeSection } from "@/components/WelcomeSection"
+import { SurroundingsSection } from "@/components/surroundings-section"
 
 function HighlightsLoading() {
   return (
@@ -34,6 +35,7 @@ export default function HomePage() {
       <HeroSection />
       <WelcomeSection />
       <FeaturesSection />
+      <SurroundingsSection />
       <Suspense fallback={<HighlightsLoading />}>
         <MenuHighlights />
       </Suspense>

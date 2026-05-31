@@ -1,4 +1,4 @@
-import { ImageIcon } from "lucide-react"
+import ImageIcon from "@/components/icons/imageIcon"
 import Image from "next/image"
 
 interface MenuItem {
@@ -22,7 +22,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
   return (
     <div className="flex gap-3 sm:gap-6 items-start">
       {/* Image */}
-      <div className="flex-shrink-0 size-25 overflow-hidden rounded-xs bg-foreground/5 border border-border/50">
+      <div className="flex-shrink-0 size-24 overflow-hidden rounded-sm bg-foreground/5 border border-border/50">
         {item.image_url ? (
           <Image
             src={item.image_url || "/placeholder.svg"}
@@ -33,7 +33,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <ImageIcon className="size-15 text-muted-foreground/30" />
+            <ImageIcon className="size-12 fill-muted-foreground/30" />
           </div>
         )}
       </div>
@@ -64,7 +64,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
 
         {/* Title and Price */}
         <div className="flex items-start justify-between gap-4 mb-2 border-b border-border pb-2">
-          <h3 className="font-sans text-base font-semibold uppercase text-balance">{item.name}</h3>
+          <h3 className="font-sans text-base font-medium sm:font-semibold uppercase text-balance">{item.name}</h3>
           <div className="text-right flex-shrink-0">
             {hasSizeOptions ? (
               <div className="flex gap-3 items-center text-sm">

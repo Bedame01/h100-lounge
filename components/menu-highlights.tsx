@@ -39,7 +39,7 @@ export async function MenuHighlights() {
           <h2 className="font-serif text-5xl sm:text-6xl font-medium mb-4">Highlights</h2>
           <p className="text-accent uppercase tracking-wider text-sm font-semibold mb-4">DELICIOUS SELECTIONS</p>
           <p className="text-muted-foreground max-w-3xl mx-auto text-base text-pretty">
-            Our drinks menu is packed with refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful beverages. Explore our handpicked selections and discover your perfect sip of the day.
+            Our menu is packed with refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful dishes. Explore our handpicked selections.
           </p>
         </div>
 

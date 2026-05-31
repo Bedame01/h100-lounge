@@ -55,7 +55,7 @@ export function WelcomeSection() {
                 enableBlur
                 baseRotation={6}
                 blurStrength={9}
-                textClassName="text-4xl/14! md:text-5xl/16! lg:text-6xl/19! font-serif font-thin! text-pretty!"
+                textClassName="text-4xl/14! md:text-5xl/16! lg:text-6xl/19! font-serif font-normal! text-pretty!"
             >
               "H100 Lounge is more than a destination—it's an experience. Nestled in the heart of Abeokuta, 
               we've crafted a sanctuary where sophistication meets warmth, and every day becomes 

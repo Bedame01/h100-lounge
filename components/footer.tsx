@@ -73,6 +73,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} H100 Lounge & Bar. All rights reserved.</p>
+          {/* <p className="text-xs mt-1 block">More than a Lounge - An Experience</p> */}
         </div>
       </div>
     </footer>
