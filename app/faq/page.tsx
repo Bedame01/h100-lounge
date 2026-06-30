@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     q: "Happy Hour?",
-    a: "Tue–Fri, 6–8 PM. Special pricing on select cocktails, wine, and small Drinks.",
+    a: "Special pricing on select cocktails, wine, and Soft Drinks.",
   },
   {
     q: "Cancellation policy?",
@@ -50,7 +50,7 @@ const faqs = [
   },
   {
     q: "Live entertainment?",
-    a: "Jazz every Fri & Sat, 8 PM. Check our socials for the monthly calendar.",
+    a: "Jazz & Live. Check our socials for Upcoming Events.",
   },
 ]
 
@@ -63,7 +63,7 @@ export default function FAQPage() {
         <section className="py-13 md:py-18 px-4 text-center border-b border-border">
           <div className="container mx-auto max-w-3xl">
             <p className="text-accent font-semibold tracking-widest text-sm uppercase mb-4">Questions</p>
-            <h1 className="text-5xl md:text-6xl font-semibold tracking-tighter mb-6">Frequently<span className="font-serif italic font-medium">Asked.</span></h1>
+            <h1 className="text-5xl md:text-6xl font-semibold tracking-tighter mb-6">Frequently<span className="font-serif italic font-medium text-accent">Asked.</span></h1>
             <p className="text-lg text-muted-foreground text-pretty">
               Everything you need to know about H100 Lounge & Bar, right here.
             </p>
@@ -91,7 +91,7 @@ export default function FAQPage() {
         {/* CTA */}
         <section className="py-16 md:py-24 px-4 bg-card/30">
           <div className="container mx-auto max-w-2xl text-center">
-            <MessageCircle className="w-12 h-12 text-accent mx-auto mb-6" />
+            <MessageCircle className="w-13 h-13 text-accent mx-auto mb-6" />
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">Still curious?</h2>
             <p className="text-muted-foreground mb-8">Reach out directly. We're here to help.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -100,14 +100,14 @@ export default function FAQPage() {
                 // hoverText="Book a Table" 
                 href="/about" 
                 variant="primary" 
-                className="min-w-full py-5.5 px-1 text-sm text-center textDisplay text-[#fff]"
+                className="min-w-full py-5.5 px-1 text-sm font3bold! text-center text-[#fff]"
               />
               <CustomButton 
                 text="Call Us" 
                 // hoverText="Book a Table" 
                 href="tel:08080090090" 
                 variant="ghost" 
-                className="min-w-full py-5.5 px-1 text-sm text-center textDisplay"
+                className="min-w-full py-5.5 px-1 text-sm text-center font3bold!"
               />
             </div>
           </div>

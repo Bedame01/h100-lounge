@@ -21,6 +21,7 @@ export interface MenuItem {
   image_url: string | null;
   is_available: boolean;
   display_order: number;
+  is_highlighted?: boolean;
   size_options: { size: string; price: number }[] | null;
   badges: string[] | null;
 }
@@ -53,11 +54,10 @@ export interface FoodCategory extends FoodCategoryMeta {
  * Fetch regular menu items grouped by category
  * @returns MenuCategory[] - Categories with their associated menu items
  */
-export async function getRegularMenu(): Promise<MenuCategory[]> {
+export async function getRegularMenu(onlyAvailable = true): Promise<MenuCategory[]> {
   try {
     const supabase = await createClient();
 
-    // Fetch all categories
     const { data: categories, error: categoriesError } = await supabase
       .from('categories')
       .select('id, name, slug, description, display_order')
@@ -65,16 +65,15 @@ export async function getRegularMenu(): Promise<MenuCategory[]> {
 
     if (categoriesError) throw categoriesError;
 
-    // Fetch all menu items
-    const { data: items, error: itemsError } = await supabase
-      .from('menu_items')
-      .select('*')
-      .eq('is_available', true)
-      .order('display_order', { ascending: true });
+    let query = supabase.from('menu_items').select('*').order('display_order', { ascending: true });
+    if (onlyAvailable) {
+      query = query.eq('is_available', true);
+    }
+
+    const { data: items, error: itemsError } = await query;
 
     if (itemsError) throw itemsError;
 
-    // Group items by category
     return (categories || []).map((category) => ({
       ...category,
       items: (items || []).filter((item) => item.category_id === category.id),
@@ -89,11 +88,10 @@ export async function getRegularMenu(): Promise<MenuCategory[]> {
  * Fetch VIP menu items grouped by category
  * @returns MenuCategory[] - Categories with their associated VIP menu items
  */
-export async function getVipMenu(): Promise<MenuCategory[]> {
+export async function getVipMenu(onlyAvailable = true): Promise<MenuCategory[]> {
   try {
     const supabase = await createClient();
 
-    // Fetch all categories
     const { data: categories, error: categoriesError } = await supabase
       .from('categories')
       .select('id, name, slug, description, display_order')
@@ -101,16 +99,15 @@ export async function getVipMenu(): Promise<MenuCategory[]> {
 
     if (categoriesError) throw categoriesError;
 
-    // Fetch all VIP menu items
-    const { data: items, error: itemsError } = await supabase
-      .from('menu_items_vip')
-      .select('*')
-      .eq('is_available', true)
-      .order('display_order', { ascending: true });
+    let query = supabase.from('menu_items_vip').select('*').order('display_order', { ascending: true });
+    if (onlyAvailable) {
+      query = query.eq('is_available', true);
+    }
+
+    const { data: items, error: itemsError } = await query;
 
     if (itemsError) throw itemsError;
 
-    // Group items by category
     return (categories || []).map((category) => ({
       ...category,
       items: (items || []).filter((item) => item.category_id === category.id),
@@ -129,7 +126,7 @@ export async function getVipMenu(): Promise<MenuCategory[]> {
 /**
  * Fetch food menu items grouped by category
  */
-export async function getFoodMenu(): Promise<FoodCategory[]> {
+export async function getFoodMenu(onlyAvailable = true): Promise<FoodCategory[]> {
   try {
     const supabase = await createClient();
 
@@ -140,11 +137,12 @@ export async function getFoodMenu(): Promise<FoodCategory[]> {
 
     if (categoriesError) throw categoriesError;
 
-    const { data: items, error: itemsError } = await supabase
-      .from('menu_items_food')
-      .select('*')
-      .eq('is_available', true)
-      .order('display_order', { ascending: true });
+    let query = supabase.from('menu_items_food').select('*').order('display_order', { ascending: true });
+    if (onlyAvailable) {
+      query = query.eq('is_available', true);
+    }
+
+    const { data: items, error: itemsError } = await query;
 
     if (itemsError) throw itemsError;
 
@@ -158,8 +156,13 @@ export async function getFoodMenu(): Promise<FoodCategory[]> {
   }
 }
 
-export async function getAllMenus() {
-  const [regular, vip, food] = await Promise.all([getRegularMenu(), getVipMenu(), getFoodMenu()]);
+export async function getAllMenus(onlyAvailable = true) {
+  const [regular, vip, food] = await Promise.all([
+    getRegularMenu(onlyAvailable),
+    getVipMenu(onlyAvailable),
+    getFoodMenu(onlyAvailable),
+  ])
+
   return { regular, vip, food };
 }
 

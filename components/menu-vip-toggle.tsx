@@ -34,7 +34,7 @@ export function MenuVipToggle({ onToggle, initialIsVip = false }: MenuVipToggleP
         href="" 
         onClick={() => selectMenu(false)}
         variant={!isVip ? 'default' : 'ghost'}
-        className={`min-w-20! py-0 px-0 text-xs text-center rounded-sm text-nowrap font-bold! ${!isVip ? 'text-[#fff]' : ''}`}
+        className={`min-w-20! py-0 px-0 text-xs text-center rounded-full text-nowrap font-bold! ${!isVip ? 'text-[#fff]' : ''}`}
       />
 
       <CustomButton 
@@ -43,7 +43,7 @@ export function MenuVipToggle({ onToggle, initialIsVip = false }: MenuVipToggleP
         href="" 
         onClick={() => selectMenu(true)}
         variant={!isVip ? 'ghost' : 'default'}
-        className={`min-w-20! py-0 px-1 text-xs text-center text-nowrap rounded-sm font-bold! ${isVip ? 'text-[#fff]' : 'text-foreground'}`}
+        className={`min-w-20! py-0 px-1 text-xs text-center text-nowrap rounded-full font-bold! ${isVip ? 'text-[#fff]' : 'text-foreground'}`}
       />
     </div>
   );

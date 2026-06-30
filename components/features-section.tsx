@@ -10,8 +10,8 @@ export function FeaturesSection() {
   return (
     <section className="py-20 md:py-24 bg-[#fff] dark:bg-[#080101]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-medium text-foreground mb-4 tracking-tighter">Experience<span className="font-serif font-medium italic text-accent">Excellence</span></h2>
+          <div className="text-center mb-12 w-full overflow-hidden">
+            <h2 className="text-5xl md:text-6xl font-medium text-foreground mb-4 tracking-tighter">Experience<span className="font-serif font-medium italic text-accent">Excellence</span></h2>
             <p className="text-md text-muted-foreground max-w-2xl mx-auto">
               Check out our Sophisticated Lounge Today, Best place for you to Relax, to Refresh and guaranteed to Repeat the Experience.
             </p>

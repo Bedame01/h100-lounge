@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation"
-import { createClient } from "@/lib/supabase/server"
 import { AdminNav } from "@/components/admin-nav"
 import { MenuManager } from "@/components/menu-manager"
+import { getRegularMenu, getVipMenu, getFoodMenu } from "@/lib/menu-service"
 
 export default async function AdminMenuPage() {
-  const supabase = await createClient()
+  const supabase = await import("@/lib/supabase/server").then((mod) => mod.createClient())
 
   const {
     data: { user },
@@ -21,9 +21,17 @@ export default async function AdminMenuPage() {
     redirect("/")
   }
 
-  const { data: categories } = await supabase.from("categories").select("*").order("display_order", { ascending: true })
+  const [regular, vip, food] = await Promise.all([
+    getRegularMenu(false),
+    getVipMenu(false),
+    getFoodMenu(false),
+  ])
 
-  const { data: menuItems } = await supabase.from("menu_items").select("*").order("display_order", { ascending: true })
+  const categories = regular.map(({ items: _items, ...category }) => category)
+  const regularItems = regular.flatMap((category) => category.items)
+  const vipItems = vip.flatMap((category) => category.items)
+  const foodCategories = food.map(({ items: _items, ...category }) => category)
+  const foodItems = food.flatMap((category) => category.items)
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,7 +45,13 @@ export default async function AdminMenuPage() {
           <p className="text-muted-foreground">Menu items and categories full operational Management</p>
         </div>
 
-        <MenuManager categories={categories || []} menuItems={menuItems || []} />
+        <MenuManager
+          categories={categories}
+          regularItems={regularItems}
+          vipItems={vipItems}
+          foodCategories={foodCategories}
+          foodItems={foodItems}
+        />
       </main>
     </div>
   )

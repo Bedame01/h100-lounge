@@ -12,12 +12,12 @@ export default function HeroCarousel() {
         options={{
           type: 'fade',          // Fade transition
           rewind: true,          // Loop back to start
-          autoplay: false,        // Auto slide
+          autoplay: true,        // Auto slide
           interval: 5000,        // 5 seconds
           speed: 1200,           // Fade speed
           pauseOnHover: false,
           pauseOnFocus: false,
-          arrows: false,         // Show arrows (hero style)
+          arrows: true,         // Show arrows (hero style)
           pagination: true,      // Dots navigation
           drag: true,
         }}

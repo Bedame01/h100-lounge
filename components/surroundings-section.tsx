@@ -135,18 +135,18 @@ export function SurroundingsSection() {
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 md:mb-16"
         >
           <div className="max-w-2xl">
-            <span className="inline-block text-sm font-semibold tracking-wide text-accent mb-3">
-              • Our Surroundings •
+            <span className="inline-block text-base font-semibold tracking-wide text-accent mb-3">
+              Our Surroundings ✦
             </span>
             <h2
               id="surroundings-heading"
               className="text-4xl md:text-5xl font-medium text-foreground tracking-tighter"
             >
               Step Inside
-              <span className="font-serif font-medium"> H100</span>
+              <span className="font-semibold"> H100 Lounge</span>
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-md lg:text-right leading-tight">
+          <p className="text-muted-foreground max-w-md lg:text-right leading">
             Every corner of our lounge is designed for comfort, conversation, and celebration—from
             the lounge to the VIP atmosphere.
           </p>

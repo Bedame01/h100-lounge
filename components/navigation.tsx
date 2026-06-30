@@ -87,15 +87,31 @@ export function Navigation() {
             />
           </div>
 
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-5">
             {/* <SwitchButton /> */}
             <ThemeToggle />
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button  variant="ghost" size="icon">
+                {/* <Button  variant="ghost" size="icon">
                   <Menu className="size-6 text-foreground" />
                   <span className="sr-only">Menu</span>
-                </Button>
+                </Button> */}
+                <button
+                  // onClick={() => setMenuOpen(!menuOpen)}
+                  className="flex flex-col gap-1.5 w-8.5 mr-2"
+                  aria-label="Toggle menu"
+                >
+                  <span
+                    className={`block h-0.5 bg-foreground transition-transform ${
+                      isMenuOpen ? "-rotate-20 translate-y-1" : ""
+                    }`}
+                  />
+                  <span
+                    className={`block h-0.5 bg-foreground transition-transform ${
+                      isMenuOpen ? "rotate-20 -translate-y-1" : ""
+                    }`}
+                  />
+                </button>
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px]">
                 <SheetHeader>

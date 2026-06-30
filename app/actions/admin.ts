@@ -5,6 +5,9 @@ import { revalidatePath } from "next/cache"
 import { resend, FROM_EMAIL, isResendConfigured } from "@/lib/resend"
 import { getApprovalEmail, getCancellationEmail, formatSeatingArea } from "@/lib/emailTemplates"
 
+type MenuItemTable = "menu_items" | "menu_items_vip" | "menu_items_food"
+type CategoryTable = "categories" | "food_categories"
+
 export async function updateReservationStatus(reservationId: string, status: "pending" | "confirmed" | "cancelled") {
   const supabase = await createClient()
 
@@ -105,10 +108,14 @@ export async function deleteReservation(reservationId: string) {
   return { success: true }
 }
 
-export async function toggleMenuItemAvailability(menuItemId: string, isAvailable: boolean) {
+export async function toggleMenuItemAvailability(
+  menuItemId: string,
+  isAvailable: boolean,
+  table: MenuItemTable = "menu_items",
+) {
   const supabase = await createClient()
 
-  const { error } = await supabase.from("menu_items").update({ is_available: isAvailable }).eq("id", menuItemId)
+  const { error } = await supabase.from(table).update({ is_available: isAvailable }).eq("id", menuItemId)
 
   if (error) {
     console.error("[v0] Toggle menu item availability error:", error)
@@ -128,11 +135,17 @@ export async function createMenuItem(data: {
   category_id: string
   is_available?: boolean
   display_order?: number
+  image_url?: string | null
+  badges?: string[] | null
+  is_highlighted?: boolean
+  size_options?: { size: string; price: number }[] | null
+  table?: MenuItemTable
 }) {
   const supabase = await createClient()
+  const { table = "menu_items", ...payload } = data
 
-  const { error } = await supabase.from("menu_items").insert({
-    ...data,
+  const { error } = await supabase.from(table).insert({
+    ...payload,
     is_available: data.is_available ?? true,
     display_order: data.display_order ?? 0,
   })
@@ -157,11 +170,17 @@ export async function updateMenuItem(
     category_id?: string
     is_available?: boolean
     display_order?: number
+    image_url?: string | null
+    badges?: string[] | null
+    is_highlighted?: boolean
+    size_options?: { size: string; price: number }[] | null
+    table?: MenuItemTable
   },
 ) {
   const supabase = await createClient()
+  const { table = "menu_items", ...payload } = data
 
-  const { error } = await supabase.from("menu_items").update(data).eq("id", id)
+  const { error } = await supabase.from(table).update(payload).eq("id", id)
 
   if (error) {
     console.error("[v0] Update menu item error:", error)
@@ -174,10 +193,10 @@ export async function updateMenuItem(
   return { success: true }
 }
 
-export async function deleteMenuItem(id: string) {
+export async function deleteMenuItem(id: string, table: MenuItemTable = "menu_items") {
   const supabase = await createClient()
 
-  const { error } = await supabase.from("menu_items").delete().eq("id", id)
+  const { error } = await supabase.from(table).delete().eq("id", id)
 
   if (error) {
     console.error("[v0] Delete menu item error:", error)
@@ -190,15 +209,18 @@ export async function deleteMenuItem(id: string) {
   return { success: true }
 }
 
-export async function createCategory(data: {
-  name: string
-  slug: string
-  description?: string
-  display_order?: number
-}) {
+export async function createCategory(
+  data: {
+    name: string
+    slug: string
+    description?: string
+    display_order?: number
+  },
+  table: CategoryTable = "categories",
+) {
   const supabase = await createClient()
 
-  const { error } = await supabase.from("categories").insert({
+  const { error } = await supabase.from(table).insert({
     ...data,
     display_order: data.display_order ?? 0,
   })
@@ -222,10 +244,11 @@ export async function updateCategory(
     description?: string
     display_order?: number
   },
+  table: CategoryTable = "categories",
 ) {
   const supabase = await createClient()
 
-  const { error } = await supabase.from("categories").update(data).eq("id", id)
+  const { error } = await supabase.from(table).update(data).eq("id", id)
 
   if (error) {
     console.error("[v0] Update category error:", error)
@@ -238,10 +261,10 @@ export async function updateCategory(
   return { success: true }
 }
 
-export async function deleteCategory(id: string) {
+export async function deleteCategory(id: string, table: CategoryTable = "categories") {
   const supabase = await createClient()
 
-  const { error } = await supabase.from("categories").delete().eq("id", id)
+  const { error } = await supabase.from(table).delete().eq("id", id)
 
   if (error) {
     console.error("[v0] Delete category error:", error)

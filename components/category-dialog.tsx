@@ -29,9 +29,10 @@ interface Category {
 interface CategoryDialogProps {
   category?: Category
   mode: "create" | "edit"
+  table?: "categories" | "food_categories"
 }
 
-export function CategoryDialog({ category, mode }: CategoryDialogProps) {
+export function CategoryDialog({ category, mode, table = "categories" }: CategoryDialogProps) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
@@ -45,7 +46,10 @@ export function CategoryDialog({ category, mode }: CategoryDialogProps) {
     e.preventDefault()
     setLoading(true)
 
-    const result = mode === "create" ? await createCategory(formData) : await updateCategory(category!.id, formData)
+    const result =
+      mode === "create"
+        ? await createCategory(formData, table)
+        : await updateCategory(category!.id, formData, table)
 
     if (result.error) {
       toast({

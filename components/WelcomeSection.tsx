@@ -36,7 +36,7 @@ const contactLinks = [
 export function WelcomeSection() {
   return (
     <section className="py-20 bg-background relative overflow-hidden">   
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-15 text-center">
         <div>
           <div className="max-w-3xl m-auto! space-y-6 flex flex-col justify-center items-center">
             <div className="inline-block">
@@ -53,7 +53,7 @@ export function WelcomeSection() {
             <ScrollReveal
                 baseOpacity={0.1}
                 enableBlur
-                baseRotation={6}
+                baseRotation={4}
                 blurStrength={9}
                 textClassName="text-4xl/14! md:text-5xl/16! lg:text-6xl/19! font-serif font-normal! text-pretty!"
             >
