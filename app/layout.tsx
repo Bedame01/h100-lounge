@@ -7,18 +7,11 @@ import { ThemeProvider } from "@/components/theme-provider"
 import favicon from "@/public/icons/favicon.png"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const _inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
 })
-// const _raleway = Raleway({
-//   subsets: ["latin"],
-//   weight: ["400", "500", "600", "700"],
-//   variable: "--font-alt-sans",
-// })
 
 export const metadata: Metadata = {
   title: "H100 Lounge and Bar - Relax, Refresh and Repeat",

@@ -21,16 +21,8 @@ export default function AboutPage() {
       <main className="min-h-screen bg-background">
         {/* Minimal Hero */}
         <section className="relative h-[30vh] md:h-[40vh] flex items-end overflow-hidden pt-16 border-b border-border">
-          {/* <Image
-            src={bg}
-            alt="H100 Lounge and Bar"
-            fill
-            className="object-cover"
-            priority
-          /> */}
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" /> */}
           <div className="relative z-20 pb-12 px-4 container mx-auto w-full">
-            <h1 className="text-6xl md:text-7xl text-center font-semibold tracking-tighter">Our<span className="font-serif text-accent italic font-medium">Story.</span></h1>
+            <h1 className="title text-center font-semibold tracking-tighter">Our<span className="font-serif text-accent italic font-medium">Story.</span></h1>
           </div>
         </section>
 

@@ -6,12 +6,18 @@ import { useRef } from "react"
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
-import heroLounge from "@/public/images/hero1.webp"
-import crystalCelebration from "@/public/images/Elegant Crystal Glass Celebration.png"
+// import heroLounge from "@/public/images/hero1.webp"
+// import crystalCelebration from "@/public/images/Elegant Crystal Glass Celebration.png"
+// import drinkPour from "@/public/images/drink pouring from glass.avif"
+// import wineGlass from "@/public/images/Elegant Wine Glass.png"
+// import loungeEnergy from "@/public/images/image1.png"
+// import heroAmbiance from "@/public/images/hero3.png"
+import mainlounge from "@/public/images/environment 1.jpeg"
+import signaturebar from "@/public/images/Elegant Crystal Glass Celebration.png"
 import drinkPour from "@/public/images/drink pouring from glass.avif"
 import wineGlass from "@/public/images/Elegant Wine Glass.png"
-import loungeEnergy from "@/public/images/image1.png"
-import heroAmbiance from "@/public/images/hero3.png"
+import loungeEnergy from "@/public/images/environment 3.jpeg"
+import heroAmbiance from "@/public/images/environment 2.jpeg"
 
 type Space = {
   title: string
@@ -24,7 +30,7 @@ const spaces: Space[] = [
   {
     title: "The Main Lounge",
     subtitle: "Refined seating, ambient lighting, and an atmosphere built for unwinding",
-    image: heroLounge,
+    image: mainlounge,
     gridClass: "md:col-span-7 md:row-span-2 min-h-[280px] md:min-h-[520px]",
   },
   {
@@ -36,7 +42,7 @@ const spaces: Space[] = [
   {
     title: "Celebration Moments",
     subtitle: "Crystal, sparkle, and nights worth remembering",
-    image: crystalCelebration,
+    image: signaturebar,
     gridClass: "md:col-span-5 min-h-[240px]",
   },
   {
@@ -146,7 +152,7 @@ export function SurroundingsSection() {
               <span className="font-semibold"> H100 Lounge</span>
             </h2>
           </div>
-          <p className="text-muted-foreground max-w-md lg:text-right leading">
+          <p className="text-base/tight font-medium text-foreground max-w-md lg:text-right">
             Every corner of our lounge is designed for comfort, conversation, and celebration—from
             the lounge to the VIP atmosphere.
           </p>

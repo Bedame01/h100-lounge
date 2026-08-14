@@ -183,13 +183,22 @@
       radial-gradient(at 50% 50%, oklch(0.68 0.1 200 / 0.05) 0px, transparent 50%);
   }
 
-  /* .title{
-    @apply text-7xl! md:text-8xl! lg:text-[130px]!
+  .title{
+    @apply text-7xl! lg:text-[78px]!
   }
 
   .desc{
-    @apply text-foreground font-medium max-w-xl md:max-w-4xl text-xl/7 md:text-3xl! lg:text-4xl/12!
-  } */
+    @apply text-foreground font-medium! max-w-xl! md:max-w-4xl! text-lg/6! md:text-xl!
+  }
+
+    .marquee {
+    user-select: none !important;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%)
+  }
+
+  .animate-marquee {
+    animation: marquee 15s linear infinite;
+  }
 }
 
 .textDisplay{
@@ -209,6 +218,11 @@ h2.priceCategory:after{
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* .font-medium{
-  font-family: "Twklausanne 500" !important;
-} */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

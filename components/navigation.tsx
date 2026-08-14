@@ -4,17 +4,17 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+// import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ArrowRight, Ruler, CheckCircle, Instagram, Mail, Crown } from "lucide-react"
-// import SwitchButton from "./kokonutui/switch-button"
-import { Menu, X } from "lucide-react"
+// import { Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react"
 import CustomButton from '@/components/kokonutui/CustomButton/CustomButton'
 import { ThemeToggle } from '@/components/theme-toggle'
-// import MorphicNavbar from "./kokonutui/morphic-navbar"
 import logoLight from '@/public/icons/logo-white.png'
 import logoDark from '@/public/icons/logo-black.png'
-import { Button } from "./ui/button"
+
+const work = ["H100 LOUNGE AND BAR ✦", "100% RELAX, REFRESH AND REPEAT", "H100 LOUNGE AND BAR ✦", "100% RELAX, REFRESH AND REPEAT"];
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -26,7 +26,8 @@ const navLinks = [
 export function Navigation() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  // const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const SCROLL_THRESHOLD = 70; // Adjust the scroll height at which header toggles to black
   const socialLinks = [
@@ -87,17 +88,30 @@ export function Navigation() {
             />
           </div>
 
-          <div className="md:hidden flex items-center gap-5">
-            {/* <SwitchButton /> */}
+          <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
-            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex flex-col gap-1.5 w-8"
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`block h-0.5 bg-foreground transition-transform ${
+                  menuOpen ? "-rotate-20 translate-y-1" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 bg-foreground transition-transform ${
+                  menuOpen ? "rotate-20 -translate-y-1" : ""
+                }`}
+              />
+            </button>
+          </div>
+
+          
+            {/* <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
-                {/* <Button  variant="ghost" size="icon">
-                  <Menu className="size-6 text-foreground" />
-                  <span className="sr-only">Menu</span>
-                </Button> */}
                 <button
-                  // onClick={() => setMenuOpen(!menuOpen)}
                   className="flex flex-col gap-1.5 w-8.5 mr-2"
                   aria-label="Toggle menu"
                 >
@@ -132,7 +146,7 @@ export function Navigation() {
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
                       className={cn(
-                        "text-2xl font-medium uppercase transition-colors hover:text-foreground py-2 textDisplay tracking-tight",
+                        "text-2xl font-medium uppercase transition-colors hover:text-foreground py-2 tracking-tight",
                         pathname === link.href ? "text-accent" : "text-muted-foreground",
                       )}
                     >
@@ -142,7 +156,6 @@ export function Navigation() {
                   <div className="border-t pt-8 mt-5">
                     <CustomButton 
                       text="Make Reservation" 
-                      // hoverText="Book a Table" 
                       href="tel:08080090090" 
                       variant="primary" 
                       className="min-w-full! py-6 px-1 text-sm text-center uppercase text-[#fff]!"
@@ -167,7 +180,6 @@ export function Navigation() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-foreground transition-colors"
-                      // aria-label='Tiktok'
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-[19px] stroke-muted-foreground hover:stroke-foreground transition-all">
                         <path stroke="inherit" stroke-linejoin="round" d="M16 1.5h-3.5V16c0 1.5 -1.5 3 -3 3s-3 -0.5 -3 -3c0 -2 1.899 -3.339 3.5 -3V9.5c-6.12 0 -7 5 -7 6.5s0.977 6.5 6.5 6.5c4.522 0 6.5 -3.5 6.5 -6v-8c1.146 1.018 2.922 1.357 5 1.5V6.5c-3.017 0 -5 -2.654 -5 -5Z" stroke-width="1.8"></path>
@@ -176,10 +188,77 @@ export function Navigation() {
                   </div>
                 </nav>
               </SheetContent>
-            </Sheet>
-          </div>
+            </Sheet> */}
         </div>
-
+        <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden min-h-screen bg-background border-t border-border overflow-hidden flex items-start justify-center"
+              >
+                <nav className="flex flex-col justify-center items-center px-6 py-8 gap-4.5 mt-20">
+                  {navLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={`text-5xl! hover:text-foreground/60 text-display font-semibold tracking-tighter uppercase ${
+                        pathname === item.href ? "text-foreground/60" : "text-foreground"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  <CustomButton 
+                    text="Make Reservation" 
+                    // hoverText="Book a Table" 
+                    onClick={() => setMenuOpen(false)}
+                    href="tel:08080090090" 
+                    variant="primary" 
+                    className="min-w-55! text-lg text-[#fff] mt-8 py-6 px-2 text-center"
+                  />
+                  <div className="flex justify-center items-center gap-6 mt-6 ml-2">
+                    {socialLinks.map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label={social.label}
+                      >
+                        <social.icon className="w-5 h-5" />
+                      </a>
+                    ))}
+                    <a
+                      href="https://www.tiktok.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-[19px] stroke-muted-foreground hover:stroke-foreground transition-all">
+                        <path stroke="inherit" stroke-linejoin="round" d="M16 1.5h-3.5V16c0 1.5 -1.5 3 -3 3s-3 -0.5 -3 -3c0 -2 1.899 -3.339 3.5 -3V9.5c-6.12 0 -7 5 -7 6.5s0.977 6.5 6.5 6.5c4.522 0 6.5 -3.5 6.5 -6v-8c1.146 1.018 2.922 1.357 5 1.5V6.5c-3.017 0 -5 -2.654 -5 -5Z" stroke-width="1.8"></path>
+                      </svg>
+                    </a>
+                  </div>
+                  <div className="py-8 overflow-hidden marquee w-[70%]!">
+                    <div className="flex w-[70%]! animate-marquee whitespace-nowrap">
+                      {[...work, ...work].map((name, i) => (
+                        <span
+                          key={`${name}-${i}`}
+                          className="text-lg! font-medium mx-3 md:mx-6 text-foreground"
+                        >
+                          {name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
       </div>
     </nav>
   )

@@ -157,13 +157,77 @@ export async function getFoodMenu(onlyAvailable = true): Promise<FoodCategory[]>
 }
 
 export async function getAllMenus(onlyAvailable = true) {
-  const [regular, vip, food] = await Promise.all([
+  const [regular, vip, food, cocktails, mocktails] = await Promise.all([
     getRegularMenu(onlyAvailable),
     getVipMenu(onlyAvailable),
     getFoodMenu(onlyAvailable),
+    getCocktailsMenu(onlyAvailable),
+    getMocktailsMenu(onlyAvailable),
   ])
 
-  return { regular, vip, food };
+  return { regular, vip, food, cocktails, mocktails };
+}
+
+/**
+ * Fetch cocktails menu items grouped by category
+ */
+export async function getCocktailsMenu(onlyAvailable = true): Promise<MenuCategory[]> {
+  try {
+    const supabase = await createClient();
+
+    const { data: categories, error: categoriesError } = await supabase
+      .from('categories')
+      .select('id, name, slug, description, display_order')
+      .eq('slug', 'cocktails')
+      .order('display_order', { ascending: true });
+
+    if (categoriesError) throw categoriesError;
+
+    let query = supabase.from('menu_items_cocktails').select('*').order('display_order', { ascending: true });
+    if (onlyAvailable) query = query.eq('is_available', true);
+
+    const { data: items, error: itemsError } = await query;
+    if (itemsError) throw itemsError;
+
+    return (categories || []).map((category) => ({
+      ...category,
+      items: (items || []).filter((item) => item.category_id === category.id),
+    }));
+  } catch (error) {
+    console.error('[Menu Service] Error fetching cocktails menu:', error);
+    return [];
+  }
+}
+
+/**
+ * Fetch mocktails menu items grouped by category
+ */
+export async function getMocktailsMenu(onlyAvailable = true): Promise<MenuCategory[]> {
+  try {
+    const supabase = await createClient();
+
+    const { data: categories, error: categoriesError } = await supabase
+      .from('categories')
+      .select('id, name, slug, description, display_order')
+      .eq('slug', 'mocktails')
+      .order('display_order', { ascending: true });
+
+    if (categoriesError) throw categoriesError;
+
+    let query = supabase.from('menu_items_mocktails').select('*').order('display_order', { ascending: true });
+    if (onlyAvailable) query = query.eq('is_available', true);
+
+    const { data: items, error: itemsError } = await query;
+    if (itemsError) throw itemsError;
+
+    return (categories || []).map((category) => ({
+      ...category,
+      items: (items || []).filter((item) => item.category_id === category.id),
+    }));
+  } catch (error) {
+    console.error('[Menu Service] Error fetching mocktails menu:', error);
+    return [];
+  }
 }
 
 /**

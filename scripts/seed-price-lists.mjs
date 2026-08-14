@@ -75,6 +75,8 @@ async function seedViaApi() {
   await supabase.from("menu_items_food").delete().neq("id", "00000000-0000-0000-0000-000000000000")
   await supabase.from("menu_items_vip").delete().neq("id", "00000000-0000-0000-0000-000000000000")
   await supabase.from("menu_items").delete().neq("id", "00000000-0000-0000-0000-000000000000")
+  await supabase.from("menu_items_cocktails").delete().neq("id", "00000000-0000-0000-0000-000000000000")
+  await supabase.from("menu_items_mocktails").delete().neq("id", "00000000-0000-0000-0000-000000000000")
   await supabase.from("food_categories").delete().neq("id", "00000000-0000-0000-0000-000000000000")
   await supabase.from("categories").delete().neq("id", "00000000-0000-0000-0000-000000000000")
 
@@ -137,8 +139,31 @@ async function seedViaApi() {
     return rows
   }
 
+  const parseInsertsWithDescription = (table, categoryTable, slugToId) => {
+    const rows = []
+    const re = new RegExp(
+      `INSERT INTO ${table} \\(category_id, name, description, price, is_available, display_order\\) SELECT \\(SELECT id FROM ${categoryTable} WHERE slug = '([^']+)'\\), '([^']*(?:''[^']*)*)', '([^']*(?:''[^']*)*)', (\\d+), true, (\\d+);`,
+      "g"
+    )
+    let m
+    while ((m = re.exec(seedSql)) !== null) {
+      const slug = m[1]
+      rows.push({
+        category_id: slugToId[slug],
+        name: m[2].replace(/''/g, "'"),
+        description: m[3].replace(/''/g, "'"),
+        price: Number(m[4]),
+        is_available: true,
+        display_order: Number(m[5]),
+      })
+    }
+    return rows
+  }
+
   const downstairs = parseInserts("menu_items", "categories", drinkCatBySlug)
   const vip = parseInserts("menu_items_vip", "categories", drinkCatBySlug)
+  const cocktails = parseInsertsWithDescription("menu_items_cocktails", "categories", drinkCatBySlug)
+  const mocktails = parseInsertsWithDescription("menu_items_mocktails", "categories", drinkCatBySlug)
   const food = parseInserts("menu_items_food", "food_categories", foodCatBySlug)
 
   const chunk = async (table, rows) => {
@@ -150,6 +175,8 @@ async function seedViaApi() {
 
   await chunk("menu_items", downstairs)
   await chunk("menu_items_vip", vip)
+  await chunk("menu_items_cocktails", cocktails)
+  await chunk("menu_items_mocktails", mocktails)
   await chunk("menu_items_food", food)
 
   console.log(`Inserted downstairs: ${downstairs.length}, VIP: ${vip.length}, food: ${food.length}`)

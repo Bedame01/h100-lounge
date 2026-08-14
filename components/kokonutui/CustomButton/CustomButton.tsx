@@ -26,7 +26,7 @@ interface SlideTextButtonProps
 export default function SlideTextButton({
   text = "Browse Components",
   hoverText,
-  href = "/docs/components/liquid-glass-card",
+  href,
   className,
   variant = "default",
   ...props
@@ -45,24 +45,45 @@ export default function SlideTextButton({
       className="relative"
       initial={{ x: 200, opacity: 0 }}
     >
-      <Link
-        className={cn(
-          "group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-xs px-8 py-5.5 font-medium text-base tracking-tighter transition-all duration-300 md:min-w-48",
-          variantStyles,
-          className
-        )}
-        href={href}
-        {...props}
-      >
-        <span className="group-hover:-translate-y-full relative inline-block transition-transform duration-300 ease-in-out">
-          <span className="flex items-center gap-2 opacity-100 transition-opacity duration-300 group-hover:opacity-0">
-            <span className="font-medium">{text}</span>
+      {href ? (
+        <Link
+          className={cn(
+            "group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-xs px-8 py-5.5 font-medium text-base tracking-tighter transition-all duration-300 md:min-w-48",
+            variantStyles,
+            className
+          )}
+          href={href}
+          {...props}
+        >
+          <span className="group-hover:-translate-y-full relative inline-block transition-transform duration-300 ease-in-out">
+            <span className="flex items-center gap-2 opacity-100 transition-opacity duration-300 group-hover:opacity-0">
+              <span className="font-medium">{text}</span>
+            </span>
+            <span className="absolute top-full left-0 flex items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="font-medium">{slideText}</span>
+            </span>
           </span>
-          <span className="absolute top-full left-0 flex items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <span className="font-medium">{slideText}</span>
+        </Link>
+      ) : (
+        <button
+          type="button"
+          onClick={props.onClick}
+          className={cn(
+            "group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-xs px-8 py-5.5 font-medium text-base tracking-tighter transition-all duration-300 md:min-w-48",
+            variantStyles,
+            className
+          )}
+        >
+          <span className="group-hover:-translate-y-full relative inline-block transition-transform duration-300 ease-in-out">
+            <span className="flex items-center gap-2 opacity-100 transition-opacity duration-300 group-hover:opacity-0">
+              <span className="font-medium">{text}</span>
+            </span>
+            <span className="absolute top-full left-0 flex items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="font-medium">{slideText}</span>
+            </span>
           </span>
-        </span>
-      </Link>
+        </button>
+      )}
     </motion.div>
   );
 }

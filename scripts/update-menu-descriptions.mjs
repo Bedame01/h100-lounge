@@ -173,10 +173,17 @@ const DESCRIPTIONS = {
   Coleslaw: "Creamy cabbage and carrot salad.",
 }
 
-const TABLES = ["menu_items", "menu_items_vip", "menu_items_food"]
+const TABLES = [
+  "menu_items",
+  "menu_items_vip",
+  "menu_items_food",
+  "menu_items_cocktails",
+  "menu_items_mocktails",
+]
 
 async function updateTable(table) {
-  const { data: items, error } = await supabase.from(table).select("id, name, description")
+  // fetch items including category_id and image_url so we can set images based on category
+  const { data: items, error } = await supabase.from(table).select("id, name, description, image_url, category_id")
   if (error) throw new Error(`${table}: ${error.message}`)
 
   let updated = 0
@@ -184,27 +191,101 @@ async function updateTable(table) {
   const missing = []
 
   for (const item of items ?? []) {
-    const description = DESCRIPTIONS[item.name]
+    // Resolve description: use mapping or generate a short fallback
+    let description = DESCRIPTIONS[item.name]
     if (!description) {
-      missing.push(item.name)
-      continue
+      // simple generated fallback
+      description = `A delightful ${item.name} prepared by our team.`
     }
-    if (item.description === description) {
+
+    // Determine image URL if missing
+    let image_url = item.image_url
+    if (!image_url) {
+      // Basic keyword selection based on table or category
+      let keyword = "drink"
+      if (table === "menu_items_cocktails") keyword = "cocktail"
+      else if (table === "menu_items_mocktails") keyword = "mocktail,smoothie"
+      else if (table === "menu_items_food") keyword = "food,dish,meal"
+      else if (item.category_id) {
+        // try to map category slug to a friendly keyword
+        // fetch category slug - we'll lazily fetch below via a cached map
+        const slug = categoryById[item.category_id]
+        if (slug) {
+          switch (slug) {
+            case "soft-drinks":
+              keyword = "soft drink,soda"
+              break
+            case "energy-drinks":
+              keyword = "energy drink"
+              break
+            case "beer":
+              keyword = "beer"
+              break
+            case "vodka":
+              keyword = "vodka"
+              break
+            case "whisky":
+              keyword = "whisky"
+              break
+            case "tequila":
+              keyword = "tequila"
+              break
+            case "cognac":
+              keyword = "cognac,brandy"
+              break
+            case "sparkling-wine":
+            case "red-wine":
+            case "white-wine":
+              keyword = "wine"
+              break
+            case "cream":
+            case "liquor":
+              keyword = "liqueur"
+              break
+            default:
+              keyword = "drink"
+          }
+        }
+      }
+
+      image_url = `https://source.unsplash.com/800x600/?${encodeURIComponent(keyword)}`
+    }
+
+    // Skip if description and image already match
+    if (item.description === description && item.image_url) {
       skipped++
       continue
     }
-    const { error: updateError } = await supabase
-      .from(table)
-      .update({ description })
-      .eq("id", item.id)
-    if (updateError) throw new Error(`${table} ${item.name}: ${updateError.message}`)
-    updated++
+
+    const updateObj = { description }
+    if (!item.image_url) updateObj.image_url = image_url
+
+    try {
+      const { error: updateError } = await supabase.from(table).update(updateObj).eq("id", item.id)
+      if (updateError) {
+        // record and continue on per-item update errors
+        missing.push(`${item.name}: ${updateError.message}`)
+        console.warn(`Failed to update ${table} ${item.name}: ${updateError.message}`)
+        continue
+      }
+      updated++
+    } catch (err) {
+      // network or fetch error — log and continue
+      const msg = err?.message || String(err)
+      missing.push(`${item.name}: ${msg}`)
+      console.warn(`Error updating ${table} ${item.name}: ${msg}`)
+      continue
+    }
   }
 
   return { table, total: items?.length ?? 0, updated, skipped, missing }
 }
 
 const results = []
+// Build category id -> slug map to help pick image keywords
+const { data: _categories } = await supabase.from('categories').select('id, slug')
+const categoryById = Object.fromEntries((_categories || []).map((c) => [c.id, c.slug]))
+
 for (const table of TABLES) {
   results.push(await updateTable(table))
 }

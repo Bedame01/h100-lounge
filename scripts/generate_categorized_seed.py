@@ -105,44 +105,54 @@ FOOD_CATEGORIES = [
 ]
 
 FOOD_ITEMS = [
-    ("Goat Meat Pepper Soup", 7500, "pepper-soup"),
-    ("Turkey Pepper Soup", 7000, "pepper-soup"),
-    ("Assorted Pepper Soup", 7000, "pepper-soup"),
-    ("Catfish Pepper Soup", 10000, "pepper-soup"),
-    ("Croaker Fish Pepper Soup", 10000, "pepper-soup"),
-    ("Owere Pepper Soup", 12000, "pepper-soup"),
-    ("Chicken", 6000, "small-chops"),
-    ("Peppered Turkey", 7000, "small-chops"),
-    ("Peppered Beef", 6000, "small-chops"),
-    ("Gizzard", 6000, "small-chops"),
-    ("Spicy Wings", 6000, "small-chops"),
-    ("Peppered Snail", 7000, "small-chops"),
-    ("Bbq Wings", 6000, "small-chops"),
-    ("Spicy Fish", 7000, "small-chops"),
-    ("Giz-Dodo", 7000, "small-chops"),
-    ("Jollof Rice And Chicken/beef", 8500, "rice"),
-    ("Jollof Rice And Turkey/fish/goat Meat", 9000, "rice"),
-    ("Fried Rice And Chicken/beef", 8500, "rice"),
-    ("Fried Rice And Turkey/fish/goat Meat", 9000, "rice"),
-    ("Chicken And Chips", 8500, "main-dishes"),
-    ("Turkey And Chips", 9000, "main-dishes"),
-    ("Chicken Shawarma", 6000, "main-dishes"),
+    # Soups
+    ("Goat Meat Pepper Soup", 10000, "pepper-soup"),
+    ("Turkey Pepper Soup", 10000, "pepper-soup"),
+    ("Assorted Pepper Soup", 9000, "pepper-soup"),
+    ("Catfish Pepper Soup", 15000, "pepper-soup"),
+    ("Croaker Fish Pepper Soup", 16500, "pepper-soup"),
+    ("Owere Pepper Soup", 13000, "pepper-soup"),
+
+    # Quick Bites
+    ("Chicken", 8000, "small-chops"),
+    ("Peppered Turkey", 9000, "small-chops"),
+    ("Peppered Beef", 8000, "small-chops"),
+    ("Gizzard", 8000, "small-chops"),
+    ("Spicy Wings", 7000, "small-chops"),
+    ("Peppered Snail", 10000, "small-chops"),
+    ("Buffalo Wing (BBQ Sauce)", 8000, "small-chops"),
+    ("Spicy Fish", 10000, "small-chops"),
+    ("Giz-Dodo", 10000, "small-chops"),
+    ("Chicken And Chips", 11000, "small-chops"),
+    ("Turkey And Chips", 12000, "small-chops"),
+    ("Double Sausage Chicken Shawarma", 7000, "small-chops"),
+    ("Double Sausage Beef Shawarma", 7000, "small-chops"),
+
+    # Rice
+    ("Jollof Rice And Chicken/Beef", 11000, "rice"),
+    ("Jollof Rice And Turkey/Fish/Goat Meat", 12000, "rice"),
+    ("Fried Rice And Chicken/beef", 11000, "rice"),
+    ("Fried Rice And Turkey/fish/goat Meat", 12000, "rice"),
+
+    # Pasta
     ("Chicken Stir Fry Pasta", 12000, "main-dishes"),
     ("Beef Stir Fry Pasta", 12000, "main-dishes"),
-    ("Special Noodles", 10000, "main-dishes"),
-    ("Native Rice With Any Protein Of Choices", 12000, "main-dishes"),
-    (
-        "Mini Platter {Gizzard, Wings, Chicken, Yam Chips, Spring Rolls, Sausage, Coleslaw}",
-        30000,
-        "platters",
-    ),
+    ("H100 Special Stir Fry Noodles", 10000, "main-dishes"),
+
+    # Sides
     ("White Rice", 2500, "sides"),
-    ("Special Fried Rice", 3000, "sides"),
-    ("Chips", 2500, "sides"),
-    ("Plantain", 2500, "sides"),
+    ("Special Fried Rice", 4000, "sides"),
+    ("Chips", 3000, "sides"),
+    ("Plantain", 2000, "sides"),
     ("Yam Chips", 3000, "sides"),
-    ("Extra Jollof Rice", 2500, "sides"),
+    ("Extra Jollof Rice", 3000, "sides"),
     ("Coleslaw", 2500, "sides"),
+    ("Fried / Boil Egg", 1000, "sides"),
+    ("Yamarita", 6000, "sides"),
+
+    # Platters
+    ("Native Rice With Any Protein Of Choices", 15000, "platters"),
+    ("H100 Special Platter {Gizzard, BBQ Wings, Chickens, Chips, Sausage, Coleslaw}", 35000, "platters"),
 ]
 
 

@@ -8,13 +8,17 @@ import ScrollUp from "@/components/menu-scroll-to-top"
 import { getAllMenus } from "@/lib/menu-service"
 
 async function MenuContent() {
-  const { regular, vip, food } = await getAllMenus()
+  const { regular, vip, food, cocktails, mocktails } = await getAllMenus()
 
   const categories = regular.map(({ items: _items, ...category }) => category)
   const regularItems = regular.flatMap((category) => category.items)
   const vipItems = vip.flatMap((category) => category.items)
   const foodCategories = food.map(({ items: _items, ...category }) => category)
   const foodItems = food.flatMap((category) => category.items)
+  const cocktailsCategories = cocktails.map(({ items: _items, ...category }) => category)
+  const cocktailsItems = cocktails.flatMap((category) => category.items)
+  const mocktailsCategories = mocktails.map(({ items: _items, ...category }) => category)
+  const mocktailsItems = mocktails.flatMap((category) => category.items)
 
   if (categories.length === 0 && foodCategories.length === 0) {
     return (
@@ -33,6 +37,10 @@ async function MenuContent() {
       vipItems={vipItems}
       foodCategories={foodCategories}
       foodItems={foodItems}
+      cocktailsCategories={cocktailsCategories}
+      cocktailsItems={cocktailsItems}
+      mocktailsCategories={mocktailsCategories}
+      mocktailsItems={mocktailsItems}
     />
   )
 }
@@ -65,13 +73,13 @@ export default function MenuPage() {
       <ScrollUp />
 
       <div className="pt-16">
-        <section className="backdrop-blur supports-[backdrop-filter]:bg-background/65 pt-16 md:pt-26 pb-6 md:pb-10! mb-5 border-b border-border">
+        <section className="backdrop-blur supports-[backdrop-filter]:bg-background/65 pt-16 md:pt-26 pb-6 md:pb-10! border-b border-border">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-6xl sm:text-7xl tracking-tighter font-semibold mb-4 ">
+            <h1 className="title tracking-tighter font-semibold mb-4 ">
               Price<span className="font-serif italic text-accent font-medium tracking-tighter">List.</span>
             </h1>
-            <p className="text-sm/snug max-w-2xl mx-auto text-pretty">
-              Our List is packed with refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful Dishes. Explore our exquisite list.
+            <p className="desc max-w-2xl mx-auto text-pretty">
+              Our List includes refreshing cocktails, premium spirits, chilled wines, smooth champagnes, and flavorful Dishes. Explore 😋🍷.
             </p>
             <div className="allergiesInform flex items-center justify-center gap-2 max-w-lg mx-auto mt-6 bg-accent/5 py-2 px-4 border-accent/10 border rounded-full">
               <svg
@@ -91,7 +99,7 @@ export default function MenuPage() {
                   ></path>
                 </g>
               </svg>
-              <p className="text-xs text-foreground/80 font-bold">Please inform staff of any allergies</p>
+              <p className="text-sm text-foreground/80 font-medium">Please inform staff of any allergies</p>
             </div>
           </div>
         </section>
