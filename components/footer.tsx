@@ -20,7 +20,7 @@ export function Footer() {
                 <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15" />
               )}
             </Link>
-            <p className="text-muted-foreground text-sm text-pretty">
+            <p className="text-muted-foreground text-base text-pretty">
               A sanctuary of sophistication where every day becomes an occasion. Relax, Refresh and Repeat.
             </p>
           </div>
@@ -28,10 +28,10 @@ export function Footer() {
           <div>
             <h4 className="font-medium mb-4 textDisplay">Quick Links</h4>
             <div className="flex flex-col gap-2">
-              <Link href="/menu" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/menu" className="text-base text-muted-foreground hover:text-foreground transition-colors">
                 Menu
               </Link>
-              <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/about" className="text-base text-muted-foreground hover:text-foreground transition-colors">
                 About
               </Link>
               {/* <Link
@@ -40,7 +40,7 @@ export function Footer() {
               >
                 Reservations
               </Link> */}
-              <Link href="/faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/faq" className="text-base text-muted-foreground hover:text-foreground transition-colors">
                 FAQ
               </Link>
             </div>
@@ -49,12 +49,12 @@ export function Footer() {
           <div>
             <h4 className="font-medium mb-4 textDisplay">Legal</h4>
             <div className="flex flex-col gap-2">
-              <Link href="/policy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="/policy" className="text-base text-muted-foreground hover:text-foreground transition-colors">
                 Privacy & Terms
               </Link>
               <Link
                 href="/admin/login"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-base text-muted-foreground hover:text-foreground transition-colors"
               >
                 Admin Portal
               </Link>
