@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { AdminNav } from "@/components/admin-nav"
 import { MenuManager } from "@/components/menu-manager"
-import { getRegularMenu, getVipMenu, getFoodMenu } from "@/lib/menu-service"
+import { getRegularMenu, getVipMenu, getFoodMenu, getCocktailsMenu, getMocktailsMenu } from "@/lib/menu-service"
 
 export default async function AdminMenuPage() {
   const supabase = await import("@/lib/supabase/server").then((mod) => mod.createClient())
@@ -21,10 +21,12 @@ export default async function AdminMenuPage() {
     redirect("/")
   }
 
-  const [regular, vip, food] = await Promise.all([
+  const [regular, vip, food, cocktails, mocktails] = await Promise.all([
     getRegularMenu(false),
     getVipMenu(false),
     getFoodMenu(false),
+    getCocktailsMenu(false),
+    getMocktailsMenu(false),
   ])
 
   const categories = regular.map(({ items: _items, ...category }) => category)
@@ -32,6 +34,10 @@ export default async function AdminMenuPage() {
   const vipItems = vip.flatMap((category) => category.items)
   const foodCategories = food.map(({ items: _items, ...category }) => category)
   const foodItems = food.flatMap((category) => category.items)
+  const cocktailsCategories = cocktails.map(({ items: _items, ...category }) => category)
+  const cocktailsItems = cocktails.flatMap((category) => category.items)
+  const mocktailsCategories = mocktails.map(({ items: _items, ...category }) => category)
+  const mocktailsItems = mocktails.flatMap((category) => category.items)
 
   return (
     <div className="min-h-screen bg-background">
@@ -51,6 +57,10 @@ export default async function AdminMenuPage() {
           vipItems={vipItems}
           foodCategories={foodCategories}
           foodItems={foodItems}
+          cocktailsCategories={cocktailsCategories}
+          cocktailsItems={cocktailsItems}
+          mocktailsCategories={mocktailsCategories}
+          mocktailsItems={mocktailsItems}
         />
       </main>
     </div>

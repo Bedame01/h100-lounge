@@ -31,6 +31,10 @@ interface MenuManagerProps {
   vipItems: MenuItem[]
   foodCategories: MenuCategoryMeta[]
   foodItems: MenuItem[]
+  cocktailsCategories: MenuCategoryMeta[]
+  cocktailsItems: MenuItem[]
+  mocktailsCategories: MenuCategoryMeta[]
+  mocktailsItems: MenuItem[]
 }
 
 export function MenuManager({
@@ -39,17 +43,34 @@ export function MenuManager({
   vipItems: initialVipItems,
   foodCategories: initialFoodCategories,
   foodItems: initialFoodItems,
+  cocktailsCategories: initialCocktailsCategories,
+  cocktailsItems: initialCocktailsItems,
+  mocktailsCategories: initialMocktailsCategories,
+  mocktailsItems: initialMocktailsItems,
 }: MenuManagerProps) {
-  const [activeTab, setActiveTab] = useState<"regular" | "vip" | "food">("regular")
+  const [activeTab, setActiveTab] = useState<"regular" | "vip" | "food" | "cocktails" | "mocktails">("regular")
   const [categories, setCategories] = useState(initialCategories)
   const [regularItems, setRegularItems] = useState(initialRegularItems)
   const [vipItems, setVipItems] = useState(initialVipItems)
   const [foodCategories, setFoodCategories] = useState(initialFoodCategories)
   const [foodItems, setFoodItems] = useState(initialFoodItems)
+  const [cocktailsCategories, setCocktailsCategories] = useState(initialCocktailsCategories)
+  const [cocktailsItems, setCocktailsItems] = useState(initialCocktailsItems)
+  const [mocktailsCategories, setMocktailsCategories] = useState(initialMocktailsCategories)
+  const [mocktailsItems, setMocktailsItems] = useState(initialMocktailsItems)
   const { toast } = useToast()
 
   const categoryTable = activeTab === "food" ? "food_categories" : "categories"
-  const itemTable = activeTab === "food" ? "menu_items_food" : activeTab === "vip" ? "menu_items_vip" : "menu_items"
+  const itemTable =
+    activeTab === "food"
+      ? "menu_items_food"
+      : activeTab === "vip"
+        ? "menu_items_vip"
+        : activeTab === "cocktails"
+          ? "menu_items_cocktails"
+          : activeTab === "mocktails"
+            ? "menu_items_mocktails"
+            : "menu_items"
 
   const handleToggleAvailability = async (id: string, currentStatus: boolean, table: string) => {
     const result = await toggleMenuItemAvailability(id, !currentStatus, table as any)
@@ -60,6 +81,8 @@ export function MenuManager({
       if (table === "menu_items") setRegularItems(updater)
       if (table === "menu_items_vip") setVipItems(updater)
       if (table === "menu_items_food") setFoodItems(updater)
+      if (table === "menu_items_cocktails") setCocktailsItems(updater)
+      if (table === "menu_items_mocktails") setMocktailsItems(updater)
 
       toast({
         title: "Success",
@@ -75,6 +98,8 @@ export function MenuManager({
       if (table === "menu_items") setRegularItems((prev) => prev.filter((item) => item.id !== id))
       if (table === "menu_items_vip") setVipItems((prev) => prev.filter((item) => item.id !== id))
       if (table === "menu_items_food") setFoodItems((prev) => prev.filter((item) => item.id !== id))
+      if (table === "menu_items_cocktails") setCocktailsItems((prev) => prev.filter((item) => item.id !== id))
+      if (table === "menu_items_mocktails") setMocktailsItems((prev) => prev.filter((item) => item.id !== id))
 
       toast({
         title: "Success",
@@ -89,6 +114,38 @@ export function MenuManager({
     }
   }
 
+  const upsertCategory = (category: MenuCategoryMeta, table: string) => {
+    if (table === "categories") {
+      setCategories((prev) => {
+        const exists = prev.some((cat) => cat.id === category.id)
+        return exists ? prev.map((cat) => (cat.id === category.id ? category : cat)) : [...prev, category]
+      })
+      setCocktailsCategories((prev) => {
+        const exists = prev.some((cat) => cat.id === category.id)
+        return exists ? prev.map((cat) => (cat.id === category.id ? category : cat)) : [...prev, category]
+      })
+      setMocktailsCategories((prev) => {
+        const exists = prev.some((cat) => cat.id === category.id)
+        return exists ? prev.map((cat) => (cat.id === category.id ? category : cat)) : [...prev, category]
+      })
+    }
+
+    if (table === "food_categories") {
+      setFoodCategories((prev) => {
+        const exists = prev.some((cat) => cat.id === category.id)
+        return exists ? prev.map((cat) => (cat.id === category.id ? category : cat)) : [...prev, category]
+      })
+    }
+  }
+
+  const upsertMenuItem = (item: MenuItem, table: string) => {
+    if (table === "menu_items") setRegularItems((prev) => (prev.some((entry) => entry.id === item.id) ? prev.map((entry) => (entry.id === item.id ? item : entry)) : [...prev, item]))
+    if (table === "menu_items_vip") setVipItems((prev) => (prev.some((entry) => entry.id === item.id) ? prev.map((entry) => (entry.id === item.id ? item : entry)) : [...prev, item]))
+    if (table === "menu_items_food") setFoodItems((prev) => (prev.some((entry) => entry.id === item.id) ? prev.map((entry) => (entry.id === item.id ? item : entry)) : [...prev, item]))
+    if (table === "menu_items_cocktails") setCocktailsItems((prev) => (prev.some((entry) => entry.id === item.id) ? prev.map((entry) => (entry.id === item.id ? item : entry)) : [...prev, item]))
+    if (table === "menu_items_mocktails") setMocktailsItems((prev) => (prev.some((entry) => entry.id === item.id) ? prev.map((entry) => (entry.id === item.id ? item : entry)) : [...prev, item]))
+  }
+
   const handleDeleteCategory = async (id: string, table: string) => {
     const result = await deleteCategory(id, table as any)
 
@@ -97,6 +154,10 @@ export function MenuManager({
         setCategories((prev) => prev.filter((cat) => cat.id !== id))
         setRegularItems((prev) => prev.filter((item) => item.category_id !== id))
         setVipItems((prev) => prev.filter((item) => item.category_id !== id))
+        setCocktailsCategories((prev) => prev.filter((cat) => cat.id !== id))
+        setCocktailsItems((prev) => prev.filter((item) => item.category_id !== id))
+        setMocktailsCategories((prev) => prev.filter((cat) => cat.id !== id))
+        setMocktailsItems((prev) => prev.filter((item) => item.category_id !== id))
       }
 
       if (table === "food_categories") {
@@ -130,7 +191,11 @@ export function MenuManager({
             <Plus className="mx-auto h-16 w-16 mb-4 text-muted-foreground opacity-20" />
             <h3 className="text-lg font-semibold mb-2">No categories yet</h3>
             <p className="text-sm text-muted-foreground mb-4">Create a category to organize your menu items.</p>
-            <CategoryDialog mode="create" table={renderCategoryTable as any} />
+            <CategoryDialog
+              mode="create"
+              table={renderCategoryTable as any}
+              onSuccess={(nextCategory) => upsertCategory(nextCategory, renderCategoryTable)}
+            />
           </CardContent>
         </Card>
       )
@@ -148,7 +213,12 @@ export function MenuManager({
                 {category.description && <p className="text-sm text-muted-foreground">{category.description}</p>}
               </div>
               <div className="flex items-center gap-1 flex-wrap">
-                <CategoryDialog mode="edit" category={category} table={renderCategoryTable as any} />
+                <CategoryDialog
+                  mode="edit"
+                  category={category}
+                  table={renderCategoryTable as any}
+                  onSuccess={(nextCategory) => upsertCategory(nextCategory, renderCategoryTable)}
+                />
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
                     <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive/10">
@@ -174,7 +244,12 @@ export function MenuManager({
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>
-                <MenuItemDialog mode="create" categories={renderCategories} table={renderItemTable as any} />
+                <MenuItemDialog
+                  mode="create"
+                  categories={renderCategories}
+                  table={renderItemTable as any}
+                  onSuccess={(nextItem) => upsertMenuItem(nextItem, renderItemTable)}
+                />
               </div>
             </div>
           </CardHeader>
@@ -183,7 +258,12 @@ export function MenuManager({
               <div className="text-center py-8 text-muted-foreground">
                 <UtensilsCrossed className="mx-auto h-12 w-12 mb-2 opacity-20" />
                 <p className="text-sm">No items in this category</p>
-                <MenuItemDialog mode="create" categories={renderCategories} table={renderItemTable as any} />
+                <MenuItemDialog
+                  mode="create"
+                  categories={renderCategories}
+                  table={renderItemTable as any}
+                  onSuccess={(nextItem) => upsertMenuItem(nextItem, renderItemTable)}
+                />
               </div>
             ) : (
               <div className="space-y-4">
@@ -217,7 +297,13 @@ export function MenuManager({
                           onCheckedChange={() => handleToggleAvailability(item.id, item.is_available, renderItemTable)}
                         />
                       </div>
-                      <MenuItemDialog mode="edit" categories={renderCategories} menuItem={item} table={renderItemTable as any} />
+                      <MenuItemDialog
+                        mode="edit"
+                        categories={renderCategories}
+                        menuItem={item}
+                        table={renderItemTable as any}
+                        onSuccess={(nextItem) => upsertMenuItem(nextItem, renderItemTable)}
+                      />
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button variant="ghost" size="sm" className="text-destructive ml-0 pl-0 hover:text-destructive">
@@ -260,14 +346,20 @@ export function MenuManager({
           <h2 className="text-2xl font-serif font-medium">Menu Management</h2>
           <p className="text-sm text-muted-foreground">Manage regular, VIP, and food menu entries in one place.</p>
         </div> */}
-        <CategoryDialog mode="create" table={categoryTable} />
+        <CategoryDialog
+          mode="create"
+          table={categoryTable}
+          onSuccess={(nextCategory) => upsertCategory(nextCategory, categoryTable)}
+        />
       </div>
 
-      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "regular" | "vip" | "food")}>
+      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "regular" | "vip" | "food" | "cocktails" | "mocktails")}>
         <TabsList>
           <TabsTrigger value="regular">Regular Menu</TabsTrigger>
           <TabsTrigger value="vip">VIP Menu</TabsTrigger>
           <TabsTrigger value="food">Food Menu</TabsTrigger>
+          <TabsTrigger value="cocktails">Cocktails</TabsTrigger>
+          <TabsTrigger value="mocktails">Mocktails</TabsTrigger>
         </TabsList>
 
         <TabsContent value="regular">
@@ -278,6 +370,12 @@ export function MenuManager({
         </TabsContent>
         <TabsContent value="food">
           {renderCategoryCards(foodCategories, foodItems, "food_categories", "menu_items_food")}
+        </TabsContent>
+        <TabsContent value="cocktails">
+          {renderCategoryCards(cocktailsCategories, cocktailsItems, "categories", "menu_items_cocktails")}
+        </TabsContent>
+        <TabsContent value="mocktails">
+          {renderCategoryCards(mocktailsCategories, mocktailsItems, "categories", "menu_items_mocktails")}
         </TabsContent>
       </Tabs>
     </div>

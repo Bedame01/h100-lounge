@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import {
   Dialog,
   DialogContent,
@@ -18,7 +19,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Plus, Edit } from "lucide-react"
-import { createMenuItem, updateMenuItem } from "@/app/actions/admin"
+import { createMenuItem, updateMenuItem, type MenuItemTable } from "@/app/actions/admin"
 import { useToast } from "@/hooks/use-toast"
 import { ImageUpload } from "@/components/image-upload"
 
@@ -44,11 +45,14 @@ interface MenuItemDialogProps {
   categories: Category[]
   menuItem?: MenuItem
   mode: "create" | "edit"
+  table?: MenuItemTable
+  onSuccess?: (item: MenuItem) => void
 }
 
-export function MenuItemDialog({ categories, menuItem, mode }: MenuItemDialogProps) {
+export function MenuItemDialog({ categories, menuItem, mode, table = "menu_items", onSuccess }: MenuItemDialogProps) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: menuItem?.name || "",
     description: menuItem?.description || "",
@@ -71,20 +75,18 @@ export function MenuItemDialog({ categories, menuItem, mode }: MenuItemDialogPro
       .map((b) => b.trim().toUpperCase())
       .filter((b) => b.length > 0)
 
+    const payload = {
+      ...formData,
+      price: Number.parseFloat(formData.price),
+      badges: badgesArray,
+      image_url: formData.image_url || null,
+      table,
+    }
+
     const result =
       mode === "create"
-        ? await createMenuItem({
-            ...formData,
-            price: Number.parseFloat(formData.price),
-            badges: badgesArray,
-            image_url: formData.image_url || null,
-          })
-        : await updateMenuItem(menuItem!.id, {
-            ...formData,
-            price: Number.parseFloat(formData.price),
-            badges: badgesArray,
-            image_url: formData.image_url || null,
-          })
+        ? await createMenuItem(payload)
+        : await updateMenuItem(menuItem!.id, payload)
 
     if (result.error) {
       toast({
@@ -93,10 +95,13 @@ export function MenuItemDialog({ categories, menuItem, mode }: MenuItemDialogPro
         variant: "destructive",
       })
     } else {
+      const savedItem = result.data as MenuItem
       toast({
         title: "Success",
         description: `Menu item ${mode === "create" ? "created" : "updated"} successfully`,
       })
+      onSuccess?.(savedItem)
+      router.refresh()
       setOpen(false)
     }
 

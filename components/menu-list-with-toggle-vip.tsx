@@ -31,7 +31,7 @@ export function MenuListWithToggle({
   mocktailsItems = [],
 }: MenuListWithToggleProps) {
   const [menuType, setMenuType] = useState<MenuListType>("drinks")
-  const [isVip, setIsVip] = useState(false)
+  const [isVip, setIsVip] = useState(true)
   const [showSpecial, setShowSpecial] = useState<'none' | 'cocktails' | 'mocktails'>('none')
 
   const isDrinks = menuType === "drinks"

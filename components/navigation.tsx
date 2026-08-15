@@ -14,12 +14,13 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import logoLight from '@/public/icons/logo-white.png'
 import logoDark from '@/public/icons/logo-black.png'
 
-const work = ["H100 LOUNGE AND BAR ✦", "100% RELAX, REFRESH AND REPEAT", "H100 LOUNGE AND BAR ✦", "100% RELAX, REFRESH AND REPEAT"];
+const work = ["H100 LOUNGE AND BAR ✦ 100% RELAX, REFRESH AND REPEAT", "H100 LOUNGE AND BAR ✦ 100% RELAX, REFRESH AND REPEAT", "H100 LOUNGE AND BAR ✦ 100% RELAX, REFRESH AND REPEAT"];
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/menu", label: "Price List" },
+  { href: "/menu", label: "Menu" },
+  { href: "/menuvip", label: "Vip Menu" },
   { href: "/faq", label: "FAQ" },
 ]
 
@@ -56,7 +57,7 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "md:text-[12.5px] lg:text-[13.6px] font-medium transition-colors hover:text-foreground uppercase",
+                  "md:text-[12.5px] lg:text-sm font-medium transition-colors hover:text-foreground uppercase",
                   pathname === link.href 
                     ? "text-accent"
                     : "text-muted-foreground",
@@ -107,90 +108,10 @@ export function Navigation() {
               />
             </button>
           </div>
-
-          
-            {/* <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <button
-                  className="flex flex-col gap-1.5 w-8.5 mr-2"
-                  aria-label="Toggle menu"
-                >
-                  <span
-                    className={`block h-0.5 bg-foreground transition-transform ${
-                      isMenuOpen ? "-rotate-20 translate-y-1" : ""
-                    }`}
-                  />
-                  <span
-                    className={`block h-0.5 bg-foreground transition-transform ${
-                      isMenuOpen ? "rotate-20 -translate-y-1" : ""
-                    }`}
-                  />
-                </button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px]">
-                <SheetHeader>
-                  <SheetTitle className="text-left">
-                    <Link href="/" className="mt-2 inline-flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-                      {theme === "dark" ? (
-                        <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15" />
-                      ) : (
-                        <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15" />
-                      )}
-                    </Link>
-                  </SheetTitle>
-                </SheetHeader>
-                <nav className="flex flex-col gap-4 mt-6 px-3">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={cn(
-                        "text-2xl font-medium uppercase transition-colors hover:text-foreground py-2 tracking-tight",
-                        pathname === link.href ? "text-accent" : "text-muted-foreground",
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                  <div className="border-t pt-8 mt-5">
-                    <CustomButton 
-                      text="Make Reservation" 
-                      href="tel:08080090090" 
-                      variant="primary" 
-                      className="min-w-full! py-6 px-1 text-sm text-center uppercase text-[#fff]!"
-                      onClick={() => setIsMenuOpen(false)}
-                    />
-                  </div>
-                  <div className="flex justify-center items-center gap-6 mt-6 ml-2">
-                    {socialLinks.map((social) => (
-                      <a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label={social.label}
-                      >
-                        <social.icon className="w-5 h-5" />
-                      </a>
-                    ))}
-                    <a
-                      href="https://www.tiktok.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="size-[19px] stroke-muted-foreground hover:stroke-foreground transition-all">
-                        <path stroke="inherit" stroke-linejoin="round" d="M16 1.5h-3.5V16c0 1.5 -1.5 3 -3 3s-3 -0.5 -3 -3c0 -2 1.899 -3.339 3.5 -3V9.5c-6.12 0 -7 5 -7 6.5s0.977 6.5 6.5 6.5c4.522 0 6.5 -3.5 6.5 -6v-8c1.146 1.018 2.922 1.357 5 1.5V6.5c-3.017 0 -5 -2.654 -5 -5Z" stroke-width="1.8"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet> */}
         </div>
-        <AnimatePresence>
+        
+      </div>
+      <AnimatePresence>
             {menuOpen && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
@@ -204,8 +125,8 @@ export function Navigation() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
-                      className={`text-5xl! hover:text-foreground/60 text-display font-semibold tracking-tighter uppercase ${
-                        pathname === item.href ? "text-foreground/60" : "text-foreground"
+                      className={`text-5xl! hover:text-foreground/60 text-display textDisplay uppercase font-medium tracking-tight ${
+                        pathname === item.href ? "text-foreground/60!" : "text-foreground"
                       }`}
                     >
                       {item.label}
@@ -243,8 +164,8 @@ export function Navigation() {
                       </svg>
                     </a>
                   </div>
-                  <div className="py-8 overflow-hidden marquee w-[70%]!">
-                    <div className="flex w-[70%]! animate-marquee whitespace-nowrap">
+                  <div className="py-8 overflow-hidden marquee ">
+                    <div className="flex animate-marquee whitespace-nowrap">
                       {[...work, ...work].map((name, i) => (
                         <span
                           key={`${name}-${i}`}
@@ -259,7 +180,6 @@ export function Navigation() {
               </motion.div>
             )}
           </AnimatePresence>
-      </div>
     </nav>
   )
 }

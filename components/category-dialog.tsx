@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import {
   Dialog,
   DialogContent,
@@ -30,11 +31,13 @@ interface CategoryDialogProps {
   category?: Category
   mode: "create" | "edit"
   table?: "categories" | "food_categories"
+  onSuccess?: (category: Category) => void
 }
 
-export function CategoryDialog({ category, mode, table = "categories" }: CategoryDialogProps) {
+export function CategoryDialog({ category, mode, table = "categories", onSuccess }: CategoryDialogProps) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: category?.name || "",
     slug: category?.slug || "",
@@ -58,10 +61,13 @@ export function CategoryDialog({ category, mode, table = "categories" }: Categor
         variant: "destructive",
       })
     } else {
+      const savedCategory = result.data as Category
       toast({
         title: "Success",
         description: `Category ${mode === "create" ? "created" : "updated"} successfully`,
       })
+      onSuccess?.(savedCategory)
+      router.refresh()
       setOpen(false)
     }
 

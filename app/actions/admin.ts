@@ -5,33 +5,38 @@ import { revalidatePath } from "next/cache"
 import { resend, FROM_EMAIL, isResendConfigured } from "@/lib/resend"
 import { getApprovalEmail, getCancellationEmail, formatSeatingArea } from "@/lib/emailTemplates"
 
-type MenuItemTable = "menu_items" | "menu_items_vip" | "menu_items_food"
-type CategoryTable = "categories" | "food_categories"
+export type MenuItemTable =
+  | "menu_items"
+  | "menu_items_vip"
+  | "menu_items_food"
+  | "menu_items_cocktails"
+  | "menu_items_mocktails"
+export type CategoryTable = "categories" | "food_categories"
 
 export async function updateReservationStatus(reservationId: string, status: "pending" | "confirmed" | "cancelled") {
   const supabase = await createClient()
 
-  console.log("[v0] updateReservationStatus called with:", { reservationId, status })
-  console.log("[v0] isResendConfigured:", isResendConfigured)
-  console.log("[v0] resend instance:", resend ? "exists" : "null")
+  console.log("updateReservationStatus called with:", { reservationId, status })
+  console.log("isResendConfigured:", isResendConfigured)
+  console.log("resend instance:", resend ? "exists" : "null")
 
   const { data: reservation, error: fetchError } = await supabase.from("reservations").select("*").eq("id", reservationId).single()
 
   if (fetchError) {
-    console.error("[v0] Fetch reservation error:", fetchError)
+    console.error("Fetch reservation error:", fetchError)
     return { error: "Failed to fetch reservation" }
   }
 
-  console.log("[v0] Reservation fetched:", { id: reservation?.id, email: reservation?.guest_email, name: reservation?.guest_name })
+  console.log("Reservation fetched:", { id: reservation?.id, email: reservation?.guest_email, name: reservation?.guest_name })
 
   const { error } = await supabase.from("reservations").update({ status }).eq("id", reservationId)
 
   if (error) {
-    console.error("[v0] Update reservation status error:", error)
+    console.error("Update reservation status error:", error)
     return { error: "Failed to update reservation status" }
   }
 
-  console.log("[v0] Reservation updated successfully. Status:", status)
+  console.log("Reservation updated successfully. Status:", status)
 
   if (reservation && isResendConfigured && resend) {
     try {
@@ -42,11 +47,11 @@ export async function updateReservationStatus(reservationId: string, status: "pe
         day: "numeric",
       })
 
-      console.log("[v0] Attempting to send email to:", reservation.guest_email)
-      console.log("[v0] FROM_EMAIL:", FROM_EMAIL)
+      console.log("Attempting to send email to:", reservation.guest_email)
+      console.log("FROM_EMAIL:", FROM_EMAIL)
 
       if (status === "confirmed") {
-        console.log("[v0] Sending confirmation email...")
+        console.log("Sending confirmation email...")
         const confirmResult = await resend.emails.send({
           from: FROM_EMAIL,
           to: reservation.guest_email,
@@ -60,9 +65,9 @@ export async function updateReservationStatus(reservationId: string, status: "pe
             specialRequests: reservation.special_requests || undefined,
           }),
         })
-        console.log("[v0] Confirmation email response:", confirmResult)
+        console.log("Confirmation email response:", confirmResult)
       } else if (status === "cancelled") {
-        console.log("[v0] Sending cancellation email...")
+        console.log("Sending cancellation email...")
         const cancelResult = await resend.emails.send({
           from: FROM_EMAIL,
           to: reservation.guest_email,
@@ -73,17 +78,17 @@ export async function updateReservationStatus(reservationId: string, status: "pe
             time: reservation.reservation_time,
           }),
         })
-        console.log("[v0] Cancellation email response:", cancelResult)
+        console.log("Cancellation email response:", cancelResult)
       }
     } catch (emailError) {
-      console.error("[v0] Failed to send email - Full error:", emailError)
+      console.error("Failed to send email - Full error:", emailError)
       if (emailError instanceof Error) {
-        console.error("[v0] Error message:", emailError.message)
-        console.error("[v0] Error stack:", emailError.stack)
+        console.error("Error message:", emailError.message)
+        console.error("Error stack:", emailError.stack)
       }
     }
   } else {
-    console.log("[v0] Email sending skipped - reservation:", !!reservation, "resendConfigured:", isResendConfigured, "resend:", !!resend)
+    console.log("Email sending skipped - reservation:", !!reservation, "resendConfigured:", isResendConfigured, "resend:", !!resend)
   }
 
   revalidatePath("/admin/reservations")
@@ -98,7 +103,7 @@ export async function deleteReservation(reservationId: string) {
   const { error } = await supabase.from("reservations").delete().eq("id", reservationId)
 
   if (error) {
-    console.error("[v0] Delete reservation error:", error)
+    console.error("Delete reservation error:", error)
     return { error: "Failed to delete reservation" }
   }
 
@@ -118,7 +123,7 @@ export async function toggleMenuItemAvailability(
   const { error } = await supabase.from(table).update({ is_available: isAvailable }).eq("id", menuItemId)
 
   if (error) {
-    console.error("[v0] Toggle menu item availability error:", error)
+    console.error("Toggle menu item availability error:", error)
     return { error: "Failed to update menu item" }
   }
 
@@ -144,21 +149,25 @@ export async function createMenuItem(data: {
   const supabase = await createClient()
   const { table = "menu_items", ...payload } = data
 
-  const { error } = await supabase.from(table).insert({
-    ...payload,
-    is_available: data.is_available ?? true,
-    display_order: data.display_order ?? 0,
-  })
+  const { data: inserted, error } = await supabase
+    .from(table)
+    .insert({
+      ...payload,
+      is_available: data.is_available ?? true,
+      display_order: data.display_order ?? 0,
+    })
+    .select()
+    .single()
 
   if (error) {
-    console.error("[v0] Create menu item error:", error)
+    console.error("Create menu item error:", error)
     return { error: "Failed to create menu item" }
   }
 
   revalidatePath("/admin/menu")
   revalidatePath("/menu")
 
-  return { success: true }
+  return { success: true, data: inserted }
 }
 
 export async function updateMenuItem(
@@ -180,17 +189,17 @@ export async function updateMenuItem(
   const supabase = await createClient()
   const { table = "menu_items", ...payload } = data
 
-  const { error } = await supabase.from(table).update(payload).eq("id", id)
+  const { data: updated, error } = await supabase.from(table).update(payload).eq("id", id).select().single()
 
   if (error) {
-    console.error("[v0] Update menu item error:", error)
+    console.error("Update menu item error:", error)
     return { error: "Failed to update menu item" }
   }
 
   revalidatePath("/admin/menu")
   revalidatePath("/menu")
 
-  return { success: true }
+  return { success: true, data: updated }
 }
 
 export async function deleteMenuItem(id: string, table: MenuItemTable = "menu_items") {
@@ -199,7 +208,7 @@ export async function deleteMenuItem(id: string, table: MenuItemTable = "menu_it
   const { error } = await supabase.from(table).delete().eq("id", id)
 
   if (error) {
-    console.error("[v0] Delete menu item error:", error)
+    console.error("Delete menu item error:", error)
     return { error: "Failed to delete menu item" }
   }
 
@@ -220,20 +229,24 @@ export async function createCategory(
 ) {
   const supabase = await createClient()
 
-  const { error } = await supabase.from(table).insert({
-    ...data,
-    display_order: data.display_order ?? 0,
-  })
+  const { data: inserted, error } = await supabase
+    .from(table)
+    .insert({
+      ...data,
+      display_order: data.display_order ?? 0,
+    })
+    .select()
+    .single()
 
   if (error) {
-    console.error("[v0] Create category error:", error)
+    console.error("Create category error:", error)
     return { error: "Failed to create category" }
   }
 
   revalidatePath("/admin/menu")
   revalidatePath("/menu")
 
-  return { success: true }
+  return { success: true, data: inserted }
 }
 
 export async function updateCategory(
@@ -248,17 +261,17 @@ export async function updateCategory(
 ) {
   const supabase = await createClient()
 
-  const { error } = await supabase.from(table).update(data).eq("id", id)
+  const { data: updated, error } = await supabase.from(table).update(data).eq("id", id).select().single()
 
   if (error) {
-    console.error("[v0] Update category error:", error)
+    console.error("Update category error:", error)
     return { error: "Failed to update category" }
   }
 
   revalidatePath("/admin/menu")
   revalidatePath("/menu")
 
-  return { success: true }
+  return { success: true, data: updated }
 }
 
 export async function deleteCategory(id: string, table: CategoryTable = "categories") {
@@ -267,7 +280,7 @@ export async function deleteCategory(id: string, table: CategoryTable = "categor
   const { error } = await supabase.from(table).delete().eq("id", id)
 
   if (error) {
-    console.error("[v0] Delete category error:", error)
+    console.error("Delete category error:", error)
     return { error: "Failed to delete category" }
   }
 
@@ -286,7 +299,7 @@ export async function updateSetting(key: string, value: string) {
     .eq("key", key)
 
   if (error) {
-    console.error("[v0] Update setting error:", error)
+    console.error("Update setting error:", error)
     return { error: "Failed to update setting" }
   }
 

@@ -184,7 +184,7 @@
   }
 
   .title{
-    @apply text-7xl! lg:text-[78px]!
+    @apply text-6xl! lg:text-[78px]!
   }
 
   .desc{
@@ -197,7 +197,7 @@
   }
 
   .animate-marquee {
-    animation: marquee 15s linear infinite;
+    animation: marquee 35s linear infinite;
   }
 }
 

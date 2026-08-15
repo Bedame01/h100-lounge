@@ -55,21 +55,21 @@ export function WelcomeSection() {
                 enableBlur
                 baseRotation={4}
                 blurStrength={9}
-                textClassName="text-4xl/14! md:text-5xl/16! lg:text-6xl/19! font-serif font-normal! text-pretty!"
+                textClassName="text-4xl/14! sm:text-5xl/16! lg:text-6xl/19! font tracking-tight text-pretty!"
             >
               "H100 Lounge is more than a destination—it's an experience. Nestled in the heart of Abeokuta, 
               we've crafted a sanctuary where sophistication meets warmth, and every day becomes 
               a celebration of life's finer moments, 100% Relax, Refresh and Repeat."
             </ScrollReveal>
 
-            <p>- H100 Management</p>
+            <p className="text-lg">- H100 Management</p>
             
             <div className="flex flex-wrap gap-4 pt-2 mt-3">
               <CustomButton 
                 text="Get to Know Us More" 
                 href="/about" 
                 variant="ghost" 
-                className="min-w-full! py-6 px-6! text-xs! text-center uppercase text-foreground! rounded-0!"
+                className="min-w-40! py-4 px-3! text-sm! text-center font-bold! text-foreground! rounded-0!"
               />
             </div>
           </div>
