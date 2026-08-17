@@ -78,9 +78,11 @@ export async function loginAdmin(formData: { email: string; password: string }) 
     }
 
     if (data.user) {
-      await supabase.rpc("update_admin_last_login", { admin_id: data.user.id }).catch((err) => {
+      try {
+        await supabase.rpc("update_admin_last_login", { admin_id: data.user.id })
+      } catch (err) {
         console.error("[v0] Failed to update last login:", err)
-      })
+      }
     }
 
     redirect("/admin/dashboard")

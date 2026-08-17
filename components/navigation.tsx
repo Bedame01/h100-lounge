@@ -117,7 +117,7 @@ export function Navigation() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden min-h-screen bg-background border-t border-border overflow-hidden flex items-start justify-center"
+                className="md:hidden min-h-screen! bg-background border-t border-border overflow-hidden flex items-start justify-center"
               >
                 <nav className="flex flex-col justify-center items-center px-6 py-8 gap-4.5 mt-20">
                   {navLinks.map((item) => (

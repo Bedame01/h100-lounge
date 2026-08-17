@@ -24,7 +24,6 @@ export function MenuTypeToggle({ onToggle, initialType = "drinks" }: MenuTypeTog
         text="Drinks"
         // hoverText="View Prices"
         onClick={() => selectType("drinks")}
-        onClick={() => selectType("drinks")}
         variant={menuType === "drinks" ? "primary" : "ghost"}
         className={`py-2 px-3 text-sm! min-w-20! sm:min-w-30! text-center text-nowrap font-bold! ${menuType === "drinks" ? "text-[#fff]" : ""}`}
       />

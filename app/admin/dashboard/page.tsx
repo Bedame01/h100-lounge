@@ -66,7 +66,7 @@ export default async function AdminDashboardPage() {
           <h1 className="font-serif text-4xl tracking-tight font-bold mb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
             Dashboard
           </h1>
-          <p className="text-muted-foreground">Welcome back, {user.email}</p>
+          <p className="text-muted-foreground">Welcome back, <span className="text-foreground font-semibold">{user.email}</span></p>
         </div>
 
         <EnhancedDashboard

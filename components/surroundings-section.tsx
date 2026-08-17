@@ -141,7 +141,7 @@ export function SurroundingsSection() {
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 md:mb-16"
         >
           <div className="max-w-2xl">
-            <span className="inline-block text-base font-semibold tracking-wide text-accent mb-3">
+            <span className="inline-block text-base uppercase font-semibold tracking-wide text-accent mb-3">
               Our Surroundings ✦
             </span>
             <h2

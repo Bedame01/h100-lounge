@@ -19,13 +19,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Plus, Edit } from "lucide-react"
 import { createCategory, updateCategory } from "@/app/actions/admin"
 import { useToast } from "@/hooks/use-toast"
+import type { MenuCategoryMeta } from "@/lib/menu-service"
 
-interface Category {
-  id: string
-  name: string
-  slug: string
-  description: string | null
-}
+interface Category extends MenuCategoryMeta {}
 
 interface CategoryDialogProps {
   category?: Category

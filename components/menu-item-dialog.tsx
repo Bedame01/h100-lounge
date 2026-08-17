@@ -22,24 +22,11 @@ import { Plus, Edit } from "lucide-react"
 import { createMenuItem, updateMenuItem, type MenuItemTable } from "@/app/actions/admin"
 import { useToast } from "@/hooks/use-toast"
 import { ImageUpload } from "@/components/image-upload"
+import type { MenuCategoryMeta, MenuItem as MenuItemRecord } from "@/lib/menu-service"
 
-interface Category {
-  id: string
-  name: string
-}
+interface Category extends MenuCategoryMeta {}
 
-interface MenuItem {
-  id: string
-  name: string
-  description: string | null
-  price: number
-  category_id: string
-  is_available: boolean
-  image_url: string | null
-  is_highlighted: boolean
-  size_options: { size: string; price: number }[] | null
-  badges: string[] | null
-}
+interface MenuItem extends MenuItemRecord {}
 
 interface MenuItemDialogProps {
   categories: Category[]
@@ -160,7 +147,7 @@ export function MenuItemDialog({ categories, menuItem, mode, table = "menu_items
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="price">Price ($)</Label>
+              <Label htmlFor="price">Price (₦)</Label>
               <Input
                 id="price"
                 type="number"

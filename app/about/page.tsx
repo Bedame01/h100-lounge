@@ -22,7 +22,7 @@ export default function AboutPage() {
         {/* Minimal Hero */}
         <section className="relative h-[30vh] md:h-[40vh] flex items-end overflow-hidden pt-16 border-b border-border">
           <div className="relative z-20 pb-12 px-4 container mx-auto w-full">
-            <h1 className="title text-center font-semibold tracking-tighter">Our<span className="font-serif text-accent italic font-medium">Story.</span></h1>
+            <h1 className="title text-center font-semibold tracking-tighter">Our<span className="font-serif text-accent italic font-medium">Story</span></h1>
           </div>
         </section>
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
                 <h2 className="font-serif text-3xl md:text-4xl font-medium mb-6 leading-tight">
                   Where refinement meets experience
                 </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-pretty">
+                <p className="desc text-muted-foreground leading-relaxed mb-6 text-pretty">
                   H100 Lounge and Bar is a sanctuary for those who appreciate the finer things. 
                   We craft moments, not just drinks.
                 </p>

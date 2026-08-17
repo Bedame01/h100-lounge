@@ -50,13 +50,13 @@ export default function AdminSignupPage() {
     try {
       const result = await signupAdmin({ email, password, adminKey })
 
-      if (result.error) {
+      if ("error" in result && result.error) {
         setError(result.error)
         setIsLoading(false)
         return
       }
 
-      if (result.success) {
+      if ("success" in result && result.success) {
         setSuccess(result.message || "Admin account created successfully! You can now log in.")
 
         // Redirect to login after 2 seconds

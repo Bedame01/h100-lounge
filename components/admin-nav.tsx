@@ -74,7 +74,7 @@ export function AdminNav({ user }: AdminNavProps) {
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-sm text-muted-foreground hidden sm:inline">{user.email}</span>
+            <span className="text-sm font-semibold text-muted-foreground inline">{user.email}</span>
             <div className="flex items-center max-md:hidden">
               <ThemeToggle />
               <Button variant="ghost" size="sm" onClick={handleLogout}>

@@ -47,13 +47,13 @@ export default function HeroSwiper() {
                 >
                 <div className="text-center">
                     <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
-                    <h1 className="textDisplay text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
+                    <h1 className="textDisplay tracking-tight text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
                     H100 Lounge
                     <br />
                     Premium Vibe.
                     </h1>
             
-                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl! mx-auto text-pretty!">
+                    <p className="desc text-muted-foreground max-w-2xl! mx-auto text-pretty!">
                     Step into a refined atmosphere of great music, signature cocktails, and unforgettable moments—crafted for those who appreciate the finer side of nightlife.
                     </p>
             
@@ -63,14 +63,14 @@ export default function HeroSwiper() {
                             // hoverText="Explore Our Offerings" 
                             href="/menu" 
                             variant="primary" 
-                            className="min-w-45 text-[#fff]!"
+                            className="min-w-45 text-[#fff]! py-6!"
                         />
                         <CustomButton 
                             text="About Us" 
                             // hoverText="Explore Our Offerings" 
                             href="/about" 
                             variant="ghost" 
-                            className="min-w-43 hover:bg-foreground hover:text-background!"
+                            className="min-w-43 hover:bg-foreground hover:text-background! py-6!"
                         />
                     </div>
 
@@ -90,13 +90,13 @@ export default function HeroSwiper() {
                 >
                 <div className="text-center">
                     <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
-                    <h1 className="textDisplay text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
+                    <h1 className="textDisplay tracking-tight text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
                     Relax, Refresh
                     <br />
                     And Repeat.
                     </h1>
             
-                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+                    <p className="desc text-muted-foreground max-w-2xl mx-auto text-pretty">
                     From expertly mixed cocktails to smooth wines and premium spirits, our lounge is the perfect escape to unwind and connect.
                     </p>
             
@@ -106,14 +106,14 @@ export default function HeroSwiper() {
                         // hoverText="Explore Our Offerings" 
                         href="/menu" 
                         variant="primary" 
-                        className="min-w-45 text-[#fff]!"
+                        className="min-w-45 text-[#fff]! py-6!"
                     />
                     <CustomButton 
                         text="About Us" 
                         // hoverText="Explore Our Offerings" 
                         href="/about" 
                         variant="ghost" 
-                        className="min-w-43 hover:bg-foreground hover:text-background!"
+                        className="min-w-43 hover:bg-foreground hover:text-background! py-6!"
                     />
                     </div>
                 </div>
@@ -127,13 +127,13 @@ export default function HeroSwiper() {
                 >
                 <div className="text-center">
                     <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
-                    <h1 className="textDisplay text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
+                    <h1 className="textDisplay tracking-tight text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
                     Good Drinks
                     <br />
                     & Great Energy
                     </h1>
             
-                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+                    <p className="desc text-muted-foreground max-w-2xl mx-auto text-pretty">
                     Whether it’s a casual hangout or a night to remember, enjoy an atmosphere designed to keep the vibes flowing all day long.
                     </p>
             
@@ -143,14 +143,14 @@ export default function HeroSwiper() {
                             // hoverText="Explore Our Offerings" 
                             href="/menu" 
                             variant="primary" 
-                            className="min-w-45 text-[#fff]!"
+                            className="min-w-45 text-[#fff]! py-6!"
                         />
                         <CustomButton 
                             text="About Us" 
                             // hoverText="Explore Our Offerings" 
                             href="/about" 
                             variant="ghost" 
-                            className="min-w-43 hover:bg-foreground hover:text-background!"
+                            className="min-w-43 hover:bg-foreground hover:text-background! py-6!"
                         />
                     </div>
                 </div>

@@ -19,6 +19,9 @@ CREATE TABLE IF NOT EXISTS menu_items (
   image_url TEXT,
   is_available BOOLEAN NOT NULL DEFAULT true,
   display_order INTEGER NOT NULL DEFAULT 0,
+  is_highlighted BOOLEAN NOT NULL DEFAULT false,
+  size_options JSONB,
+  badges TEXT[],
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
