@@ -22,7 +22,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
   return (
     <div className="flex gap-3 sm:gap-6 items-start">
       {/* Image */}
-      <div className="flex-shrink-0 size-24 overflow-hidden rounded-sm bg-foreground/5 border border-border/50">
+      <div className="flex-shrink-0 size-25 overflow-hidden rounded-sm bg-foreground/5 border border-border/50">
         {item.image_url ? (
           <Image
             src={item.image_url || "/placeholder.svg"}
