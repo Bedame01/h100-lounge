@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CustomButton from '@/components/kokonutui/CustomButton/CustomButton'
-import InlineInfiniteScroll from '@/components/InlineScroll/InlineInfiniteScroll'
+// import InlineInfiniteScroll from '@/components/InlineScroll/InlineInfiniteScroll'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -46,18 +46,18 @@ export default function HeroSwiper() {
                 style={{ backgroundImage: "url('/images/hero1.webp')" }}
                 >
                 <div className="text-center">
-                    <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
+                    <p className="font-semibold mt-7 mb-8 text-xs uppercase border rounded-full w-fit mx-auto py-2 px-6 backdrop-blur-xl bg-accent-foreground/60">• H100 Lounge and Bar •</p>
                     <h1 className="textDisplay tracking-tight text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
                     H100 Lounge
                     <br />
                     Premium Vibe.
                     </h1>
             
-                    <p className="desc text-muted-foreground max-w-2xl! mx-auto text-pretty!">
+                    <p className="desc2 text-muted-foreground max-w-2xl! mx-auto text-pretty!">
                     Step into a refined atmosphere of great music, signature cocktails, and unforgettable moments—crafted for those who appreciate the finer side of nightlife.
                     </p>
             
-                    <div className="flex flex-col sm:flex-row items-center justify-center mt-12 pb-10 gap-5">
+                    <div className="flex flex-col sm:flex-row items-center justify-center mt-13 pb-10 max-sm:gap-6! gap-5">
                         <CustomButton 
                             text="View Price List" 
                             // hoverText="Explore Our Offerings" 
@@ -73,12 +73,6 @@ export default function HeroSwiper() {
                             className="min-w-43 hover:bg-foreground hover:text-background! py-6!"
                         />
                     </div>
-
-                    {/* Inline scroll */}
-                    {/* <div className="overflow-hidden">
-                        <p className='text-[15px] sm:text-base text-left text-[#fafafa]'>Experience the art of hospitality.</p>
-                        <InlineInfiniteScroll />
-                    </div> */}
                 </div>
             </div>
         </SwiperSlide>
@@ -89,18 +83,18 @@ export default function HeroSwiper() {
                 style={{ backgroundImage: "url('/images/Elegant Crystal Glass Celebration.png')" }}
                 >
                 <div className="text-center">
-                    <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
+                    <p className="font-semibold mt-7 mb-8 text-xs uppercase border rounded-full w-fit mx-auto py-2 px-6 backdrop-blur-xl bg-accent-foreground/60">• H100 Lounge and Bar •</p>
                     <h1 className="textDisplay tracking-tight text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
                     Relax, Refresh
                     <br />
                     And Repeat.
                     </h1>
             
-                    <p className="desc text-muted-foreground max-w-2xl mx-auto text-pretty">
+                    <p className="desc2 text-muted-foreground max-w-2xl mx-auto text-pretty">
                     From expertly mixed cocktails to smooth wines and premium spirits, our lounge is the perfect escape to unwind and connect.
                     </p>
             
-                    <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-12 gap-5">
+                    <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-13 max-sm:gap-6! gap-5">
                     <CustomButton 
                         text="View Price List" 
                         // hoverText="Explore Our Offerings" 
@@ -126,18 +120,18 @@ export default function HeroSwiper() {
                 style={{ backgroundImage: "url('/images/image1.png')" }}
                 >
                 <div className="text-center">
-                    <p className="font-medium mt-7 mb-8 text-xs uppercase">• Exclusive Lounge and Bar •</p>
-                    <h1 className="textDisplay tracking-tight text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-balance uppercase">
+                    <p className="font-semibold mt-7 mb-8 text-xs uppercase border rounded-full w-fit mx-auto py-2 px-6 backdrop-blur-xl bg-accent-foreground/60">• H100 Lounge and Bar •</p>
+                    <h1 className="textDisplay tracking-tight text-5xl sm:text-6xl lg:text-7xl font-medium mb-6 text-pretty uppercase">
                     Good Drinks
                     <br />
                     & Great Energy
                     </h1>
             
-                    <p className="desc text-muted-foreground max-w-2xl mx-auto text-pretty">
+                    <p className="desc2 text-muted-foreground max-w-2xl mx-auto text-pretty">
                     Whether it’s a casual hangout or a night to remember, enjoy an atmosphere designed to keep the vibes flowing all day long.
                     </p>
             
-                    <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-12 gap-5">
+                    <div className="flex flex-col sm:flex-row items-center justify-center pb-10 mt-13 max-sm:gap-6! gap-5">
                         <CustomButton 
                             text="View Price List" 
                             // hoverText="Explore Our Offerings" 

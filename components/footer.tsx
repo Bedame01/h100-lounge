@@ -1,24 +1,16 @@
 'use client'
 
 import Link from "next/link"
-import { useTheme } from "next-themes"
-import logoLight from '@/public/icons/logo-white.png'
-import logoDark from '@/public/icons/logo-black.png'
+import { ThemeLogo } from '@/components/theme-logo'
 
 export function Footer() {
-  const { theme, setTheme } = useTheme()
-
   return (
     <footer className="bg-card/30 mt-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="mb-4 inline-block">
-              {theme === "light" ? (
-                <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15" />
-              ) : (
-                <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15" />
-              )}
+              <ThemeLogo className="w-15" />
             </Link>
             <p className="text-muted-foreground text-base text-pretty">
               A sanctuary of sophistication where every day becomes an occasion. Relax, Refresh and Repeat.

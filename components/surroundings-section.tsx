@@ -6,18 +6,12 @@ import { useRef } from "react"
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
-// import heroLounge from "@/public/images/hero1.webp"
-// import crystalCelebration from "@/public/images/Elegant Crystal Glass Celebration.png"
-// import drinkPour from "@/public/images/drink pouring from glass.avif"
-// import wineGlass from "@/public/images/Elegant Wine Glass.png"
-// import loungeEnergy from "@/public/images/image1.png"
-// import heroAmbiance from "@/public/images/hero3.png"
-import mainlounge from "@/public/images/environment 1.jpeg"
-import signaturebar from "@/public/images/Elegant Crystal Glass Celebration.png"
+import mainlounge from "@/public/images/environment 1.jpg"
+import signaturebar from "@/public/images/environment 2.jpg"
 import drinkPour from "@/public/images/drink pouring from glass.avif"
 import wineGlass from "@/public/images/Elegant Wine Glass.png"
-import loungeEnergy from "@/public/images/environment 3.jpeg"
-import heroAmbiance from "@/public/images/environment 2.jpeg"
+import loungeEnergy from "@/public/images/environment 3.jpg"
+import heroAmbiance from "@/public/images/environment 4.jpg"
 
 type Space = {
   title: string
@@ -141,7 +135,7 @@ export function SurroundingsSection() {
           className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14 md:mb-16"
         >
           <div className="max-w-2xl">
-            <span className="inline-block text-base uppercase font-semibold tracking-wide text-accent mb-3">
+            <span className="inline-block text-sm uppercase font-semibold tracking-wide text-muted-foreground mb-3">
               Our Surroundings ✦
             </span>
             <h2

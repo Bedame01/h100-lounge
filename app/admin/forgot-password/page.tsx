@@ -9,12 +9,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { CheckCircle2 } from "lucide-react"
-import { useTheme } from "next-themes"
-import logoLight from '@/public/icons/logo-white.png'
-import logoDark from '@/public/icons/logo-black.png'
+import { ThemeLogo } from '@/components/theme-logo'
 
 export default function ForgotPasswordPage() {
-  const { theme, setTheme } = useTheme()
   const [email, setEmail] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
@@ -44,14 +41,7 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-sm">
         <div className="mb-6 text-center">
           <Link href="/" className="mt-2 inline-flex items-center gap-2">
-            {theme === "dark" ? (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16 mx-auto" />
-            ) : 
-            theme === "light" ? (
-              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-16 mx-auto" />
-            ) : (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16 mx-auto" />
-            )}
+            <ThemeLogo className="w-16 mx-auto" />
           </Link>
           <p className="text-sm text-muted-foreground mt-2">Admin Portal</p>
         </div>

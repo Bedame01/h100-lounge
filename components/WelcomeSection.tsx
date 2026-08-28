@@ -41,7 +41,7 @@ export function WelcomeSection() {
           <div className="max-w-3xl m-auto! space-y-6 flex flex-col justify-center items-center">
             <div className="inline-block">
               <span className="font-semibold! tracking-normal text-lg text-accent">
-                • Welcome to H100 👋🏽😊
+                Welcome to H100 Lounge & Bar 🪑🍷
               </span>
             </div>
             
@@ -55,7 +55,7 @@ export function WelcomeSection() {
                 enableBlur
                 baseRotation={4}
                 blurStrength={9}
-                textClassName="text-4xl/12! sm:text-5xl/16! lg:text-6xl/19! font tracking-tight text-pretty!"
+                textClassName="text-3xl/11! sm:text-4xl/13! lg:text-5xl/16! font-medium tracking-tight text-pretty! uppercase"
             >
               "H100 Lounge is more than a destination—it's an experience. Nestled in the heart of Abeokuta, 
               we've crafted a sanctuary where sophistication meets warmth, and every day becomes 

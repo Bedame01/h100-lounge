@@ -12,12 +12,9 @@ import Link from "next/link"
 import { AlertCircle } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { signupAdmin } from "@/app/actions/auth"
-import { useTheme } from "next-themes"
-import logoLight from '@/public/icons/logo-white.png'
-import logoDark from '@/public/icons/logo-black.png'
+import { ThemeLogo } from '@/components/theme-logo'
 
 export default function AdminSignupPage() {
-  const { theme, setTheme } = useTheme()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -76,14 +73,7 @@ export default function AdminSignupPage() {
       <div className="w-full max-w-[450px]">
         <div className="mb-6 text-center">
           <Link href="/" className="mt-2 inline-flex items-center gap-2">
-            {theme === "dark" ? (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
-            ) : 
-            theme === "light" ? (
-              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
-            ) : (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
-            )}
+            <ThemeLogo className="w-15 mx-auto" />
           </Link>
           <p className="text-sm text-muted-foreground mt-2">Admin Portal</p>
         </div>

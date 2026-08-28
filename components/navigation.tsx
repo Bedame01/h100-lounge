@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 // import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { ArrowRight, Ruler, CheckCircle, Instagram, Mail, Crown } from "lucide-react"
@@ -11,8 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react"
 import CustomButton from '@/components/kokonutui/CustomButton/CustomButton'
 import { ThemeToggle } from '@/components/theme-toggle'
-import logoLight from '@/public/icons/logo-white.png'
-import logoDark from '@/public/icons/logo-black.png'
+import { ThemeLogo } from '@/components/theme-logo'
 
 const work = ["H100 LOUNGE AND BAR ✦ 100% RELAX, REFRESH AND REPEAT", "H100 LOUNGE AND BAR ✦ 100% RELAX, REFRESH AND REPEAT", "H100 LOUNGE AND BAR ✦ 100% RELAX, REFRESH AND REPEAT"];
 
@@ -26,14 +24,11 @@ const navLinks = [
 
 export function Navigation() {
   const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
   // const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const SCROLL_THRESHOLD = 70; // Adjust the scroll height at which header toggles to black
   const socialLinks = [
-  // { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-  // { icon: Tiktok, href: "https://tiktok.com/Fizcaps", label: "Tiktok" },
   { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
   { icon: Mail, href: "mailto:h100lounge.bar@gmail.com", label: "Email;" },
   ]
@@ -69,12 +64,8 @@ export function Navigation() {
             {/* <MorphicNavbar /> */}
           </div>
 
-          <Link href="/" className="">
-            {theme === "light" ? (
-              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-16" />
-            ) : (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-16" />
-            )}
+          <Link href="/" className="md:w-1/3! md:mx-auto flex justify-center items-center">
+            <ThemeLogo className="w-16" />
           </Link>
           
           <div className="hidden md:flex items-center gap-4">

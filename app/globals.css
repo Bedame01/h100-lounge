@@ -191,6 +191,10 @@
     @apply text-foreground font-medium! max-w-xl! md:max-w-4xl! text-lg/6! md:text-xl!
   }
 
+  .desc2{
+    @apply text-foreground/80 font-medium! max-w-lg! md:max-w-4xl! text-lg/6.5! md:text-xl! mt-8 mb-14
+  }
+
     .marquee {
     user-select: none !important;
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%)

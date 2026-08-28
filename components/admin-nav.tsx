@@ -9,9 +9,7 @@ import { ThemeToggle } from '@/components/theme-toggle'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
-import { useTheme } from "next-themes"
-import logoLight from '@/public/icons/logo-white.png'
-import logoDark from '@/public/icons/logo-black.png'
+import { ThemeLogo } from '@/components/theme-logo'
 // import CustomButton from "./kokonutui/CustomButton/CustomButton"
 
 interface AdminNavProps {
@@ -21,7 +19,6 @@ interface AdminNavProps {
 }
 
 export function AdminNav({ user }: AdminNavProps) {
-  const { theme, setTheme } = useTheme()
   const pathname = usePathname()
   const router = useRouter()
   const supabase = createClient()
@@ -44,14 +41,7 @@ export function AdminNav({ user }: AdminNavProps) {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="mt-2 inline-flex items-center gap-2">
-            {theme === "dark" ? (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
-            ) : 
-            theme === "light" ? (
-              <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
-            ) : (
-              <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-15 mx-auto" />
-            )}
+            <ThemeLogo className="w-15 mx-auto" />
           </Link>
           <div className="flex items-center gap-8">
 
@@ -98,14 +88,7 @@ export function AdminNav({ user }: AdminNavProps) {
                 <SheetHeader>
                   <SheetTitle className="text-left">
                     <Link href="/" className="mt-2 inline-flex items-center gap-2">
-                      {theme === "dark" ? (
-                        <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-14 mx-auto" />
-                      ) : 
-                      theme === "light" ? (
-                        <img src={logoDark.src} alt="H100 Lounge Logo" className="h-auto w-14 mx-auto" />
-                      ) : (
-                        <img src={logoLight.src} alt="H100 Lounge Logo" className="h-auto w-14 mx-auto" />
-                      )}
+                      <ThemeLogo className="w-14 mx-auto" />
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
