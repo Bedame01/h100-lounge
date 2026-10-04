@@ -20,7 +20,12 @@ async function MenuContent() {
   const mocktailsCategories = mocktails.map(({ items: _items, ...category }) => category)
   const mocktailsItems = mocktails.flatMap((category) => category.items)
 
-  if (categories.length === 0 && foodCategories.length === 0) {
+  if (
+    categories.length === 0 &&
+    foodCategories.length === 0 &&
+    cocktailsCategories.length === 0 &&
+    mocktailsCategories.length === 0
+  ) {
     return (
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

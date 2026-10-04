@@ -26,12 +26,15 @@ export interface MenuItem {
   badges: string[] | null;
 }
 
+export type CategoryMenuType = "regular" | "cocktails" | "mocktails"
+
 export interface MenuCategoryMeta {
   id: string;
   name: string;
   slug: string;
   description: string | null;
   display_order: number;
+  category_type?: CategoryMenuType;
 }
 
 export interface MenuCategory extends MenuCategoryMeta {
@@ -60,7 +63,8 @@ export async function getRegularMenu(onlyAvailable = true): Promise<MenuCategory
 
     const { data: categories, error: categoriesError } = await supabase
       .from('categories')
-      .select('id, name, slug, description, display_order')
+      .select('id, name, slug, description, display_order, category_type')
+      .eq('category_type', 'regular')
       .order('display_order', { ascending: true });
 
     if (categoriesError) throw categoriesError;
@@ -94,7 +98,8 @@ export async function getVipMenu(onlyAvailable = true): Promise<MenuCategory[]> 
 
     const { data: categories, error: categoriesError } = await supabase
       .from('categories')
-      .select('id, name, slug, description, display_order')
+      .select('id, name, slug, description, display_order, category_type')
+      .eq('category_type', 'regular')
       .order('display_order', { ascending: true });
 
     if (categoriesError) throw categoriesError;
@@ -177,8 +182,8 @@ export async function getCocktailsMenu(onlyAvailable = true): Promise<MenuCatego
 
     const { data: categories, error: categoriesError } = await supabase
       .from('categories')
-      .select('id, name, slug, description, display_order')
-      .eq('slug', 'cocktails')
+      .select('id, name, slug, description, display_order, category_type')
+      .eq('category_type', 'cocktails')
       .order('display_order', { ascending: true });
 
     if (categoriesError) throw categoriesError;
@@ -208,8 +213,8 @@ export async function getMocktailsMenu(onlyAvailable = true): Promise<MenuCatego
 
     const { data: categories, error: categoriesError } = await supabase
       .from('categories')
-      .select('id, name, slug, description, display_order')
-      .eq('slug', 'mocktails')
+      .select('id, name, slug, description, display_order, category_type')
+      .eq('category_type', 'mocktails')
       .order('display_order', { ascending: true });
 
     if (categoriesError) throw categoriesError;

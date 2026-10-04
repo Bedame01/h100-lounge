@@ -12,6 +12,7 @@ export type MenuItemTable =
   | "menu_items_cocktails"
   | "menu_items_mocktails"
 export type CategoryTable = "categories" | "food_categories"
+export type CategoryMenuType = "regular" | "cocktails" | "mocktails"
 
 export async function updateReservationStatus(reservationId: string, status: "pending" | "confirmed" | "cancelled") {
   const supabase = await createClient()
@@ -226,6 +227,7 @@ export async function createCategory(
     display_order?: number
   },
   table: CategoryTable = "categories",
+  categoryType: CategoryMenuType = "regular",
 ) {
   const supabase = await createClient()
 
@@ -234,6 +236,7 @@ export async function createCategory(
     .insert({
       ...data,
       display_order: data.display_order ?? 0,
+      ...(table === "categories" ? { category_type: categoryType } : {}),
     })
     .select()
     .single()

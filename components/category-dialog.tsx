@@ -19,7 +19,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Plus, Edit } from "lucide-react"
 import { createCategory, updateCategory } from "@/app/actions/admin"
 import { useToast } from "@/hooks/use-toast"
-import type { MenuCategoryMeta } from "@/lib/menu-service"
+import type { CategoryMenuType, MenuCategoryMeta } from "@/lib/menu-service"
 
 interface Category extends MenuCategoryMeta {}
 
@@ -27,10 +27,11 @@ interface CategoryDialogProps {
   category?: Category
   mode: "create" | "edit"
   table?: "categories" | "food_categories"
+  categoryType?: CategoryMenuType
   onSuccess?: (category: Category) => void
 }
 
-export function CategoryDialog({ category, mode, table = "categories", onSuccess }: CategoryDialogProps) {
+export function CategoryDialog({ category, mode, table = "categories", categoryType = "regular", onSuccess }: CategoryDialogProps) {
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
@@ -47,7 +48,7 @@ export function CategoryDialog({ category, mode, table = "categories", onSuccess
 
     const result =
       mode === "create"
-        ? await createCategory(formData, table)
+        ? await createCategory(formData, table, categoryType)
         : await updateCategory(category!.id, formData, table)
 
     if (result.error) {

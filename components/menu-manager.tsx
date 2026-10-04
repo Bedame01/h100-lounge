@@ -23,7 +23,7 @@ import { MenuItemDialog } from "@/components/menu-item-dialog"
 import { CategoryDialog } from "@/components/category-dialog"
 import { Trash2, Plus, UtensilsCrossed } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import type { MenuItem, MenuCategoryMeta } from "@/lib/menu-service"
+import type { CategoryMenuType, MenuItem, MenuCategoryMeta } from "@/lib/menu-service"
 
 interface MenuManagerProps {
   categories: MenuCategoryMeta[]
@@ -61,6 +61,8 @@ export function MenuManager({
   const { toast } = useToast()
 
   const categoryTable = activeTab === "food" ? "food_categories" : "categories"
+  const activeCategoryType: CategoryMenuType =
+    activeTab === "cocktails" ? "cocktails" : activeTab === "mocktails" ? "mocktails" : "regular"
   const itemTable =
     activeTab === "food"
       ? "menu_items_food"
@@ -116,18 +118,17 @@ export function MenuManager({
 
   const upsertCategory = (category: MenuCategoryMeta, table: string) => {
     if (table === "categories") {
-      setCategories((prev) => {
-        const exists = prev.some((cat) => cat.id === category.id)
-        return exists ? prev.map((cat) => (cat.id === category.id ? category : cat)) : [...prev, category]
-      })
-      setCocktailsCategories((prev) => {
-        const exists = prev.some((cat) => cat.id === category.id)
-        return exists ? prev.map((cat) => (cat.id === category.id ? category : cat)) : [...prev, category]
-      })
-      setMocktailsCategories((prev) => {
-        const exists = prev.some((cat) => cat.id === category.id)
-        return exists ? prev.map((cat) => (cat.id === category.id ? category : cat)) : [...prev, category]
-      })
+      const updateCategories = (previous: MenuCategoryMeta[]) => {
+        const exists = previous.some((cat) => cat.id === category.id)
+        return exists
+          ? previous.map((cat) => (cat.id === category.id ? category : cat))
+          : [...previous, category]
+      }
+      const categoryType = category.category_type ?? "regular"
+
+      if (categoryType === "regular") setCategories(updateCategories)
+      if (categoryType === "cocktails") setCocktailsCategories(updateCategories)
+      if (categoryType === "mocktails") setMocktailsCategories(updateCategories)
     }
 
     if (table === "food_categories") {
@@ -183,6 +184,7 @@ export function MenuManager({
     renderItems: MenuItem[],
     renderCategoryTable: string,
     renderItemTable: string,
+    renderCategoryType: CategoryMenuType = "regular",
   ) => {
     if (renderCategories.length === 0) {
       return (
@@ -194,6 +196,7 @@ export function MenuManager({
             <CategoryDialog
               mode="create"
               table={renderCategoryTable as any}
+              categoryType={renderCategoryType}
               onSuccess={(nextCategory) => upsertCategory(nextCategory, renderCategoryTable)}
             />
           </CardContent>
@@ -217,6 +220,7 @@ export function MenuManager({
                   mode="edit"
                   category={category}
                   table={renderCategoryTable as any}
+                  categoryType={renderCategoryType}
                   onSuccess={(nextCategory) => upsertCategory(nextCategory, renderCategoryTable)}
                 />
                 <AlertDialog>
@@ -349,6 +353,7 @@ export function MenuManager({
         <CategoryDialog
           mode="create"
           table={categoryTable}
+          categoryType={activeCategoryType}
           onSuccess={(nextCategory) => upsertCategory(nextCategory, categoryTable)}
         />
       </div>
@@ -363,19 +368,19 @@ export function MenuManager({
         </TabsList>
 
         <TabsContent value="regular">
-          {renderCategoryCards(categories, regularItems, "categories", "menu_items")}
+          {renderCategoryCards(categories, regularItems, "categories", "menu_items", "regular")}
         </TabsContent>
         <TabsContent value="vip">
-          {renderCategoryCards(categories, vipItems, "categories", "menu_items_vip")}
+          {renderCategoryCards(categories, vipItems, "categories", "menu_items_vip", "regular")}
         </TabsContent>
         <TabsContent value="food">
           {renderCategoryCards(foodCategories, foodItems, "food_categories", "menu_items_food")}
         </TabsContent>
         <TabsContent value="cocktails">
-          {renderCategoryCards(cocktailsCategories, cocktailsItems, "categories", "menu_items_cocktails")}
+          {renderCategoryCards(cocktailsCategories, cocktailsItems, "categories", "menu_items_cocktails", "cocktails")}
         </TabsContent>
         <TabsContent value="mocktails">
-          {renderCategoryCards(mocktailsCategories, mocktailsItems, "categories", "menu_items_mocktails")}
+          {renderCategoryCards(mocktailsCategories, mocktailsItems, "categories", "menu_items_mocktails", "mocktails")}
         </TabsContent>
       </Tabs>
     </div>
