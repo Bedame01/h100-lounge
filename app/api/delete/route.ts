@@ -3,6 +3,16 @@ import { type NextRequest, NextResponse } from "next/server"
 
 export async function DELETE(request: NextRequest) {
   try {
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      console.error("Vercel Blob delete attempted without BLOB_READ_WRITE_TOKEN")
+      return NextResponse.json(
+        {
+          error: "Blob storage is not configured. Add BLOB_READ_WRITE_TOKEN in your Vercel environment variables.",
+        },
+        { status: 500 },
+      )
+    }
+
     const { url } = await request.json()
 
     if (!url) {

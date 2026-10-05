@@ -182,10 +182,10 @@ export function MenuItemDialog({ categories, menuItem, mode, table = "menu_items
               id="badges"
               value={formData.badges}
               onChange={(e) => setFormData({ ...formData, badges: e.target.value })}
-              placeholder="e.g., CHEF RECOMMENDED, NEW, ORDER"
+              placeholder="e.g., H100 RECOMMENDED, CHEF RECOMMENDED, NEW, ORDER"
             />
             <p className="text-xs text-muted-foreground">
-              Separate multiple badges with commas. Examples: CHEF RECOMMENDED, NEW, ORDER
+              Separate multiple badges with commas. Examples: H100 RECOMMENDED, H100-RECOMMENDED, CHEF RECOMMENDED, NEW, ORDER, BESTSELLER, POPULAR.
             </p>
           </div>
           <div className="flex items-center space-x-2">

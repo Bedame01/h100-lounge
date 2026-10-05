@@ -188,7 +188,7 @@
   }
 
   .desc{
-    @apply text-foreground font-medium! max-w-xl! md:max-w-4xl! text-lg/6! md:text-xl!
+    @apply text-foreground font-medium! max-w-xl! md:max-w-4xl! text-[17px]/6! md:text-xl!
   }
 
   .desc2{

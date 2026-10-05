@@ -3,6 +3,16 @@ import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      console.error("Vercel Blob upload attempted without BLOB_READ_WRITE_TOKEN")
+      return NextResponse.json(
+        {
+          error: "Blob storage is not configured. Add BLOB_READ_WRITE_TOKEN in your Vercel environment variables.",
+        },
+        { status: 500 },
+      )
+    }
+
     const formData = await request.formData()
     const file = formData.get("file") as File
 
@@ -29,6 +39,8 @@ export async function POST(request: NextRequest) {
     // Upload to Vercel Blob
     const blob = await put(filename, file, {
       access: "public",
+      allowOverwrite: true,
+      contentType: file.type,
     })
 
     return NextResponse.json({

@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import ImageIcon from "@/components/icons/imageIcon"
 import Image from "next/image"
 
@@ -16,7 +19,33 @@ interface MenuItemCardProps {
   index: number
 }
 
+function getBadgeClasses(badge: string) {
+  const normalized = badge.toUpperCase().replace(/-/g, " ").trim()
+
+  if (normalized === "H100 RECOMMENDED") {
+    return "bg-gradient-to-r from-[#f5d76a] via-[#d8b85a] to-[#f7edc5] text-[#251d0d] border border-[#f5d76a]/80 shadow-[0_0_18px_rgba(245,215,106,0.35)]"
+  }
+
+  switch (normalized) {
+    case "CHEF RECOMMENDED":
+      return "bg-yellow-400 text-black"
+    case "NEW":
+      return "bg-lime-600 text-white"
+    case "ORDER":
+      return "bg-neutral-800 text-white"
+    case "BESTSELLER":
+      return "bg-rose-500 text-white"
+    case "POPULAR":
+      return "bg-cyan-600 text-white"
+    case "HOUSE SPECIAL":
+      return "bg-violet-600 text-white"
+    default:
+      return "bg-primary/10 text-primary"
+  }
+}
+
 export function MenuItemCard({ item, index }: MenuItemCardProps) {
+  const [imageSrc, setImageSrc] = useState(item.image_url || "/placeholder.svg")
   const hasSizeOptions = item.size_options && item.size_options.length > 0
 
   return (
@@ -25,11 +54,12 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
       <div className="flex-shrink-0 size-25 overflow-hidden rounded-sm bg-foreground/5 border border-border/50">
         {item.image_url ? (
           <Image
-            src={item.image_url || "/placeholder.svg"}
+            src={imageSrc}
             alt={item.name}
             width={128}
             height={128}
             className="w-full h-full object-cover"
+            onError={() => setImageSrc("/placeholder.svg")}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -46,15 +76,7 @@ export function MenuItemCard({ item, index }: MenuItemCardProps) {
             {item.badges.map((badge, i) => (
               <span
                 key={i}
-                className={`inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${
-                  badge === "CHEF RECOMMENDED"
-                    ? "bg-yellow-400 text-black"
-                    : badge === "NEW"
-                      ? "bg-lime-600 text-white"
-                      : badge === "ORDER"
-                        ? "bg-neutral-800 text-white"
-                        : "bg-primary/10 text-primary"
-                }`}
+                className={`inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${getBadgeClasses(badge)}`}
               >
                 {badge}
               </span>

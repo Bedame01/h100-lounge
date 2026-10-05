@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { MenuVipToggle } from "@/components/menu-vip-toggle"
 import { MenuTypeToggle, type MenuListType } from "@/components/menu-type-toggle"
 import CustomButton from "@/components/kokonutui/CustomButton/CustomButton"
@@ -30,23 +31,57 @@ export function MenuListWithToggle({
   mocktailsCategories = [],
   mocktailsItems = [],
 }: MenuListWithToggleProps) {
-  const [menuType, setMenuType] = useState<MenuListType>("drinks")
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const [menuType, setMenuType] = useState<MenuListType>(() => {
+    const type = searchParams.get("type")
+    return type === "food" ? "food" : "drinks"
+  })
   const [isVip, setIsVip] = useState(false)
-  const [showSpecial, setShowSpecial] = useState<'none' | 'cocktails' | 'mocktails'>('none')
+  const [showSpecial, setShowSpecial] = useState<'none' | 'cocktails' | 'mocktails'>(() => {
+    const value = searchParams.get("special")
+    return value === "cocktails" || value === "mocktails" ? value : "none"
+  })
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set("type", menuType)
+
+    if (menuType === "food" || showSpecial === "none") {
+      params.delete("special")
+    } else {
+      params.set("special", showSpecial)
+    }
+
+    const query = params.toString()
+    const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname
+    router.replace(nextUrl, { scroll: false })
+  }, [menuType, showSpecial, router, searchParams])
 
   const isDrinks = menuType === "drinks"
   const drinkItems = isVip ? vipItems : regularItems
   const activeCategories = isDrinks ? categories : foodCategories
   const menuItems = isDrinks ? drinkItems : foodItems
+  const hasSpecialMenus = cocktailsCategories.length > 0 || mocktailsCategories.length > 0
 
-  // override when showing cocktails/mocktails
-  const displayedCategories = showSpecial === 'cocktails' ? cocktailsCategories : showSpecial === 'mocktails' ? mocktailsCategories : activeCategories
-  const displayedItems = showSpecial === 'cocktails' ? cocktailsItems : showSpecial === 'mocktails' ? mocktailsItems : menuItems
+  // Only apply the special cocktails/mocktails list while the drinks tab is active.
+  const isSpecialView = isDrinks && showSpecial !== 'none'
+  const displayedCategories = isSpecialView
+    ? showSpecial === 'cocktails'
+      ? cocktailsCategories
+      : mocktailsCategories
+    : activeCategories
+  const displayedItems = isSpecialView
+    ? showSpecial === 'cocktails'
+      ? cocktailsItems
+      : mocktailsItems
+    : menuItems
 
   const handleTypeToggle = (type: MenuListType) => {
     setMenuType(type)
-    // switching menu type (drinks <-> food) should always clear any special views
-    setShowSpecial('none')
+    if (type === "food") {
+      setShowSpecial('none')
+    }
   }
 
   const handleVipToggle = (vip: boolean) => {
@@ -60,10 +95,26 @@ export function MenuListWithToggle({
       <div className="w-full px-2 py-4 flex flex-wrap items-center justify-center gap-1 bg-background">
         <MenuTypeToggle onToggle={handleTypeToggle} />
         {/* {isDrinks && <MenuVipToggle onToggle={handleVipToggle} isSpecialActive={showSpecial !== 'none'} />} */}
-        {isDrinks && (
+        {hasSpecialMenus && (
           <div className="flex items-center gap-2">
-            <CustomButton text="Cocktails" variant={showSpecial === 'cocktails' ? 'default' : 'ghost'} onClick={() => { setMenuType('drinks'); setShowSpecial(showSpecial === 'cocktails' ? 'none' : 'cocktails') }} className="py-2 px-3 text-sm! min-w-20! sm:min-w-30!" />
-            <CustomButton text="Mocktails" variant={showSpecial === 'mocktails' ? 'default' : 'ghost'} onClick={() => { setMenuType('drinks'); setShowSpecial(showSpecial === 'mocktails' ? 'none' : 'mocktails') }} className="py-2 px-3 text-sm! min-w-20! sm:min-w-30!" />
+            <CustomButton
+              text="Cocktails"
+              variant={showSpecial === 'cocktails' ? 'default' : 'ghost'}
+              onClick={() => {
+                setMenuType('drinks')
+                setShowSpecial(showSpecial === 'cocktails' ? 'none' : 'cocktails')
+              }}
+              className="py-2 px-3 text-sm! min-w-20! sm:min-w-30!"
+            />
+            <CustomButton
+              text="Mocktails"
+              variant={showSpecial === 'mocktails' ? 'default' : 'ghost'}
+              onClick={() => {
+                setMenuType('drinks')
+                setShowSpecial(showSpecial === 'mocktails' ? 'none' : 'mocktails')
+              }}
+              className="py-2 px-3 text-sm! min-w-20! sm:min-w-30!"
+            />
           </div>
         )}
       </div>
